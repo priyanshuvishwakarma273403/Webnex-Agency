@@ -88,8 +88,26 @@ export default function HeroSection() {
             .hero-btns { justify-content: center; width: 100%; }
             .hero-btns > a { width: 100%; justify-content: center; }
             .hero-badges { justify-content: center; }
-            .hero-img-container { min-height: 320px !important; border-radius: 20px !important; }
-            .hero-float-card { display: none !important; }
+            .hero-img-container { min-height: 280px !important; border-radius: 20px !important; }
+            
+            /* Make floating cards perfectly responsive for phones */
+            .hero-float-card > div { 
+               padding: 6px 10px !important; 
+               gap: 6px !important;
+               border-radius: 10px !important;
+            }
+            .hero-float-card > div > div {
+               width: 20px !important;
+               height: 20px !important;
+               border-radius: 6px !important;
+            }
+            .hero-float-card > div > div > svg {
+               width: 12px !important;
+               height: 12px !important;
+            }
+            .hero-float-card > div > span {
+               font-size: 9px !important;
+            }
           }
         `}</style>
         <div className="hero-grid" style={{
