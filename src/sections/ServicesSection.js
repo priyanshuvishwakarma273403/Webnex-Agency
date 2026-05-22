@@ -2,7 +2,7 @@
 import { useRef, useState, useEffect } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { Zap, ArrowRight, X, CheckCircle, Send, User, Mail, Briefcase, Loader2, PenTool, Layout, Box, Tag, FileText, Coffee, Printer, Image as ImageIcon, Monitor, FileBadge, Grid, Layers, Smartphone, ShoppingCart } from 'lucide-react';
+import { Zap, ArrowRight, X, CheckCircle, Send, User, Mail, Briefcase, Loader2, PenTool, Layout, Box, Tag, FileText, Coffee, Printer, Image as ImageIcon, Monitor, FileBadge, Grid, Layers, Smartphone, ShoppingCart, Wrench, RefreshCw, ShieldCheck, Activity, Store, Package, Headset, Bug, Server, Lock } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { 
   SiReact, SiSpringboot, SiDocker, SiOpenai, 
@@ -38,6 +38,21 @@ const designServices = [
   { icon: Monitor, title: 'T-Shirt & Mug Printing', desc: 'Custom apparel and merchandise printing for corporate gifting, events, and brand promotions.', color: '#6C63FF', bg: '#6C63FF12' },
   { icon: Grid, title: 'CNC Jali & Patterns', desc: 'Custom 2D/3D CNC designs, Laser Cut Jali, and architectural wall partitions.', color: '#9B59B6', bg: '#9B59B612' },
   { icon: Layers, title: 'Acoustic & Wall Panels', desc: 'Premium soundproof acoustic panel designs and beautiful geometric wall arts.', color: '#10A37F', bg: '#10A37F12' },
+];
+
+const maintenanceServices = [
+  { icon: Wrench, title: 'Website Maintenance', desc: 'Comprehensive monthly maintenance, health checks, and ongoing platform support.', color: '#6DB33F', bg: '#6DB33F12' },
+  { icon: RefreshCw, title: 'Regular Updates', desc: 'Timely theme, plugin, and core system updates to ensure optimal performance.', color: '#3B82F6', bg: '#3B82F612' },
+  { icon: ShieldCheck, title: 'Security & Backup', desc: 'Daily automated backups and robust security protocols to prevent data loss.', color: '#10A37F', bg: '#10A37F12' },
+  { icon: Activity, title: 'Website Monitoring', desc: '24/7 uptime monitoring and real-time alerts for server and performance issues.', color: '#FF9900', bg: '#FF990012' },
+  { icon: Store, title: 'E-commerce Management', desc: 'Complete end-to-end management of online stores, including payments and catalogs.', color: '#635BFF', bg: '#635BFF12' },
+  { icon: Package, title: 'Product & Inventory', desc: 'Regular product uploads, inventory syncing, and catalog updates across platforms.', color: '#E74C3C', bg: '#E74C3C12' },
+  { icon: ImageIcon, title: 'Banner & Order Support', desc: 'Dynamic banner updates, promotional changes, and order management assistance.', color: '#9B59B6', bg: '#9B59B612' },
+  { icon: Headset, title: 'Technical Support', desc: 'Dedicated technical support services to resolve user queries and system glitches.', color: '#00C2FF', bg: '#00C2FF12' },
+  { icon: Bug, title: 'Bug & Error Fixing', desc: 'Rapid identification and resolution of console errors, broken links, and UI bugs.', color: '#F24E1E', bg: '#F24E1E12' },
+  { icon: Server, title: 'Hosting Support', desc: 'Server configuration, domain management, SSL setup, and infrastructure scaling.', color: '#2496ED', bg: '#2496ED12' },
+  { icon: Zap, title: 'Speed Optimization', desc: 'Advanced caching, asset minification, and database optimization for fast loading.', color: '#FF4A00', bg: '#FF4A0012' },
+  { icon: Lock, title: 'Malware Protection', desc: 'Active malware scanning, firewall implementation, and vulnerability patching.', color: '#1E293B', bg: '#1E293B12' },
 ];
 
 function ServiceCard({ service, index, onClick }) {
@@ -245,29 +260,25 @@ export default function ServicesSection() {
         </div>
 
         <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 40, marginTop: 10 }}>
-          <div style={{ display: 'inline-flex', background: 'white', padding: 6, borderRadius: 100, border: '1px solid rgba(108,99,255,0.1)', boxShadow: '0 8px 24px rgba(0,0,0,0.03)', position: 'relative' }}>
-            <button 
-              onClick={() => setActiveTab('software')}
-              style={{ position: 'relative', zIndex: 1, padding: '12px 24px', borderRadius: 100, border: 'none', background: 'transparent', fontWeight: 700, fontSize: 14, cursor: 'pointer', color: activeTab === 'software' ? 'white' : '#64748b', transition: 'color 0.3s' }}
-            >
-              Software & Cloud
-            </button>
-            <button 
-              onClick={() => setActiveTab('design')}
-              style={{ position: 'relative', zIndex: 1, padding: '12px 24px', borderRadius: 100, border: 'none', background: 'transparent', fontWeight: 700, fontSize: 14, cursor: 'pointer', color: activeTab === 'design' ? 'white' : '#64748b', transition: 'color 0.3s' }}
-            >
-              Branding & Printing
-            </button>
-            <motion.div 
-              layoutId="servicesTabBubble"
-              style={{ position: 'absolute', top: 6, bottom: 6, borderRadius: 100, background: 'linear-gradient(135deg,#6C63FF,#00C2FF)', zIndex: 0 }}
-              initial={false}
-              animate={{ 
-                left: activeTab === 'software' ? 6 : '50%', 
-                width: 'calc(50% - 6px)' 
-              }}
-              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            />
+          <div style={{ display: 'inline-flex', background: 'white', padding: 6, borderRadius: 100, border: '1px solid rgba(108,99,255,0.1)', boxShadow: '0 8px 24px rgba(0,0,0,0.03)', position: 'relative', flexWrap: 'wrap', justifyContent: 'center', gap: 4 }}>
+            {['software', 'design', 'maintenance'].map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                style={{ position: 'relative', padding: '12px 24px', borderRadius: 100, border: 'none', background: 'transparent', fontWeight: 700, fontSize: 14, cursor: 'pointer', color: activeTab === tab ? 'white' : '#64748b', transition: 'color 0.3s' }}
+              >
+                {activeTab === tab && (
+                  <motion.div
+                    layoutId="servicesTabBubble"
+                    style={{ position: 'absolute', inset: 0, borderRadius: 100, background: 'linear-gradient(135deg,#6C63FF,#00C2FF)', zIndex: 0 }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                  />
+                )}
+                <span style={{ position: 'relative', zIndex: 1 }}>
+                  {tab === 'software' ? 'Software & Cloud' : tab === 'design' ? 'Branding & Printing' : 'Website Maintenance'}
+                </span>
+              </button>
+            ))}
           </div>
         </div>
 
@@ -316,7 +327,7 @@ export default function ServicesSection() {
         `}</style>
         <div className="services-grid-wrapper">
           <AnimatePresence mode="wait">
-            {(activeTab === 'software' ? softwareServices : designServices).map((s, i) => (
+            {(activeTab === 'software' ? softwareServices : activeTab === 'design' ? designServices : maintenanceServices).map((s, i) => (
               <ServiceCard key={s.title} service={s} index={i} onClick={() => setActiveService(s)} />
             ))}
           </AnimatePresence>
