@@ -75,7 +75,7 @@ function ServiceCard({ service, index, onClick }) {
         ref={cardRef}
         onMouseMove={onMouseMove}
         onMouseLeave={onMouseLeave}
-        className={`prem-card-${index}`}
+        className={`prem-card-${index} service-card-resp`}
         onClick={onClick}
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -107,7 +107,7 @@ function ServiceCard({ service, index, onClick }) {
         <div className="corner-bg" style={{ position: 'absolute', top: -20, right: -20, width: 120, height: 120, background: `radial-gradient(circle, ${service.color}15 0%, transparent 70%)`, transition: 'all 0.5s ease', pointerEvents: 'none', zIndex: -1 }} />
 
         {/* Icon */}
-        <div style={{
+        <div className="icon-box" style={{
           width: 54, height: 54, borderRadius: 16,
           background: `linear-gradient(135deg, ${service.color}20, ${service.color}05)`,
           border: `1px solid ${service.color}30`,
@@ -117,17 +117,17 @@ function ServiceCard({ service, index, onClick }) {
           animation: `float ${3 + (index % 3) * 0.5}s ease-in-out infinite`,
           animationDelay: `${index * 0.15}s`,
         }}>
-          <Icon size={24} color={service.color} strokeWidth={2} />
+          <Icon size={24} color={service.color} strokeWidth={2} className="icon-svg" />
         </div>
 
-        <h3 style={{ fontSize: 17, fontWeight: 700, color: '#0F172A', marginBottom: 10, fontFamily: 'Poppins,sans-serif' }}>
+        <h3 className="card-title" style={{ fontSize: 17, fontWeight: 700, color: '#0F172A', marginBottom: 10, fontFamily: 'Poppins,sans-serif' }}>
           {service.title}
         </h3>
-        <p style={{ fontSize: 14, color: '#64748b', lineHeight: 1.7, marginBottom: 20 }}>
+        <p className="card-desc" style={{ fontSize: 14, color: '#64748b', lineHeight: 1.7, marginBottom: 20 }}>
           {service.desc}
         </p>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13.5, fontWeight: 700, color: service.color }}>
+        <div className="explore-text" style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13.5, fontWeight: 700, color: service.color }}>
           Explore service
           <motion.span animate={{ x: [0, 4, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
             <ArrowRight size={14} strokeWidth={2.5} />
@@ -272,7 +272,49 @@ export default function ServicesSection() {
         </div>
 
         {/* Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 280px), 1fr))', gap: 20 }}>
+        <style>{`
+          .services-grid-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+          }
+          @media (max-width: 650px) {
+            .services-grid-wrapper {
+              grid-template-columns: repeat(2, 1fr);
+              gap: 12px;
+            }
+            .service-card-resp {
+              padding: 20px 16px !important;
+            }
+            .service-card-resp .card-title {
+              font-size: 14px !important;
+              margin-bottom: 6px !important;
+              line-height: 1.3 !important;
+            }
+            .service-card-resp .card-desc {
+              font-size: 12px !important;
+              line-height: 1.4 !important;
+              margin-bottom: 12px !important;
+            }
+            .service-card-resp .icon-box {
+              width: 42px !important;
+              height: 42px !important;
+              margin-bottom: 14px !important;
+              border-radius: 12px !important;
+            }
+            .service-card-resp .icon-svg {
+              width: 18px !important;
+              height: 18px !important;
+            }
+            .service-card-resp .explore-text {
+              font-size: 11.5px !important;
+            }
+            .section-padding {
+              padding: 60px 16px !important;
+            }
+          }
+        `}</style>
+        <div className="services-grid-wrapper">
           <AnimatePresence mode="wait">
             {(activeTab === 'software' ? softwareServices : designServices).map((s, i) => (
               <ServiceCard key={s.title} service={s} index={i} onClick={() => setActiveService(s)} />
