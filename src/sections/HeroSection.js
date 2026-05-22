@@ -13,7 +13,7 @@ const rotatingWords = ['AI Powered', 'Scalable', 'Futuristic', 'Premium'];
 
 const stats = [
   { value: '50+', label: 'Projects' },
-  { value: '100%', label: 'Satisfaction' },
+  { value: '94%', label: 'Satisfaction' },
   { value: '12+', label: 'Services' },
 ];
 
@@ -67,7 +67,8 @@ export default function HeroSection() {
       <div style={{ position: 'absolute', bottom: 60, right: -60, width: 400, height: 400, borderRadius: '50%', background: 'radial-gradient(circle,rgba(0,194,255,0.08) 0%,transparent 70%)', filter: 'blur(80px)', pointerEvents: 'none' }} />
 
       <div className="container-custom" style={{ width: '100%', position: 'relative', zIndex: 2 }}>
-        <style dangerouslySetInnerHTML={{ __html: `
+        <style dangerouslySetInnerHTML={{
+          __html: `
           .hero-grid { grid-template-columns: 1fr; }
           @media(min-width: 992px) { .hero-grid { grid-template-columns: 1fr 1.1fr; } }
           

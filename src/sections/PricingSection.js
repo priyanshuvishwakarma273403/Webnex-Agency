@@ -70,6 +70,25 @@ const designPlans = [
   }
 ];
 
+const maintenancePlans = [
+  {
+    name: 'Essential Maintenance', price: 'Starts ₹1,999', period: '/mo', desc: 'Keep your website running smoothly.', gradient: 'linear-gradient(135deg,#6DB33F,#4ADE80)', color: '#6DB33F', popular: true,
+    features: [{ text: 'Website Maintenance: ₹1,999/mo', ok: true }, { text: 'Website Management: ₹2,999/mo', ok: true }, { text: 'Monthly Support: ₹2,999/mo', ok: true }, { text: 'SEO Maintenance: ₹2,999/mo', ok: true }, { text: 'WordPress Management: ₹1,999/mo', ok: true }]
+  },
+  {
+    name: 'Updates & Content', price: 'Starts ₹499', period: '', desc: 'Fresh content and regular updates.', gradient: 'linear-gradient(135deg,#3B82F6,#2563EB)', color: '#3B82F6', popular: false,
+    features: [{ text: 'Content Update: ₹499', ok: true }, { text: 'Product Upload: ₹999', ok: true }, { text: 'Landing Page Management: ₹999', ok: true }, { text: 'Plugin/Theme Updates: ₹999/mo', ok: true }, { text: 'Data Entry Service: ₹499', ok: true }]
+  },
+  {
+    name: 'Security & Backup', price: 'Starts ₹499', period: '', desc: 'Bulletproof security and performance.', gradient: 'linear-gradient(135deg,#E74C3C,#C0392B)', color: '#E74C3C', popular: false,
+    features: [{ text: 'Security Monitoring: ₹1,499/mo', ok: true }, { text: 'Backup Service: ₹999/mo', ok: true }, { text: 'Performance Monitoring: ₹1,499/mo', ok: true }, { text: 'Speed Optimization: ₹1,999', ok: true }, { text: 'Bug Fixing Support: ₹499', ok: true }]
+  },
+  {
+    name: 'Enterprise & Hosting', price: 'Starts ₹499', period: '', desc: 'Full-scale infrastructure management.', gradient: 'linear-gradient(135deg,#0F172A,#1E293B)', color: '#1E293B', popular: false,
+    features: [{ text: 'E-commerce Management: ₹4,999/mo', ok: true }, { text: 'Website Redesign: ₹4,999', ok: true }, { text: 'Admin Panel Management: ₹1,999/mo', ok: true }, { text: 'Hosting Management: ₹999/mo', ok: true }, { text: 'Domain Management: ₹499/mo', ok: true }]
+  }
+];
+
 export default function PricingSection() {
   const headingRef = useRef(null);
   const isInView = useInView(headingRef, { once: true });
@@ -162,37 +181,32 @@ export default function PricingSection() {
         `}</style>
 
         <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 40 }}>
-          <div style={{ display: 'inline-flex', background: 'white', padding: 6, borderRadius: 100, border: '1px solid rgba(108,99,255,0.1)', boxShadow: '0 8px 24px rgba(0,0,0,0.03)', position: 'relative' }}>
-            <button
-              onClick={() => setActiveTab('software')}
-              style={{ position: 'relative', zIndex: 1, padding: '12px 24px', borderRadius: 100, border: 'none', background: 'transparent', fontWeight: 700, fontSize: 15, cursor: 'pointer', color: activeTab === 'software' ? 'white' : '#64748b', transition: 'color 0.3s' }}
-            >
-              Software Development
-            </button>
-            <button
-              onClick={() => setActiveTab('design')}
-              style={{ position: 'relative', zIndex: 1, padding: '12px 24px', borderRadius: 100, border: 'none', background: 'transparent', fontWeight: 700, fontSize: 15, cursor: 'pointer', color: activeTab === 'design' ? 'white' : '#64748b', transition: 'color 0.3s' }}
-            >
-              Graphic Design & CNC
-            </button>
-
-            <motion.div
-              layoutId="pricingTabBubble"
-              style={{ position: 'absolute', top: 6, bottom: 6, borderRadius: 100, background: 'linear-gradient(135deg,#6C63FF,#00C2FF)', zIndex: 0 }}
-              initial={false}
-              animate={{
-                left: activeTab === 'software' ? 6 : '50%',
-                width: 'calc(50% - 6px)'
-              }}
-              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            />
+          <div style={{ display: 'inline-flex', background: 'white', padding: 6, borderRadius: 100, border: '1px solid rgba(108,99,255,0.1)', boxShadow: '0 8px 24px rgba(0,0,0,0.03)', position: 'relative', flexWrap: 'wrap', justifyContent: 'center', gap: 4 }}>
+            {['software', 'design', 'maintenance'].map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                style={{ position: 'relative', padding: '12px 24px', borderRadius: 100, border: 'none', background: 'transparent', fontWeight: 700, fontSize: 14, cursor: 'pointer', color: activeTab === tab ? 'white' : '#64748b', transition: 'color 0.3s' }}
+              >
+                {activeTab === tab && (
+                  <motion.div
+                    layoutId="pricingTabBubble"
+                    style={{ position: 'absolute', inset: 0, borderRadius: 100, background: 'linear-gradient(135deg,#6C63FF,#00C2FF)', zIndex: 0 }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                  />
+                )}
+                <span style={{ position: 'relative', zIndex: 1 }}>
+                  {tab === 'software' ? 'Software Development' : tab === 'design' ? 'Graphic Design & CNC' : 'Website Maintenance'}
+                </span>
+              </button>
+            ))}
           </div>
         </div>
 
         {/* Plans */}
         <div className="pricing-grid-9">
           <AnimatePresence mode="wait">
-            {(activeTab === 'software' ? plans : designPlans).map((plan, i) => (
+            {(activeTab === 'software' ? plans : activeTab === 'design' ? designPlans : maintenancePlans).map((plan, i) => (
               <motion.div key={plan.name}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
