@@ -48,14 +48,14 @@ function ServiceCard({ service, index, onClick }) {
 
   return (
     <>
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .prem-card-${index}:hover {
           box-shadow: 0 30px 60px rgba(0,0,0,0.06), 0 10px 25px ${service.color}25 !important;
           border-color: ${service.color}35 !important;
         }
         .prem-card-${index}:hover .card-spotlight { opacity: 1 !important; }
         .prem-card-${index}:hover .corner-bg { transform: scale(1.5) !important; opacity: 0.8 !important; }
-      `}</style>
+      ` }} />
       <motion.div
         ref={cardRef}
         onMouseMove={onMouseMove}
@@ -257,7 +257,7 @@ export default function ServicesSection() {
             }}
             onClick={() => setActiveService(null)}
           >
-            <style>{`
+            <style dangerouslySetInnerHTML={{ __html: `
               .service-modal-grid { display: grid; grid-template-columns: 1fr 1fr; width: 100%; max-width: 900px; background: white; border-radius: 24px; box-shadow: 0 40px 100px rgba(0,0,0,0.3); position: relative; max-height: 90vh; overflow: hidden; }
               .service-modal-left { padding: 40px; background: linear-gradient(135deg, #f8f7ff, #f0f8ff); display: flex; flex-direction: column; justify-content: center; }
               .service-modal-right { padding: 40px; overflow-y: auto; overscroll-behavior: contain; }
@@ -266,7 +266,7 @@ export default function ServicesSection() {
                 .service-modal-left { padding: 30px; flex-shrink: 0; }
                 .service-modal-right { padding: 30px; overflow-y: visible; flex-shrink: 0; }
               }
-            `}</style>
+            ` }} />
             <motion.div
               data-lenis-prevent="true"
               initial={{ scale: 0.95, y: 30, opacity: 0 }} animate={{ scale: 1, y: 0, opacity: 1 }} exit={{ scale: 0.95, y: 30, opacity: 0 }}
