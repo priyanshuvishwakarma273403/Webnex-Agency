@@ -5,12 +5,15 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
   Home, Briefcase, FolderOpen, Info, Bot, DollarSign,
-  Mail, Menu, X, Zap, ChevronRight
+  Mail, Menu, X, Zap, ChevronRight, PenTool, ChevronDown
 } from 'lucide-react';
+import GraphicDesignDropdown from './GraphicDesignDropdown';
+import { graphicDesignCategories } from '../data/graphicDesignData';
 
 const navItems = [
   { label: 'Home', href: '/', icon: Home },
   { label: 'Services', href: '/services', icon: Briefcase },
+  { label: 'Graphic Design', href: '#graphic-design', icon: PenTool, hasMegaMenu: true },
   { label: 'Portfolio', href: '/portfolio', icon: FolderOpen },
   { label: 'About', href: '/about', icon: Info },
   { label: 'AI Assistant', href: '/ai', icon: Bot },
@@ -71,6 +74,11 @@ export default function Navbar() {
               <style>{`.lg-flex { display: none; } @media (min-width: 1024px) { .lg-flex { display: flex !important; } }`}</style>
               {navItems.map((item) => {
                 const isActive = pathname === item.href;
+                
+                if (item.hasMegaMenu) {
+                  return <GraphicDesignDropdown key={item.label} item={item} isActive={isActive} />;
+                }
+
                 return (
                   <Link key={item.href} href={item.href} style={{ textDecoration: 'none', position: 'relative' }}>
                     {isActive && (
