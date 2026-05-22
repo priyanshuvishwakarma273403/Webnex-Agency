@@ -25,22 +25,12 @@ const techBadges = [
 ];
 
 const floatingLogos = [
-  // Original 6
-  { icon: SiSpringboot, name: 'Spring Boot', color: '#6DB33F', top: '5%', right: '-5%', delay: 0.6 },
-  { icon: SiApachekafka, name: 'Kafka', color: '#231F20', top: '45%', right: '-12%', delay: 0.8 },
-  { icon: SiRedis, name: 'Redis', color: '#DC382D', bottom: '10%', right: '8%', delay: 1.0 },
-  { icon: SiDocker, name: 'Docker', color: '#2496ED', bottom: '20%', left: '-8%', delay: 1.2 },
-  { icon: SiKubernetes, name: 'Kubernetes', color: '#326CE5', top: '35%', left: '-10%', delay: 0.9 },
-  { icon: SiNodedotjs, name: 'Node.js', color: '#339933', top: '8%', left: '5%', delay: 0.7 },
-  
-  // New 7
-  { icon: SiJenkins, name: 'Jenkins', color: '#D24939', top: '-5%', left: '35%', delay: 1.4 },
-  { icon: SiKalilinux, name: 'Kali Linux', color: '#557C94', bottom: '35%', right: '-15%', delay: 1.1 },
-  { icon: SiGitlab, name: 'GitLab', color: '#FCA121', top: '65%', left: '-12%', delay: 1.3 },
-  { icon: SiRabbitmq, name: 'RabbitMQ', color: '#FF6600', bottom: '-2%', left: '25%', delay: 1.5 },
-  { icon: FaAws, name: 'AWS', color: '#FF9900', top: '25%', right: '-14%', delay: 0.5 },
-  { icon: SiReact, name: 'React', color: '#61DAFB', bottom: '2%', right: '35%', delay: 1.6 },
-  { icon: SiNextdotjs, name: 'Next.js', color: '#000000', top: '20%', left: '-12%', delay: 0.4 },
+  { icon: SiSpringboot, name: 'Spring Boot', color: '#6DB33F', top: '8%', right: '-6%', delay: 0.6 },
+  { icon: SiJenkins, name: 'Jenkins', color: '#D24939', top: '12%', left: '-4%', delay: 1.2 },
+  { icon: FaAws, name: 'AWS', color: '#FF9900', top: '40%', right: '-10%', delay: 0.5 },
+  { icon: SiKubernetes, name: 'Kubernetes', color: '#326CE5', top: '45%', left: '-10%', delay: 0.9 },
+  { icon: SiApachekafka, name: 'Kafka', color: '#231F20', bottom: '15%', right: '-4%', delay: 1.4 },
+  { icon: SiDocker, name: 'Docker', color: '#2496ED', bottom: '12%', left: '-6%', delay: 0.8 },
 ];
 
 export default function HeroSection() {
@@ -121,7 +111,7 @@ export default function HeroSection() {
             className="hero-left"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.6,-0.05,0.01,0.99] }}
+            transition={{ duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99] }}
           >
             {/* Badge */}
             <motion.div
@@ -138,7 +128,7 @@ export default function HeroSection() {
                 fontSize: 12, fontWeight: 700, color: '#6C63FF',
                 letterSpacing: '0.1em',
               }}>
-                <motion.div animate={{ scale: [1,1.4,1] }} transition={{ duration: 2, repeat: Infinity }}
+                <motion.div animate={{ scale: [1, 1.4, 1] }} transition={{ duration: 2, repeat: Infinity }}
                   style={{ width: 7, height: 7, borderRadius: '50%', background: '#00C2FF', boxShadow: '0 0 8px #00C2FF' }} />
                 AI-POWERED DIGITAL INNOVATION
               </span>
@@ -226,7 +216,7 @@ export default function HeroSection() {
           <motion.div
             initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.2, ease: [0.6,-0.05,0.01,0.99] }}
+            transition={{ duration: 1, delay: 0.2, ease: [0.6, -0.05, 0.01, 0.99] }}
             style={{ position: 'relative' }}
           >
             {/* Glow bg */}
@@ -235,17 +225,17 @@ export default function HeroSection() {
               background: 'radial-gradient(circle, rgba(108,99,255,0.15) 0%, transparent 70%)',
               borderRadius: '50%', filter: 'blur(40px)',
             }} />
-            
+
             <div className="hero-img-container" style={{
               position: 'relative', width: '100%', height: '100%', minHeight: 480,
               borderRadius: 30, overflow: 'hidden',
               boxShadow: '0 24px 60px rgba(108,99,255,0.15)',
               border: '1px solid rgba(108,99,255,0.2)',
             }}>
-              <img 
-                src="/images/hero_illustration.png" 
-                alt="AI Technology Illustration" 
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+              <img
+                src="/images/hero_illustration.png"
+                alt="AI Technology Illustration"
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               />
             </div>
 
@@ -257,10 +247,10 @@ export default function HeroSection() {
                   initial={{ opacity: 0, y: -200, scale: 0.5, rotate: i % 2 === 0 ? -15 : 15 }}
                   animate={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
                   transition={{ type: 'spring', stiffness: 50, damping: 12, delay: item.delay }}
-                  style={{ 
-                    position: 'absolute', 
-                    top: item.top, bottom: item.bottom, left: item.left, right: item.right, 
-                    zIndex: 10 
+                  style={{
+                    position: 'absolute',
+                    top: item.top, bottom: item.bottom, left: item.left, right: item.right,
+                    zIndex: 10
                   }}
                 >
                   <motion.div animate={{ y: [0, -12, 0] }} transition={{ duration: 4 + (i % 3), repeat: Infinity, delay: item.delay, ease: 'easeInOut' }}
