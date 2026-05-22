@@ -237,17 +237,18 @@ export default function PricingSection() {
             onClick={() => { setActivePlan(null); setAgreed(false); }}
           >
             <style>{`
-              .plan-modal-container { display: flex; width: 100%; max-width: 1000px; background: white; border-radius: 28px; overflow: hidden; box-shadow: 0 50px 120px rgba(0,0,0,0.4); position: relative; max-height: 92vh; }
+              .plan-modal-container { display: flex; width: 100%; max-width: 1000px; background: white; border-radius: 28px; box-shadow: 0 50px 120px rgba(0,0,0,0.4); position: relative; max-height: 92vh; overflow: hidden; }
               .plan-modal-left { width: 45%; padding: 48px; background: ${activePlan.gradient}; color: white; display: flex; flex-direction: column; position: relative; overflow: hidden; }
-              .plan-modal-right { width: 55%; padding: 48px; overflow-y: auto; background: #fff; }
+              .plan-modal-right { width: 55%; padding: 48px; overflow-y: auto; background: #fff; overscroll-behavior: contain; }
               @media (max-width: 900px) {
-                .plan-modal-container { flex-direction: column; overflow-y: auto; height: 100%; max-height: 100vh; border-radius: 0; }
-                .plan-modal-left { width: 100%; padding: 36px 24px; min-height: max-content; flex-shrink: 0; }
-                .plan-modal-right { width: 100%; padding: 36px 24px; overflow-y: visible; flex-shrink: 0; }
+                .plan-modal-container { flex-direction: column; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+                .plan-modal-left { width: 100%; padding: 36px 24px; flex-shrink: 0; }
+                .plan-modal-right { width: 100%; padding: 36px 24px; flex-shrink: 0; overflow-y: visible; }
               }
             `}</style>
             
             <motion.div
+              data-lenis-prevent="true"
               initial={{ scale: 0.9, y: 40, opacity: 0 }} animate={{ scale: 1, y: 0, opacity: 1 }} exit={{ scale: 0.95, y: 20, opacity: 0 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
               onClick={(e) => e.stopPropagation()}
