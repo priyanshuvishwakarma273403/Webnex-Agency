@@ -241,9 +241,9 @@ export default function PricingSection() {
               .plan-modal-left { width: 45%; padding: 48px; background: ${activePlan.gradient}; color: white; display: flex; flex-direction: column; position: relative; overflow: hidden; }
               .plan-modal-right { width: 55%; padding: 48px; overflow-y: auto; background: #fff; }
               @media (max-width: 900px) {
-                .plan-modal-container { flex-direction: column; overflow-y: auto; }
-                .plan-modal-left { width: 100%; padding: 36px 24px; min-height: 250px; }
-                .plan-modal-right { width: 100%; padding: 36px 24px; overflow-y: visible; }
+                .plan-modal-container { flex-direction: column; overflow-y: auto; height: 100%; max-height: 100vh; border-radius: 0; }
+                .plan-modal-left { width: 100%; padding: 36px 24px; min-height: max-content; flex-shrink: 0; }
+                .plan-modal-right { width: 100%; padding: 36px 24px; overflow-y: visible; flex-shrink: 0; }
               }
             `}</style>
             
