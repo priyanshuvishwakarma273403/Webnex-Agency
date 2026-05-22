@@ -53,7 +53,7 @@ const designPlans = [
     features: [{ text: 'Social Media Post: ₹299/post', ok: true }, { text: 'Flyer / Pamphlet: ₹799', ok: true }, { text: 'Poster Design: ₹799', ok: true }, { text: 'Banner / Flex: ₹999', ok: true }, { text: 'Menu Card Design: ₹999', ok: true }, { text: 'Mockup Design: ₹799', ok: true }, { text: 'T-Shirt Design: ₹799', ok: true }]
   },
   {
-    name: 'Premium Print & Pack', price: 'Starts ₹799', period: '', desc: 'High-end print deliverables.', gradient: 'linear-gradient(135deg,#F89820,#FF5722)', color: '#F89820', popular: false,
+    name: 'Premium Print & Pack', price: 'Starts ₹999', period: '', desc: 'High-end print deliverables.', gradient: 'linear-gradient(135deg,#F89820,#FF5722)', color: '#F89820', popular: false,
     features: [{ text: 'Brochure Design: ₹1,499', ok: true }, { text: 'Packaging Design: ₹1,999', ok: true }, { text: 'Book Cover Design: ₹999', ok: true }, { text: 'Invitation Card: ₹799', ok: true }, { text: 'Wedding Card: ₹1,499', ok: true }]
   },
   {
@@ -91,7 +91,7 @@ export default function PricingSection() {
       document.body.style.overflow = '';
       document.documentElement.style.overflow = '';
     }
-    return () => { 
+    return () => {
       document.body.style.overflow = '';
       document.documentElement.style.overflow = '';
     };
@@ -101,7 +101,7 @@ export default function PricingSection() {
     e.preventDefault();
     if (!agreed) return;
     setLoading(true);
-    
+
     try {
       const templateParams = {
         name: `${formData.firstName} ${formData.lastName}`,
@@ -117,7 +117,7 @@ export default function PricingSection() {
         templateParams,
         'EV1QwfUS_AfzdGi9G'
       );
-      
+
       setSubmitted(true);
     } catch (error) {
       console.error('Error sending email:', error);
@@ -163,26 +163,26 @@ export default function PricingSection() {
 
         <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 40 }}>
           <div style={{ display: 'inline-flex', background: 'white', padding: 6, borderRadius: 100, border: '1px solid rgba(108,99,255,0.1)', boxShadow: '0 8px 24px rgba(0,0,0,0.03)', position: 'relative' }}>
-            <button 
+            <button
               onClick={() => setActiveTab('software')}
               style={{ position: 'relative', zIndex: 1, padding: '12px 24px', borderRadius: 100, border: 'none', background: 'transparent', fontWeight: 700, fontSize: 15, cursor: 'pointer', color: activeTab === 'software' ? 'white' : '#64748b', transition: 'color 0.3s' }}
             >
               Software Development
             </button>
-            <button 
+            <button
               onClick={() => setActiveTab('design')}
               style={{ position: 'relative', zIndex: 1, padding: '12px 24px', borderRadius: 100, border: 'none', background: 'transparent', fontWeight: 700, fontSize: 15, cursor: 'pointer', color: activeTab === 'design' ? 'white' : '#64748b', transition: 'color 0.3s' }}
             >
               Graphic Design & CNC
             </button>
-            
-            <motion.div 
+
+            <motion.div
               layoutId="pricingTabBubble"
               style={{ position: 'absolute', top: 6, bottom: 6, borderRadius: 100, background: 'linear-gradient(135deg,#6C63FF,#00C2FF)', zIndex: 0 }}
               initial={false}
-              animate={{ 
-                left: activeTab === 'software' ? 6 : '50%', 
-                width: 'calc(50% - 6px)' 
+              animate={{
+                left: activeTab === 'software' ? 6 : '50%',
+                width: 'calc(50% - 6px)'
               }}
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
             />
@@ -194,78 +194,78 @@ export default function PricingSection() {
           <AnimatePresence mode="wait">
             {(activeTab === 'software' ? plans : designPlans).map((plan, i) => (
               <motion.div key={plan.name}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.5, delay: (i % 3) * 0.1 }}
-              whileHover={{ y: -8, boxShadow: `0 40px 90px ${plan.color}25` }}
-              style={{
-                position: 'relative',
-                background: 'rgba(255,255,255,0.95)',
-                backdropFilter: 'blur(20px)',
-                border: plan.popular ? `2px solid ${plan.color}50` : '1px solid rgba(108,99,255,0.1)',
-                borderRadius: 24,
-                overflow: 'hidden',
-                boxShadow: plan.popular ? `0 20px 60px ${plan.color}20` : '0 4px 20px rgba(0,0,0,0.04)',
-                transition: 'all 0.4s cubic-bezier(0.175,0.885,0.32,1.275)',
-                transform: plan.popular ? 'scale(1.02)' : 'scale(1)',
-                display: 'flex', flexDirection: 'column'
-              }}
-            >
-              {plan.popular && (
-                <div style={{ position: 'absolute', top: 16, right: 16, zIndex: 2, display: 'flex', alignItems: 'center', gap: 5, padding: '5px 14px', borderRadius: '100px', background: 'rgba(255,255,255,0.25)', border: '1px solid rgba(255,255,255,0.5)', backdropFilter: 'blur(10px)' }}>
-                  <Star size={12} fill="white" color="white" />
-                  <span style={{ fontSize: 11, fontWeight: 800, color: 'white', letterSpacing: '0.02em' }}>TOP CHOICE</span>
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-50px' }}
+                transition={{ duration: 0.5, delay: (i % 3) * 0.1 }}
+                whileHover={{ y: -8, boxShadow: `0 40px 90px ${plan.color}25` }}
+                style={{
+                  position: 'relative',
+                  background: 'rgba(255,255,255,0.95)',
+                  backdropFilter: 'blur(20px)',
+                  border: plan.popular ? `2px solid ${plan.color}50` : '1px solid rgba(108,99,255,0.1)',
+                  borderRadius: 24,
+                  overflow: 'hidden',
+                  boxShadow: plan.popular ? `0 20px 60px ${plan.color}20` : '0 4px 20px rgba(0,0,0,0.04)',
+                  transition: 'all 0.4s cubic-bezier(0.175,0.885,0.32,1.275)',
+                  transform: plan.popular ? 'scale(1.02)' : 'scale(1)',
+                  display: 'flex', flexDirection: 'column'
+                }}
+              >
+                {plan.popular && (
+                  <div style={{ position: 'absolute', top: 16, right: 16, zIndex: 2, display: 'flex', alignItems: 'center', gap: 5, padding: '5px 14px', borderRadius: '100px', background: 'rgba(255,255,255,0.25)', border: '1px solid rgba(255,255,255,0.5)', backdropFilter: 'blur(10px)' }}>
+                    <Star size={12} fill="white" color="white" />
+                    <span style={{ fontSize: 11, fontWeight: 800, color: 'white', letterSpacing: '0.02em' }}>TOP CHOICE</span>
+                  </div>
+                )}
+
+                {/* Header */}
+                <div style={{ background: plan.gradient, padding: '36px 30px 30px', position: 'relative', overflow: 'hidden' }}>
+                  <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 80% 20%,rgba(255,255,255,0.15) 0%,transparent 50%)' }} />
+                  <h3 style={{ fontSize: 22, fontWeight: 800, color: 'white', marginBottom: 6, fontFamily: 'Poppins,sans-serif', position: 'relative' }}>{plan.name}</h3>
+                  <p style={{ fontSize: 13.5, color: 'rgba(255,255,255,0.8)', marginBottom: 22, position: 'relative', minHeight: 40 }}>{plan.desc}</p>
+                  <div style={{ position: 'relative', display: 'flex', alignItems: 'baseline', flexWrap: 'wrap' }}>
+                    <span style={{ fontSize: '2.5rem', fontWeight: 900, color: 'white', fontFamily: 'Poppins,sans-serif', lineHeight: 1 }}>{plan.price}</span>
+                    <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.7)', marginLeft: 6 }}>{plan.period}</span>
+                  </div>
                 </div>
-              )}
 
-              {/* Header */}
-              <div style={{ background: plan.gradient, padding: '36px 30px 30px', position: 'relative', overflow: 'hidden' }}>
-                <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 80% 20%,rgba(255,255,255,0.15) 0%,transparent 50%)' }} />
-                <h3 style={{ fontSize: 22, fontWeight: 800, color: 'white', marginBottom: 6, fontFamily: 'Poppins,sans-serif', position: 'relative' }}>{plan.name}</h3>
-                <p style={{ fontSize: 13.5, color: 'rgba(255,255,255,0.8)', marginBottom: 22, position: 'relative', minHeight: 40 }}>{plan.desc}</p>
-                <div style={{ position: 'relative', display: 'flex', alignItems: 'baseline', flexWrap: 'wrap' }}>
-                  <span style={{ fontSize: '2.5rem', fontWeight: 900, color: 'white', fontFamily: 'Poppins,sans-serif', lineHeight: 1 }}>{plan.price}</span>
-                  <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.7)', marginLeft: 6 }}>{plan.period}</span>
+                {/* Features */}
+                <div style={{ padding: '28px 30px', flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+                  <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 32px', flexGrow: 1 }}>
+                    {plan.features.map((f, idx) => (
+                      <motion.li
+                        initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 + (idx * 0.05) }}
+                        key={f.text} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '9px 0', borderBottom: '1px solid rgba(0,0,0,0.04)', fontSize: 14, color: f.ok ? '#374151' : '#cbd5e1', fontWeight: 500 }}
+                      >
+                        <div style={{ width: 18, height: 18, borderRadius: '50%', background: f.ok ? `${plan.color}20` : 'rgba(148,163,184,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                          {f.ok ? <Check size={11} color={plan.color} strokeWidth={3} /> : <XIcon size={10} color="#94a3b8" strokeWidth={2.5} />}
+                        </div>
+                        <span style={{ lineHeight: 1.4 }}>{f.text}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
+
+                  <motion.button
+                    onClick={() => setActivePlan(plan)}
+                    whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
+                    style={{
+                      width: '100%', padding: '15px', borderRadius: 14,
+                      background: plan.popular ? plan.gradient : 'transparent',
+                      color: plan.popular ? 'white' : plan.color,
+                      border: plan.popular ? 'none' : `2px solid ${plan.color}40`,
+                      fontWeight: 700, fontSize: 15, cursor: 'pointer',
+                      fontFamily: 'Poppins,sans-serif',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+                      transition: 'all 0.3s',
+                      marginTop: 'auto'
+                    }}
+                  >
+                    {plan.name === 'Enterprise ERP' ? 'Contact Sales' : 'Get Started'} <ArrowRight size={16} />
+                  </motion.button>
                 </div>
-              </div>
-
-              {/* Features */}
-              <div style={{ padding: '28px 30px', flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
-                <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 32px', flexGrow: 1 }}>
-                  {plan.features.map((f, idx) => (
-                    <motion.li 
-                      initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 + (idx * 0.05) }}
-                      key={f.text} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '9px 0', borderBottom: '1px solid rgba(0,0,0,0.04)', fontSize: 14, color: f.ok ? '#374151' : '#cbd5e1', fontWeight: 500 }}
-                    >
-                      <div style={{ width: 18, height: 18, borderRadius: '50%', background: f.ok ? `${plan.color}20` : 'rgba(148,163,184,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                        {f.ok ? <Check size={11} color={plan.color} strokeWidth={3} /> : <XIcon size={10} color="#94a3b8" strokeWidth={2.5} />}
-                      </div>
-                      <span style={{ lineHeight: 1.4 }}>{f.text}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-
-                <motion.button 
-                  onClick={() => setActivePlan(plan)}
-                  whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
-                  style={{
-                    width: '100%', padding: '15px', borderRadius: 14,
-                    background: plan.popular ? plan.gradient : 'transparent',
-                    color: plan.popular ? 'white' : plan.color,
-                    border: plan.popular ? 'none' : `2px solid ${plan.color}40`,
-                    fontWeight: 700, fontSize: 15, cursor: 'pointer',
-                    fontFamily: 'Poppins,sans-serif',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-                    transition: 'all 0.3s',
-                    marginTop: 'auto'
-                  }}
-                >
-                  {plan.name === 'Enterprise ERP' ? 'Contact Sales' : 'Get Started'} <ArrowRight size={16} />
-                </motion.button>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
           </AnimatePresence>
         </div>
 
@@ -294,7 +294,8 @@ export default function PricingSection() {
             }}
             onClick={() => { setActivePlan(null); setAgreed(false); }}
           >
-            <style dangerouslySetInnerHTML={{ __html: `
+            <style dangerouslySetInnerHTML={{
+              __html: `
               .plan-modal-container { display: flex; width: 100%; max-width: 1000px; background: white; border-radius: 28px; box-shadow: 0 50px 120px rgba(0,0,0,0.4); position: relative; max-height: 92vh; overflow: hidden; }
               .plan-modal-left { width: 45%; padding: 48px; background: ${activePlan.gradient}; color: white; display: flex; flex-direction: column; position: relative; overflow: hidden; }
               .plan-modal-right { width: 55%; padding: 48px; overflow-y: auto; background: #fff; overscroll-behavior: contain; }
@@ -304,7 +305,7 @@ export default function PricingSection() {
                 .plan-modal-right { width: 100%; padding: 36px 24px; flex-shrink: 0; overflow-y: visible; }
               }
             ` }} />
-            
+
             <motion.div
               data-lenis-prevent="true"
               initial={{ scale: 0.9, y: 40, opacity: 0 }} animate={{ scale: 1, y: 0, opacity: 1 }} exit={{ scale: 0.95, y: 20, opacity: 0 }}
@@ -368,36 +369,36 @@ export default function PricingSection() {
                     <>
                       <h3 style={{ fontSize: 24, fontWeight: 800, color: '#0F172A', marginBottom: 8, fontFamily: 'Poppins, sans-serif' }}>Let's Build It.</h3>
                       <p style={{ fontSize: 14, color: '#64748b', marginBottom: 32 }}>Drop your details below. Our technical experts will reach out to schedule a deep-dive session.</p>
-                      
+
                       <form style={{ display: 'flex', flexDirection: 'column', gap: 20 }} onSubmit={handleSubmit}>
                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
                           <div>
                             <label style={{ display: 'block', fontSize: 13, fontWeight: 700, color: '#334155', marginBottom: 8 }}>First Name</label>
-                            <input required type="text" value={formData.firstName} onChange={(e) => setFormData({...formData, firstName: e.target.value})} placeholder="John" style={{ width: '100%', padding: '14px 16px', borderRadius: 14, border: '2px solid #f1f5f9', outline: 'none', fontSize: 14, transition: 'all 0.3s', background: '#f8fafc' }} onFocus={(e) => e.target.style.borderColor = activePlan.color} onBlur={(e) => e.target.style.borderColor = '#f1f5f9'} />
+                            <input required type="text" value={formData.firstName} onChange={(e) => setFormData({ ...formData, firstName: e.target.value })} placeholder="John" style={{ width: '100%', padding: '14px 16px', borderRadius: 14, border: '2px solid #f1f5f9', outline: 'none', fontSize: 14, transition: 'all 0.3s', background: '#f8fafc' }} onFocus={(e) => e.target.style.borderColor = activePlan.color} onBlur={(e) => e.target.style.borderColor = '#f1f5f9'} />
                           </div>
                           <div>
                             <label style={{ display: 'block', fontSize: 13, fontWeight: 700, color: '#334155', marginBottom: 8 }}>Last Name</label>
-                            <input required type="text" value={formData.lastName} onChange={(e) => setFormData({...formData, lastName: e.target.value})} placeholder="Doe" style={{ width: '100%', padding: '14px 16px', borderRadius: 14, border: '2px solid #f1f5f9', outline: 'none', fontSize: 14, transition: 'all 0.3s', background: '#f8fafc' }} onFocus={(e) => e.target.style.borderColor = activePlan.color} onBlur={(e) => e.target.style.borderColor = '#f1f5f9'} />
+                            <input required type="text" value={formData.lastName} onChange={(e) => setFormData({ ...formData, lastName: e.target.value })} placeholder="Doe" style={{ width: '100%', padding: '14px 16px', borderRadius: 14, border: '2px solid #f1f5f9', outline: 'none', fontSize: 14, transition: 'all 0.3s', background: '#f8fafc' }} onFocus={(e) => e.target.style.borderColor = activePlan.color} onBlur={(e) => e.target.style.borderColor = '#f1f5f9'} />
                           </div>
                         </div>
-                        
+
                         <div>
                           <label style={{ display: 'block', fontSize: 13, fontWeight: 700, color: '#334155', marginBottom: 8 }}>Work Email Address</label>
-                          <input required type="email" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} placeholder="john@company.com" style={{ width: '100%', padding: '14px 16px', borderRadius: 14, border: '2px solid #f1f5f9', outline: 'none', fontSize: 14, transition: 'all 0.3s', background: '#f8fafc' }} onFocus={(e) => e.target.style.borderColor = activePlan.color} onBlur={(e) => e.target.style.borderColor = '#f1f5f9'} />
+                          <input required type="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} placeholder="john@company.com" style={{ width: '100%', padding: '14px 16px', borderRadius: 14, border: '2px solid #f1f5f9', outline: 'none', fontSize: 14, transition: 'all 0.3s', background: '#f8fafc' }} onFocus={(e) => e.target.style.borderColor = activePlan.color} onBlur={(e) => e.target.style.borderColor = '#f1f5f9'} />
                         </div>
-                        
+
                         <div>
                           <label style={{ display: 'block', fontSize: 13, fontWeight: 700, color: '#334155', marginBottom: 8 }}>Project Requirements / Goals</label>
-                          <textarea required value={formData.requirements} onChange={(e) => setFormData({...formData, requirements: e.target.value})} placeholder="Briefly describe what you're looking to build..." rows={3} style={{ width: '100%', padding: '14px 16px', borderRadius: 14, border: '2px solid #f1f5f9', outline: 'none', fontSize: 14, resize: 'none', transition: 'all 0.3s', background: '#f8fafc' }} onFocus={(e) => e.target.style.borderColor = activePlan.color} onBlur={(e) => e.target.style.borderColor = '#f1f5f9'} />
+                          <textarea required value={formData.requirements} onChange={(e) => setFormData({ ...formData, requirements: e.target.value })} placeholder="Briefly describe what you're looking to build..." rows={3} style={{ width: '100%', padding: '14px 16px', borderRadius: 14, border: '2px solid #f1f5f9', outline: 'none', fontSize: 14, resize: 'none', transition: 'all 0.3s', background: '#f8fafc' }} onFocus={(e) => e.target.style.borderColor = activePlan.color} onBlur={(e) => e.target.style.borderColor = '#f1f5f9'} />
                         </div>
 
                         <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12, marginTop: 4 }}>
-                          <input 
-                            type="checkbox" 
-                            id="terms" 
+                          <input
+                            type="checkbox"
+                            id="terms"
                             checked={agreed}
                             onChange={(e) => setAgreed(e.target.checked)}
-                            style={{ width: 18, height: 18, marginTop: 2, accentColor: activePlan.color, cursor: 'pointer' }} 
+                            style={{ width: 18, height: 18, marginTop: 2, accentColor: activePlan.color, cursor: 'pointer' }}
                             required
                           />
                           <label htmlFor="terms" style={{ fontSize: 13, color: '#64748b', lineHeight: 1.5, cursor: 'pointer' }}>
@@ -405,16 +406,16 @@ export default function PricingSection() {
                           </label>
                         </div>
 
-                        <motion.button 
+                        <motion.button
                           disabled={loading}
-                          whileHover={!loading ? { scale: 1.02 } : {}} whileTap={!loading ? { scale: 0.98 } : {}} 
+                          whileHover={!loading ? { scale: 1.02 } : {}} whileTap={!loading ? { scale: 0.98 } : {}}
                           type="submit"
-                          style={{ 
-                            width: '100%', padding: 16, borderRadius: 14, border: 'none', 
-                            background: loading ? '#94a3b8' : activePlan.gradient, color: 'white', 
-                            fontWeight: 700, fontSize: 16, cursor: loading ? 'not-allowed' : 'pointer', 
-                            marginTop: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, 
-                            boxShadow: `0 10px 30px ${activePlan.color}40`, fontFamily: 'Poppins, sans-serif' 
+                          style={{
+                            width: '100%', padding: 16, borderRadius: 14, border: 'none',
+                            background: loading ? '#94a3b8' : activePlan.gradient, color: 'white',
+                            fontWeight: 700, fontSize: 16, cursor: loading ? 'not-allowed' : 'pointer',
+                            marginTop: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+                            boxShadow: `0 10px 30px ${activePlan.color}40`, fontFamily: 'Poppins, sans-serif'
                           }}
                         >
                           {loading ? <><motion.div animate={{ rotate: 360 }} transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}><Loader2 size={16} /></motion.div> Processing...</> : <><Lock size={16} /> Request Secure Invoice</>}
