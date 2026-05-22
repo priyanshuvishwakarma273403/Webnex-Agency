@@ -43,9 +43,37 @@ const plans = [
   },
 ];
 
+const designPlans = [
+  {
+    name: 'Branding & Basics', price: 'Starts ₹499', period: '', desc: 'Essential brand identity graphics.', gradient: 'linear-gradient(135deg,#FF6B9D,#E74C3C)', color: '#FF6B9D', popular: true,
+    features: [{ text: 'Logo Design: ₹999', ok: true }, { text: 'Premium Logo: ₹2,499', ok: true }, { text: 'Visiting Card: ₹499', ok: true }, { text: 'Letterhead Design: ₹499', ok: true }, { text: 'Resume / CV Design: ₹499', ok: true }, { text: 'Vector Tracing: ₹499', ok: true }, { text: 'Brand Identity Kit: ₹4,999', ok: true }]
+  },
+  {
+    name: 'Marketing & Social', price: 'Starts ₹299', period: '', desc: 'Engage your audience visually.', gradient: 'linear-gradient(135deg,#00C2FF,#0088FF)', color: '#00C2FF', popular: false,
+    features: [{ text: 'Social Media Post: ₹299/post', ok: true }, { text: 'Flyer / Pamphlet: ₹799', ok: true }, { text: 'Poster Design: ₹799', ok: true }, { text: 'Banner / Flex: ₹999', ok: true }, { text: 'Menu Card Design: ₹999', ok: true }, { text: 'Mockup Design: ₹799', ok: true }, { text: 'T-Shirt Design: ₹799', ok: true }]
+  },
+  {
+    name: 'Premium Print & Pack', price: 'Starts ₹799', period: '', desc: 'High-end print deliverables.', gradient: 'linear-gradient(135deg,#F89820,#FF5722)', color: '#F89820', popular: false,
+    features: [{ text: 'Brochure Design: ₹1,499', ok: true }, { text: 'Packaging Design: ₹1,999', ok: true }, { text: 'Book Cover Design: ₹999', ok: true }, { text: 'Invitation Card: ₹799', ok: true }, { text: 'Wedding Card: ₹1,499', ok: true }]
+  },
+  {
+    name: 'CNC Jali & Patterns', price: 'Starts ₹1,499', period: '', desc: 'Bespoke architectural CNC.', gradient: 'linear-gradient(135deg,#9B59B6,#8E44AD)', color: '#9B59B6', popular: true,
+    features: [{ text: 'Custom CNC Jali: ₹1,499', ok: true }, { text: 'Laser Cut Jali: ₹1,999', ok: true }, { text: 'Decorative Wall Jali: ₹2,499', ok: true }, { text: 'Modern Geometric Jali: ₹1,999', ok: true }, { text: 'Wooden Partition Jali: ₹2,499', ok: true }, { text: 'CNC Door/Window Jali: ₹2,499+', ok: true }, { text: 'Mandir Jali Design: ₹2,999', ok: true }]
+  },
+  {
+    name: 'CNC Files & Convert', price: 'Starts ₹499', period: '', desc: 'Ready-to-cut digital assets.', gradient: 'linear-gradient(135deg,#2ECC71,#10A37F)', color: '#2ECC71', popular: false,
+    features: [{ text: '2D CNC / DXF / SVG: ₹499', ok: true }, { text: 'AI/CDR to CNC Conversion: ₹499', ok: true }, { text: 'Nesting File Design: ₹799', ok: true }, { text: 'CNC Machine Ready File: ₹999', ok: true }, { text: 'Acrylic Laser Cut Design: ₹1,499', ok: true }, { text: 'Metal Laser Cutting: ₹1,999', ok: true }]
+  },
+  {
+    name: 'Acoustic & Panels', price: 'Starts ₹1,499', period: '', desc: 'Interior paneling designs.', gradient: 'linear-gradient(135deg,#6C63FF,#8B83FF)', color: '#6C63FF', popular: false,
+    features: [{ text: 'Acoustic Panel CNC: ₹1,499', ok: true }, { text: 'Acoustic Grooving: ₹1,999', ok: true }, { text: 'Custom Wall Art CNC: ₹1,999', ok: true }, { text: 'Acoustic Wall Panel Layout: ₹2,499', ok: true }, { text: 'Soundproof Panel Pattern: ₹2,499', ok: true }, { text: 'Custom Ceiling Panel: ₹2,999', ok: true }]
+  }
+];
+
 export default function PricingSection() {
   const headingRef = useRef(null);
   const isInView = useInView(headingRef, { once: true });
+  const [activeTab, setActiveTab] = useState('software'); // 'software' | 'design'
   const [activePlan, setActivePlan] = useState(null);
   const [agreed, setAgreed] = useState(false);
   const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', requirements: '' });
@@ -133,10 +161,39 @@ export default function PricingSection() {
           }
         `}</style>
 
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 40 }}>
+          <div style={{ display: 'inline-flex', background: 'white', padding: 6, borderRadius: 100, border: '1px solid rgba(108,99,255,0.1)', boxShadow: '0 8px 24px rgba(0,0,0,0.03)', position: 'relative' }}>
+            <button 
+              onClick={() => setActiveTab('software')}
+              style={{ position: 'relative', zIndex: 1, padding: '12px 24px', borderRadius: 100, border: 'none', background: 'transparent', fontWeight: 700, fontSize: 15, cursor: 'pointer', color: activeTab === 'software' ? 'white' : '#64748b', transition: 'color 0.3s' }}
+            >
+              Software Development
+            </button>
+            <button 
+              onClick={() => setActiveTab('design')}
+              style={{ position: 'relative', zIndex: 1, padding: '12px 24px', borderRadius: 100, border: 'none', background: 'transparent', fontWeight: 700, fontSize: 15, cursor: 'pointer', color: activeTab === 'design' ? 'white' : '#64748b', transition: 'color 0.3s' }}
+            >
+              Graphic Design & CNC
+            </button>
+            
+            <motion.div 
+              layoutId="pricingTabBubble"
+              style={{ position: 'absolute', top: 6, bottom: 6, borderRadius: 100, background: 'linear-gradient(135deg,#6C63FF,#00C2FF)', zIndex: 0 }}
+              initial={false}
+              animate={{ 
+                left: activeTab === 'software' ? 6 : '50%', 
+                width: 'calc(50% - 6px)' 
+              }}
+              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            />
+          </div>
+        </div>
+
         {/* Plans */}
         <div className="pricing-grid-9">
-          {plans.map((plan, i) => (
-            <motion.div key={plan.name}
+          <AnimatePresence mode="wait">
+            {(activeTab === 'software' ? plans : designPlans).map((plan, i) => (
+              <motion.div key={plan.name}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
@@ -209,6 +266,7 @@ export default function PricingSection() {
               </div>
             </motion.div>
           ))}
+          </AnimatePresence>
         </div>
 
         {/* Guarantee */}
