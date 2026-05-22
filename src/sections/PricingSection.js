@@ -89,6 +89,21 @@ const maintenancePlans = [
   }
 ];
 
+const paymentPlans = [
+  {
+    name: 'Basic Integration', price: 'Starts ₹3,000', period: '', desc: 'Best for small & starter stores.', gradient: 'linear-gradient(135deg,#3B82F6,#2563EB)', color: '#3B82F6', popular: false,
+    features: [{ text: 'Basic payment setup: ₹3,000+', ok: true }, { text: 'UPI/Card/Net Banking', ok: true }, { text: 'Razorpay & PhonePe Setup', ok: true }, { text: 'Single website integration', ok: true }, { text: 'Basic checkout page', ok: true }, { text: 'Testing support', ok: true }]
+  },
+  {
+    name: 'Advanced Integration', price: 'Starts ₹8,000', period: '', desc: 'For professional & medium brands.', gradient: 'linear-gradient(135deg,#6C63FF,#00C2FF)', color: '#6C63FF', popular: true,
+    features: [{ text: 'Custom checkout design', ok: true }, { text: 'Subscription Payments: ₹8,000+', ok: true }, { text: 'Stripe & PayU Integration', ok: true }, { text: 'Coupon & Wallet System', ok: true }, { text: 'Advanced security setup', ok: true }, { text: 'Mobile responsive flow', ok: true }]
+  },
+  {
+    name: 'Premium / Custom', price: 'Starts ₹25,000', period: '', desc: 'For SaaS & large e-commerce.', gradient: 'linear-gradient(135deg,#0F172A,#1E293B)', color: '#1E293B', popular: false,
+    features: [{ text: 'Multi vendor payments: ₹10,000+', ok: true }, { text: 'International Gateway: ₹8,000+', ok: true }, { text: 'Auto invoice generation', ok: true }, { text: 'Split payment system', ok: true }, { text: 'API integration', ok: true }, { text: 'Custom backend & dashboard', ok: true }]
+  }
+];
+
 export default function PricingSection() {
   const headingRef = useRef(null);
   const isInView = useInView(headingRef, { once: true });
@@ -181,8 +196,8 @@ export default function PricingSection() {
         `}</style>
 
         <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 40 }}>
-          <div style={{ display: 'inline-flex', background: 'white', padding: 6, borderRadius: 100, border: '1px solid rgba(108,99,255,0.1)', boxShadow: '0 8px 24px rgba(0,0,0,0.03)', position: 'relative', flexWrap: 'wrap', justifyContent: 'center', gap: 4 }}>
-            {['software', 'design', 'maintenance'].map((tab) => (
+          <div style={{ display: 'inline-flex', background: 'white', padding: 6, borderRadius: 24, border: '1px solid rgba(108,99,255,0.1)', boxShadow: '0 8px 24px rgba(0,0,0,0.03)', position: 'relative', flexWrap: 'wrap', justifyContent: 'center', gap: 4 }}>
+            {['software', 'design', 'maintenance', 'payment'].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
@@ -196,7 +211,7 @@ export default function PricingSection() {
                   />
                 )}
                 <span style={{ position: 'relative', zIndex: 1 }}>
-                  {tab === 'software' ? 'Software Development' : tab === 'design' ? 'Graphic Design & CNC' : 'Website Maintenance'}
+                  {tab === 'software' ? 'Software Development' : tab === 'design' ? 'Graphic Design & CNC' : tab === 'maintenance' ? 'Website Maintenance' : 'Payment Gateways'}
                 </span>
               </button>
             ))}
@@ -206,7 +221,7 @@ export default function PricingSection() {
         {/* Plans */}
         <div className="pricing-grid-9">
           <AnimatePresence mode="wait">
-            {(activeTab === 'software' ? plans : activeTab === 'design' ? designPlans : maintenancePlans).map((plan, i) => (
+            {(activeTab === 'software' ? plans : activeTab === 'design' ? designPlans : activeTab === 'maintenance' ? maintenancePlans : paymentPlans).map((plan, i) => (
               <motion.div key={plan.name}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
