@@ -236,7 +236,7 @@ export default function PricingSection() {
             }}
             onClick={() => { setActivePlan(null); setAgreed(false); }}
           >
-            <style>{`
+            <style dangerouslySetInnerHTML={{ __html: `
               .plan-modal-container { display: flex; width: 100%; max-width: 1000px; background: white; border-radius: 28px; box-shadow: 0 50px 120px rgba(0,0,0,0.4); position: relative; max-height: 92vh; overflow: hidden; }
               .plan-modal-left { width: 45%; padding: 48px; background: ${activePlan.gradient}; color: white; display: flex; flex-direction: column; position: relative; overflow: hidden; }
               .plan-modal-right { width: 55%; padding: 48px; overflow-y: auto; background: #fff; overscroll-behavior: contain; }
@@ -245,7 +245,7 @@ export default function PricingSection() {
                 .plan-modal-left { width: 100%; padding: 36px 24px; flex-shrink: 0; }
                 .plan-modal-right { width: 100%; padding: 36px 24px; flex-shrink: 0; overflow-y: visible; }
               }
-            `}</style>
+            ` }} />
             
             <motion.div
               data-lenis-prevent="true"
