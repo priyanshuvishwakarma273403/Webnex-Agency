@@ -262,9 +262,9 @@ export default function ServicesSection() {
               .service-modal-left { padding: 40px; background: linear-gradient(135deg, #f8f7ff, #f0f8ff); display: flex; flex-direction: column; justify-content: center; }
               .service-modal-right { padding: 40px; overflow-y: auto; }
               @media (max-width: 768px) {
-                .service-modal-grid { grid-template-columns: 1fr; overflow-y: auto; }
-                .service-modal-left { padding: 30px; }
-                .service-modal-right { padding: 30px; overflow-y: visible; }
+                .service-modal-grid { display: flex; flex-direction: column; overflow-y: auto; height: 100%; max-height: 100vh; border-radius: 0; }
+                .service-modal-left { padding: 30px; min-height: max-content; flex-shrink: 0; }
+                .service-modal-right { padding: 30px; overflow-y: visible; flex-shrink: 0; }
               }
             `}</style>
             <motion.div
