@@ -7,11 +7,16 @@ import emailjs from '@emailjs/browser';
 
 export default function FloatingChatbot() {
   const [isOpen, setIsOpen] = useState(false);
-  const [step, setStep] = useState('NAME'); // NAME, EMAIL, CHAT
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
   const [messages, setMessages] = useState([
-    { role: 'ai', text: 'Hi there! I am WebNex AI. To get started, could you please tell me your name?' }
+    { 
+      role: 'ai', 
+      text: 'Hi there! I am WebNex AI. How can I assist you today?',
+      options: [
+        { label: 'Explore Services', path: '/services' },
+        { label: 'Check Pricing', path: '/pricing' },
+        { label: 'Contact Sales', path: '/contact' }
+      ]
+    }
   ]);
   const [inputValue, setInputValue] = useState('');
   const messagesEndRef = useRef(null);
@@ -30,80 +35,39 @@ export default function FloatingChatbot() {
     const textToSend = overrideText || inputValue.trim();
     if (!textToSend) return;
 
-    setMessages(prev => [...prev, { role: 'user', text: textToSend }]);
+    const newMessages = [...messages, { role: 'user', text: textToSend }];
+    setMessages(newMessages);
     if (!overrideText) setInputValue('');
 
-    if (step === 'NAME') {
-      setName(textToSend);
-      setStep('EMAIL');
-      setTimeout(() => {
-        setMessages(prev => [...prev, { role: 'ai', text: `Nice to meet you, ${textToSend}! And what is your best email address so we can reach you if needed?` }]);
-      }, 600);
-    } else if (step === 'EMAIL') {
-      setEmail(textToSend);
-      setStep('CHAT');
+    const loadingMsgId = Date.now();
+    setMessages(prev => [...prev, { id: loadingMsgId, role: 'ai', text: '', isLoading: true }]);
 
-      // Send email notification silently
-      try {
-        emailjs.send(
-          'service_3tatd0b',
-          'template_kqj2cyp',
-          {
-            name: name,
-            email: textToSend,
-            phone: 'Not provided',
-            service: 'Chatbot Lead',
-            message: 'Lead automatically collected from Floating Chatbot.'
-          },
-          'EV1QwfUS_AfzdGi9G'
-        );
-      } catch (error) {
-        console.error('Error sending chatbot lead:', error);
-      }
+    try {
+      const chatContext = newMessages
+        .filter(m => !m.isLoading)
+        .slice(-10); // Keep last 10 messages for context
 
-      setTimeout(() => {
-        setMessages(prev => [...prev, { 
-          role: 'ai', 
-          text: `Got it! Thanks ${name}. WebNex is a premium AI & Digital Innovation agency. We build high-end websites, SaaS platforms, and AI bots. How can I assist you today? Feel free to type or click a suggestion below!`,
-          options: [
-            { label: 'View Services', path: '/services' },
-            { label: 'Check Pricing', path: '/pricing' },
-            { label: 'See Portfolio', path: '/portfolio' }
-          ]
-        }]);
-      }, 600);
-    } else {
-      // General chat step using Groq API
-      const loadingMsgId = Date.now();
-      setMessages(prev => [...prev, { id: loadingMsgId, role: 'ai', text: '', isLoading: true }]);
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: chatContext })
+      });
 
-      try {
-        const chatContext = [...messages, { role: 'user', text: textToSend }]
-          .filter(m => !m.isLoading)
-          .slice(-10); // Keep last 10 messages for context
+      if (!res.ok) throw new Error('API Error');
+      const data = await res.json();
 
-        const res = await fetch('/api/chat', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ messages: chatContext, userName: name })
-        });
+      setMessages(prev => prev.map(m => m.id === loadingMsgId ? {
+        role: 'ai', 
+        text: data.reply,
+        options: data.suggestions
+      } : m));
 
-        if (!res.ok) throw new Error('API Error');
-        const data = await res.json();
-
-        setMessages(prev => prev.map(m => m.id === loadingMsgId ? {
-          role: 'ai', 
-          text: data.reply,
-          options: data.suggestions?.map(s => ({ label: s, action: s }))
-        } : m));
-
-      } catch (err) {
-        console.error('Chat error:', err);
-        setMessages(prev => prev.map(m => m.id === loadingMsgId ? {
-          role: 'ai', 
-          text: 'Sorry, I am having trouble connecting to the server. Please try again later.'
-        } : m));
-      }
+    } catch (err) {
+      console.error('Chat error:', err);
+      setMessages(prev => prev.map(m => m.id === loadingMsgId ? {
+        role: 'ai', 
+        text: 'Sorry, I am having trouble connecting to the server. Please try again later.'
+      } : m));
     }
   };
 
@@ -219,10 +183,10 @@ export default function FloatingChatbot() {
             <div style={{ padding: '16px 20px', borderTop: '1px solid #f1f5f9', background: 'white' }}>
               <form onSubmit={handleSend} style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
                 <input
-                  type={step === 'EMAIL' ? 'email' : 'text'}
+                  type="text"
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
-                  placeholder={step === 'NAME' ? 'Type your name...' : step === 'EMAIL' ? 'Type your email...' : 'Type a message...'}
+                  placeholder="Type a message..."
                   style={{ flexGrow: 1, padding: '12px 16px', borderRadius: 100, border: '1px solid #e2e8f0', outline: 'none', fontSize: 14, background: '#f8fafc' }}
                 />
                 <button type="submit" disabled={!inputValue.trim()} style={{ width: 44, height: 44, borderRadius: '50%', background: inputValue.trim() ? '#6C63FF' : '#cbd5e1', color: 'white', border: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: inputValue.trim() ? 'pointer' : 'not-allowed', transition: 'background 0.3s' }}>

@@ -6,18 +6,27 @@ export async function POST(req) {
 
     const systemPrompt = `You are WebNex AI, the official intelligent assistant for WebNex - a premium Digital Innovation Agency.
 Your goal is to assist clients, answer their queries about web development, SaaS, AI chatbots, DevOps, and UI/UX design.
+
+WebNex Knowledge Base:
+- Services: Brand Identity & UI/UX Design, React/Next.js Web Development, Custom SaaS Platforms, AI Automation & Chatbots (like you!), Mobile App Development (React Native), Cloud & DevOps (AWS, Docker, Kubernetes).
+- Pricing: Basic Portfolio (₹9,999), Business Website (₹34,999), AI/SaaS Platform (₹74,999), Custom Mobile App (₹99,999). 100% Satisfaction Guarantee.
+- Tech Stack: React, Next.js, Node.js, Spring Boot, Kafka, Redis, Docker, Kubernetes, AWS.
+
 Always be extremely professional, polite, concise, and persuasive. Use emojis occasionally.
-The user's name is ${userName || 'Guest'}.
 
 IMPORTANT: You MUST respond in valid JSON format.
 Your JSON must have two keys:
 1. "reply": A string containing your response to the user.
-2. "suggestions": An array of 2 to 3 short strings representing suggested next questions or actions the user can take (e.g., "Tell me about pricing", "What services do you offer?", "I need an AI chatbot").
+2. "suggestions": An array of up to 3 objects. Each object must have a "label" (button text) and EITHER an "action" (text to send as chat) OR a "path" (a URL route like "/services", "/pricing", "/about", "/portfolio", "/contact").
 
 Example Output:
 {
-  "reply": "Hello! WebNex specializes in building high-end scalable web applications. How can I help you today?",
-  "suggestions": ["View Services", "Check Pricing", "Schedule a Call"]
+  "reply": "WebNex specializes in building high-end scalable applications and AI bots. Our pricing starts at ₹9,999. Would you like to see our full pricing or explore our services?",
+  "suggestions": [
+    { "label": "View Pricing", "path": "/pricing" },
+    { "label": "Explore Services", "path": "/services" },
+    { "label": "What tech do you use?", "action": "What tech do you use?" }
+  ]
 }`;
 
     // Format messages for Groq API
@@ -57,12 +66,18 @@ Example Output:
     try {
       parsedContent = JSON.parse(content);
       if (!parsedContent.suggestions || !Array.isArray(parsedContent.suggestions) || parsedContent.suggestions.length === 0) {
-        parsedContent.suggestions = ["Explore Services", "Check Pricing"];
+        parsedContent.suggestions = [
+          { label: "Explore Services", path: "/services" },
+          { label: "Check Pricing", path: "/pricing" }
+        ];
       }
     } catch (e) {
       parsedContent = {
         reply: content,
-        suggestions: ["Contact Sales", "View Services"]
+        suggestions: [
+          { label: "Contact Sales", path: "/contact" },
+          { label: "View Services", path: "/services" }
+        ]
       };
     }
 
