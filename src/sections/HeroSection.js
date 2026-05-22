@@ -8,7 +8,6 @@ import { SiSpringboot, SiApachekafka, SiRedis, SiDocker, SiKubernetes, SiNodedot
 import { FaAws } from 'react-icons/fa';
 
 
-
 const rotatingWords = ['AI Powered', 'Scalable', 'Futuristic', 'Premium'];
 
 const stats = [
