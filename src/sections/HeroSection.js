@@ -4,7 +4,8 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { ArrowRight, Play, Zap, Code2, Bot, Cloud } from 'lucide-react';
-import { SiSpringboot, SiApachekafka, SiRedis, SiDocker, SiKubernetes, SiNodedotjs } from 'react-icons/si';
+import { SiSpringboot, SiApachekafka, SiRedis, SiDocker, SiKubernetes, SiNodedotjs, SiJenkins, SiKalilinux, SiGitlab, SiRabbitmq, SiReact, SiNextdotjs } from 'react-icons/si';
+import { FaAws } from 'react-icons/fa';
 
 
 
@@ -24,12 +25,22 @@ const techBadges = [
 ];
 
 const floatingLogos = [
+  // Original 6
   { icon: SiSpringboot, name: 'Spring Boot', color: '#6DB33F', top: '5%', right: '-5%', delay: 0.6 },
   { icon: SiApachekafka, name: 'Kafka', color: '#231F20', top: '45%', right: '-12%', delay: 0.8 },
   { icon: SiRedis, name: 'Redis', color: '#DC382D', bottom: '10%', right: '8%', delay: 1.0 },
   { icon: SiDocker, name: 'Docker', color: '#2496ED', bottom: '20%', left: '-8%', delay: 1.2 },
   { icon: SiKubernetes, name: 'Kubernetes', color: '#326CE5', top: '35%', left: '-10%', delay: 0.9 },
   { icon: SiNodedotjs, name: 'Node.js', color: '#339933', top: '8%', left: '5%', delay: 0.7 },
+  
+  // New 7
+  { icon: SiJenkins, name: 'Jenkins', color: '#D24939', top: '-5%', left: '35%', delay: 1.4 },
+  { icon: SiKalilinux, name: 'Kali Linux', color: '#557C94', bottom: '35%', right: '-15%', delay: 1.1 },
+  { icon: SiGitlab, name: 'GitLab', color: '#FCA121', top: '65%', left: '-12%', delay: 1.3 },
+  { icon: SiRabbitmq, name: 'RabbitMQ', color: '#FF6600', bottom: '-2%', left: '25%', delay: 1.5 },
+  { icon: FaAws, name: 'AWS', color: '#FF9900', top: '25%', right: '-14%', delay: 0.5 },
+  { icon: SiReact, name: 'React', color: '#61DAFB', bottom: '2%', right: '35%', delay: 1.6 },
+  { icon: SiNextdotjs, name: 'Next.js', color: '#000000', top: '20%', left: '-12%', delay: 0.4 },
 ];
 
 export default function HeroSection() {
