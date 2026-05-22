@@ -264,11 +264,12 @@ export default function WhyChooseUs() {
             onClick={() => setShowModal(false)}
           >
             <motion.div
+              data-lenis-prevent="true"
               initial={{ scale: 0.95, y: 20, opacity: 0 }} animate={{ scale: 1, y: 0, opacity: 1 }} exit={{ scale: 0.95, y: 20, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
               style={{
                 background: 'white', width: '100%', maxWidth: 500, borderRadius: 24, padding: 40, position: 'relative',
-                boxShadow: '0 40px 100px rgba(0,0,0,0.3)', overflow: 'hidden'
+                boxShadow: '0 40px 100px rgba(0,0,0,0.3)', overflowY: 'auto', maxHeight: '90vh', overscrollBehavior: 'contain', WebkitOverflowScrolling: 'touch'
               }}
             >
               <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 6, background: 'linear-gradient(90deg, #6C63FF, #00C2FF)' }} />
