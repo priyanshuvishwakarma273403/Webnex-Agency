@@ -36,7 +36,7 @@ Example Output:
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: 'llama3-8b-8192',
+        model: 'llama3-70b-8192',
         messages: apiMessages,
         response_format: { type: 'json_object' },
         temperature: 0.7,
@@ -56,6 +56,9 @@ Example Output:
     let parsedContent;
     try {
       parsedContent = JSON.parse(content);
+      if (!parsedContent.suggestions || !Array.isArray(parsedContent.suggestions) || parsedContent.suggestions.length === 0) {
+        parsedContent.suggestions = ["Explore Services", "Check Pricing"];
+      }
     } catch (e) {
       parsedContent = {
         reply: content,
