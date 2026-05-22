@@ -2,7 +2,7 @@
 import { useRef, useState, useEffect } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { Zap, ArrowRight, X, CheckCircle, Send, User, Mail, Briefcase, Loader2, PenTool, Layout, Box, Tag, FileText, Coffee, Printer, Image as ImageIcon, Monitor, FileBadge, Grid, Layers } from 'lucide-react';
+import { Zap, ArrowRight, X, CheckCircle, Send, User, Mail, Briefcase, Loader2, PenTool, Layout, Box, Tag, FileText, Coffee, Printer, Image as ImageIcon, Monitor, FileBadge, Grid, Layers, Smartphone, ShoppingCart } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { 
   SiReact, SiSpringboot, SiDocker, SiOpenai, 
@@ -21,6 +21,8 @@ const softwareServices = [
   { icon: SiStripe, title: 'SaaS Development', desc: 'End-to-end SaaS platform development from MVP to enterprise scale with multi-tenancy support.', color: '#635BFF', bg: '#635BFF12' },
   { icon: FaLightbulb, title: 'Startup Consulting', desc: 'Strategic guidance to help startups launch, grow, and scale rapidly with expert mentorship.', color: '#F1C40F', bg: '#F1C40F12' },
   { icon: SiZapier, title: 'Automation Systems', desc: 'Business process automation to eliminate repetitive tasks, boost efficiency, and save costs.', color: '#FF4A00', bg: '#FF4A0012' },
+  { icon: Smartphone, title: 'Mobile App Development', desc: 'Cross-platform iOS and Android applications built with React Native for maximum performance.', color: '#9B59B6', bg: '#9B59B612' },
+  { icon: ShoppingCart, title: 'E-Commerce Solutions', desc: 'High-converting online stores built on Shopify, WooCommerce, and custom Next.js frontends.', color: '#E74C3C', bg: '#E74C3C12' },
 ];
 
 const designServices = [
