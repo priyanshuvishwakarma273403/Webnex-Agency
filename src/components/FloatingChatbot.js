@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageSquare, X, Send, Bot, User, ArrowRight } from 'lucide-react';
+import { MessageSquare, X, Send, Bot, User, ArrowRight, Loader2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import emailjs from '@emailjs/browser';
 
@@ -25,22 +25,22 @@ export default function FloatingChatbot() {
     if (isOpen) scrollToBottom();
   }, [messages, isOpen]);
 
-  const handleSend = (e) => {
+  const handleSend = async (e, overrideText = null) => {
     if (e) e.preventDefault();
-    if (!inputValue.trim()) return;
+    const textToSend = overrideText || inputValue.trim();
+    if (!textToSend) return;
 
-    const userText = inputValue.trim();
-    setMessages(prev => [...prev, { role: 'user', text: userText }]);
-    setInputValue('');
+    setMessages(prev => [...prev, { role: 'user', text: textToSend }]);
+    if (!overrideText) setInputValue('');
 
     if (step === 'NAME') {
-      setName(userText);
+      setName(textToSend);
       setStep('EMAIL');
       setTimeout(() => {
-        setMessages(prev => [...prev, { role: 'ai', text: `Nice to meet you, ${userText}! And what is your best email address so we can reach you if needed?` }]);
+        setMessages(prev => [...prev, { role: 'ai', text: `Nice to meet you, ${textToSend}! And what is your best email address so we can reach you if needed?` }]);
       }, 600);
     } else if (step === 'EMAIL') {
-      setEmail(userText);
+      setEmail(textToSend);
       setStep('CHAT');
 
       // Send email notification silently
@@ -50,7 +50,7 @@ export default function FloatingChatbot() {
           'template_kqj2cyp',
           {
             name: name,
-            email: userText,
+            email: textToSend,
             phone: 'Not provided',
             service: 'Chatbot Lead',
             message: 'Lead automatically collected from Floating Chatbot.'
@@ -73,19 +73,47 @@ export default function FloatingChatbot() {
         }]);
       }, 600);
     } else {
-      // General chat step
-      setTimeout(() => {
-        setMessages(prev => [...prev, { role: 'ai', text: "I've noted that down! An expert from our team will contact you soon. Anything else you'd like to explore in the meantime?", options: [
-            { label: 'About Us', path: '/about' },
-            { label: 'Contact Sales', path: '/contact' }
-        ]}]);
-      }, 800);
+      // General chat step using Groq API
+      const loadingMsgId = Date.now();
+      setMessages(prev => [...prev, { id: loadingMsgId, role: 'ai', text: '', isLoading: true }]);
+
+      try {
+        const chatContext = [...messages, { role: 'user', text: textToSend }]
+          .filter(m => !m.isLoading)
+          .slice(-10); // Keep last 10 messages for context
+
+        const res = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ messages: chatContext, userName: name })
+        });
+
+        if (!res.ok) throw new Error('API Error');
+        const data = await res.json();
+
+        setMessages(prev => prev.map(m => m.id === loadingMsgId ? {
+          role: 'ai', 
+          text: data.reply,
+          options: data.suggestions?.map(s => ({ label: s, action: s }))
+        } : m));
+
+      } catch (err) {
+        console.error('Chat error:', err);
+        setMessages(prev => prev.map(m => m.id === loadingMsgId ? {
+          role: 'ai', 
+          text: 'Sorry, I am having trouble connecting to the server. Please try again later.'
+        } : m));
+      }
     }
   };
 
-  const handleOptionClick = (path) => {
-    setIsOpen(false);
-    router.push(path);
+  const handleOptionClick = (opt) => {
+    if (opt.path) {
+      setIsOpen(false);
+      router.push(opt.path);
+    } else if (opt.action) {
+      handleSend(null, opt.action);
+    }
   };
 
   return (
@@ -155,7 +183,13 @@ export default function FloatingChatbot() {
                       boxShadow: '0 4px 14px rgba(0,0,0,0.03)',
                       border: msg.role === 'ai' ? '1px solid rgba(0,0,0,0.05)' : 'none'
                     }}>
-                      {msg.text}
+                      {msg.isLoading ? (
+                        <motion.div animate={{ rotate: 360 }} transition={{ duration: 1, repeat: Infinity, ease: 'linear' }} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: 20 }}>
+                          <Loader2 size={16} color="#6C63FF" />
+                        </motion.div>
+                      ) : (
+                        msg.text
+                      )}
                     </div>
                   </div>
                   
@@ -166,7 +200,7 @@ export default function FloatingChatbot() {
                         <motion.button
                           key={idx}
                           whileHover={{ scale: 1.02, x: 4 }} whileTap={{ scale: 0.98 }}
-                          onClick={() => handleOptionClick(opt.path)}
+                          onClick={() => handleOptionClick(opt)}
                           style={{
                             background: 'white', border: '1px solid #e2e8f0', padding: '10px 16px', borderRadius: 12, color: '#6C63FF', fontSize: 13, fontWeight: 600, display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer', boxShadow: '0 2px 8px rgba(0,0,0,0.02)', width: 'fit-content', minWidth: 160
                           }}
