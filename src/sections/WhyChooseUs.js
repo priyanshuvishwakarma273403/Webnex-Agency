@@ -255,6 +255,7 @@ export default function WhyChooseUs() {
       <AnimatePresence>
         {showModal && (
           <motion.div
+            data-lenis-prevent="true"
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             style={{
               position: 'fixed', inset: 0, zIndex: 999999, background: 'rgba(15,23,42,0.8)', backdropFilter: 'blur(12px)',
