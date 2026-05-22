@@ -136,25 +136,27 @@ export default function ServicesSection() {
   const [submittedContact, setSubmittedContact] = useState(false);
 
   useEffect(() => {
-    if (activeService) {
+    if (activeService || showContactModal) {
       document.body.style.overflow = 'hidden';
-      setSubmittedService(false);
-      setActiveServiceForm({ name: '', email: '', details: '' });
+      document.documentElement.style.overflow = 'hidden';
+      
+      if (activeService) {
+        setSubmittedService(false);
+        setActiveServiceForm({ name: '', email: '', details: '' });
+      }
+      if (showContactModal) {
+        setSubmittedContact(false);
+        setContactForm({ name: '', email: '', company: '' });
+      }
     } else {
       document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
     }
-    return () => { document.body.style.overflow = ''; };
-  }, [activeService]);
-
-  useEffect(() => {
-    if (showContactModal) {
-      document.body.style.overflow = 'hidden';
-      setSubmittedContact(false);
-      setContactForm({ name: '', email: '', company: '' });
-    } else {
+    return () => { 
       document.body.style.overflow = '';
-    }
-  }, [showContactModal]);
+      document.documentElement.style.overflow = '';
+    };
+  }, [activeService, showContactModal]);
 
   const handleServiceSubmit = async (e) => {
     e.preventDefault();

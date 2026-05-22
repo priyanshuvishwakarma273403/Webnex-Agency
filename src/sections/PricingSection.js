@@ -55,13 +55,17 @@ export default function PricingSection() {
   useEffect(() => {
     if (activePlan) {
       document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
       setSubmitted(false);
-      setFormData({ firstName: '', lastName: '', email: '', requirements: '' });
-      setAgreed(false);
+      setFormData({ firstName: '', lastName: '', email: '', requirements: '', agree: false });
     } else {
       document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
     }
-    return () => { document.body.style.overflow = ''; };
+    return () => { 
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    };
   }, [activePlan]);
 
   const handleSubmit = async (e) => {
