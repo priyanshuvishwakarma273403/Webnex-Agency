@@ -258,16 +258,17 @@ export default function ServicesSection() {
             onClick={() => setActiveService(null)}
           >
             <style>{`
-              .service-modal-grid { display: grid; grid-template-columns: 1fr 1fr; width: 100%; max-width: 900px; background: white; border-radius: 24px; overflow: hidden; box-shadow: 0 40px 100px rgba(0,0,0,0.3); position: relative; max-height: 90vh; }
+              .service-modal-grid { display: grid; grid-template-columns: 1fr 1fr; width: 100%; max-width: 900px; background: white; border-radius: 24px; box-shadow: 0 40px 100px rgba(0,0,0,0.3); position: relative; max-height: 90vh; overflow: hidden; }
               .service-modal-left { padding: 40px; background: linear-gradient(135deg, #f8f7ff, #f0f8ff); display: flex; flex-direction: column; justify-content: center; }
-              .service-modal-right { padding: 40px; overflow-y: auto; }
+              .service-modal-right { padding: 40px; overflow-y: auto; overscroll-behavior: contain; }
               @media (max-width: 768px) {
-                .service-modal-grid { display: flex; flex-direction: column; overflow-y: auto; height: 100%; max-height: 100vh; border-radius: 0; }
-                .service-modal-left { padding: 30px; min-height: max-content; flex-shrink: 0; }
+                .service-modal-grid { display: flex; flex-direction: column; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+                .service-modal-left { padding: 30px; flex-shrink: 0; }
                 .service-modal-right { padding: 30px; overflow-y: visible; flex-shrink: 0; }
               }
             `}</style>
             <motion.div
+              data-lenis-prevent="true"
               initial={{ scale: 0.95, y: 30, opacity: 0 }} animate={{ scale: 1, y: 0, opacity: 1 }} exit={{ scale: 0.95, y: 30, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
               className="service-modal-grid"
@@ -356,11 +357,12 @@ export default function ServicesSection() {
             onClick={() => setShowContactModal(false)}
           >
             <motion.div
+              data-lenis-prevent="true"
               initial={{ scale: 0.95, y: 20, opacity: 0 }} animate={{ scale: 1, y: 0, opacity: 1 }} exit={{ scale: 0.95, y: 20, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
               style={{
                 background: 'white', width: '100%', maxWidth: 500, borderRadius: 24, padding: 40, position: 'relative',
-                boxShadow: '0 40px 100px rgba(0,0,0,0.3)', overflow: 'hidden'
+                boxShadow: '0 40px 100px rgba(0,0,0,0.3)', overflowY: 'auto', maxHeight: '90vh', overscrollBehavior: 'contain', WebkitOverflowScrolling: 'touch'
               }}
             >
               <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 6, background: 'linear-gradient(90deg, #6C63FF, #00C2FF)' }} />
