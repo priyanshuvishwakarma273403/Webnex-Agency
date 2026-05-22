@@ -2,7 +2,7 @@
 import { useRef, useState, useEffect } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { Zap, ArrowRight, X, CheckCircle, Send, User, Mail, Briefcase, Loader2 } from 'lucide-react';
+import { Zap, ArrowRight, X, CheckCircle, Send, User, Mail, Briefcase, Loader2, PenTool, Layout, Box, Tag, FileText, Coffee, Printer, Image as ImageIcon, Monitor, FileBadge, Grid, Layers } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { 
   SiReact, SiSpringboot, SiDocker, SiOpenai, 
@@ -10,19 +10,32 @@ import {
 } from 'react-icons/si';
 import { FaJava, FaCogs, FaLightbulb, FaAws } from 'react-icons/fa';
 
-const services = [
-  { icon: SiFigma, title: 'Logo & Brand Design', desc: 'Premium brand identities that stand out in the market with stunning, memorable visuals.', color: '#F24E1E', bg: '#F24E1E12' },
-  { icon: SiFramer, title: 'Brand Identity', desc: 'Complete brand strategy, style guides, typography, and visual systems for lasting impressions.', color: '#0055FF', bg: '#0055FF12' },
+const softwareServices = [
+  { icon: SiFigma, title: 'UI/UX Design', desc: 'Premium user interfaces and experiences that stand out in the market with stunning visuals.', color: '#F24E1E', bg: '#F24E1E12' },
   { icon: SiReact, title: 'React Development', desc: 'Lightning-fast React & Next.js applications with pixel-perfect UX and best-in-class performance.', color: '#61DAFB', bg: '#61DAFB12' },
   { icon: FaJava, title: 'Java Full Stack', desc: 'Enterprise-grade full-stack solutions with Spring Boot, microservices, and robust architecture.', color: '#F89820', bg: '#F8982012' },
   { icon: SiSpringboot, title: 'Spring Boot APIs', desc: 'Scalable REST APIs built with Spring Boot, best practices, and production-ready security.', color: '#6DB33F', bg: '#6DB33F12' },
   { icon: FaAws, title: 'DevOps & Cloud', desc: 'CI/CD pipelines, cloud infrastructure on AWS/GCP/Azure, and automated deployments at scale.', color: '#FF9900', bg: '#FF990012' },
   { icon: SiDocker, title: 'Docker & Kubernetes', desc: 'Container orchestration, microservices management, and scalable K8s clusters for modern apps.', color: '#2496ED', bg: '#2496ED12' },
   { icon: SiOpenai, title: 'AI Chatbot Dev', desc: 'Intelligent AI-powered chatbots and virtual assistants that engage, convert, and support 24/7.', color: '#10A37F', bg: '#10A37F12' },
-  { icon: FaCogs, title: 'CNC Design Solutions', desc: 'Precision CNC machining designs, manufacturing control systems, and automated production tools.', color: '#FF8C42', bg: '#FF8C4212' },
   { icon: SiStripe, title: 'SaaS Development', desc: 'End-to-end SaaS platform development from MVP to enterprise scale with multi-tenancy support.', color: '#635BFF', bg: '#635BFF12' },
   { icon: FaLightbulb, title: 'Startup Consulting', desc: 'Strategic guidance to help startups launch, grow, and scale rapidly with expert mentorship.', color: '#F1C40F', bg: '#F1C40F12' },
   { icon: SiZapier, title: 'Automation Systems', desc: 'Business process automation to eliminate repetitive tasks, boost efficiency, and save costs.', color: '#FF4A00', bg: '#FF4A0012' },
+];
+
+const designServices = [
+  { icon: PenTool, title: 'Brand Identity Design', desc: 'Complete brand strategy, style guides, typography, and visual systems for lasting impressions.', color: '#0055FF', bg: '#0055FF12' },
+  { icon: Layout, title: 'Company Profile Design', desc: 'Professional, high-impact company profiles and pitch decks to attract investors and clients.', color: '#F24E1E', bg: '#F24E1E12' },
+  { icon: Box, title: 'Packaging Design', desc: 'Eye-catching, premium packaging designs that make your physical products stand out on shelves.', color: '#FF9900', bg: '#FF990012' },
+  { icon: Tag, title: 'Label Design', desc: 'Custom product labels, tags, and stickers with aesthetic branding and compliance details.', color: '#9B59B6', bg: '#9B59B612' },
+  { icon: FileText, title: 'Stationery Design', desc: 'Custom letterheads, envelops, visiting cards, and full stationery kits matching your brand.', color: '#10A37F', bg: '#10A37F12' },
+  { icon: Coffee, title: 'Menu Card Design', desc: 'Aesthetic, appetite-inducing menu designs for restaurants, cafes, and premium lounges.', color: '#F89820', bg: '#F8982012' },
+  { icon: FileBadge, title: 'Visiting Card Printing', desc: 'Premium, textured, and custom die-cut business cards with high-quality offset printing.', color: '#3B82F6', bg: '#3B82F612' },
+  { icon: ImageIcon, title: 'Flex & Banner Printing', desc: 'Large-scale, weather-resistant flex, banners, and hoardings for maximum offline reach.', color: '#FF4A00', bg: '#FF4A0012' },
+  { icon: Printer, title: 'Brochure & Sticker Print', desc: 'High-quality bi-fold/tri-fold catalogs and waterproof custom die-cut stickers.', color: '#2ECC71', bg: '#2ECC7112' },
+  { icon: Monitor, title: 'T-Shirt & Mug Printing', desc: 'Custom apparel and merchandise printing for corporate gifting, events, and brand promotions.', color: '#6C63FF', bg: '#6C63FF12' },
+  { icon: Grid, title: 'CNC Jali & Patterns', desc: 'Custom 2D/3D CNC designs, Laser Cut Jali, and architectural wall partitions.', color: '#9B59B6', bg: '#9B59B612' },
+  { icon: Layers, title: 'Acoustic & Wall Panels', desc: 'Premium soundproof acoustic panel designs and beautiful geometric wall arts.', color: '#10A37F', bg: '#10A37F12' },
 ];
 
 function ServiceCard({ service, index, onClick }) {
@@ -126,6 +139,7 @@ function ServiceCard({ service, index, onClick }) {
 export default function ServicesSection() {
   const headingRef = useRef(null);
   const isInView = useInView(headingRef, { once: true });
+  const [activeTab, setActiveTab] = useState('software'); // 'software' | 'design'
   const [activeService, setActiveService] = useState(null);
   const [showContactModal, setShowContactModal] = useState(false);
 
@@ -228,9 +242,40 @@ export default function ServicesSection() {
           </motion.p>
         </div>
 
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 40, marginTop: 10 }}>
+          <div style={{ display: 'inline-flex', background: 'white', padding: 6, borderRadius: 100, border: '1px solid rgba(108,99,255,0.1)', boxShadow: '0 8px 24px rgba(0,0,0,0.03)', position: 'relative' }}>
+            <button 
+              onClick={() => setActiveTab('software')}
+              style={{ position: 'relative', zIndex: 1, padding: '12px 24px', borderRadius: 100, border: 'none', background: 'transparent', fontWeight: 700, fontSize: 14, cursor: 'pointer', color: activeTab === 'software' ? 'white' : '#64748b', transition: 'color 0.3s' }}
+            >
+              Software & Cloud
+            </button>
+            <button 
+              onClick={() => setActiveTab('design')}
+              style={{ position: 'relative', zIndex: 1, padding: '12px 24px', borderRadius: 100, border: 'none', background: 'transparent', fontWeight: 700, fontSize: 14, cursor: 'pointer', color: activeTab === 'design' ? 'white' : '#64748b', transition: 'color 0.3s' }}
+            >
+              Branding & Printing
+            </button>
+            <motion.div 
+              layoutId="servicesTabBubble"
+              style={{ position: 'absolute', top: 6, bottom: 6, borderRadius: 100, background: 'linear-gradient(135deg,#6C63FF,#00C2FF)', zIndex: 0 }}
+              initial={false}
+              animate={{ 
+                left: activeTab === 'software' ? 6 : '50%', 
+                width: 'calc(50% - 6px)' 
+              }}
+              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            />
+          </div>
+        </div>
+
         {/* Grid */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 280px), 1fr))', gap: 20 }}>
-          {services.map((s, i) => <ServiceCard key={s.title} service={s} index={i} onClick={() => setActiveService(s)} />)}
+          <AnimatePresence mode="wait">
+            {(activeTab === 'software' ? softwareServices : designServices).map((s, i) => (
+              <ServiceCard key={s.title} service={s} index={i} onClick={() => setActiveService(s)} />
+            ))}
+          </AnimatePresence>
         </div>
 
         {/* CTA */}
