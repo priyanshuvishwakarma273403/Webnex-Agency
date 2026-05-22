@@ -2,7 +2,7 @@
 import { useRef, useState, useEffect } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { Zap, ArrowRight, X, CheckCircle, Send, User, Mail, Briefcase, Loader2, PenTool, Layout, Box, Tag, FileText, Coffee, Printer, Image as ImageIcon, Monitor, FileBadge, Grid, Layers, Smartphone, ShoppingCart, Wrench, RefreshCw, ShieldCheck, Activity, Store, Package, Headset, Bug, Server, Lock } from 'lucide-react';
+import { Zap, ArrowRight, X, CheckCircle, Send, User, Mail, Briefcase, Loader2, PenTool, Layout, Box, Tag, FileText, Coffee, Printer, Image as ImageIcon, Monitor, FileBadge, Grid, Layers, Smartphone, ShoppingCart, Wrench, RefreshCw, ShieldCheck, Activity, Store, Package, Headset, Bug, Server, Lock, QrCode, CreditCard, Landmark, Percent, CalendarRange, Truck, Receipt, Shield, ShieldAlert, BadgeCheck } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { 
   SiReact, SiSpringboot, SiDocker, SiOpenai, 
@@ -53,6 +53,21 @@ const maintenanceServices = [
   { icon: Server, title: 'Hosting Support', desc: 'Server configuration, domain management, SSL setup, and infrastructure scaling.', color: '#2496ED', bg: '#2496ED12' },
   { icon: Zap, title: 'Speed Optimization', desc: 'Advanced caching, asset minification, and database optimization for fast loading.', color: '#FF4A00', bg: '#FF4A0012' },
   { icon: Lock, title: 'Malware Protection', desc: 'Active malware scanning, firewall implementation, and vulnerability patching.', color: '#1E293B', bg: '#1E293B12' },
+];
+
+const paymentServices = [
+  { icon: QrCode, title: 'UPI & QR Code Payments', desc: 'Seamless integration for Google Pay, PhonePe, Paytm, and other dynamic QR code systems.', color: '#10A37F', bg: '#10A37F12' },
+  { icon: CreditCard, title: 'Debit/Credit Cards', desc: 'Secure processing for Visa, MasterCard, RuPay, and international credit/debit cards.', color: '#3B82F6', bg: '#3B82F612' },
+  { icon: Landmark, title: 'Net Banking', desc: 'Direct bank transfer and net banking integration for all major national and international banks.', color: '#E74C3C', bg: '#E74C3C12' },
+  { icon: Percent, title: 'EMI Options', desc: 'No-cost and standard EMI integration to boost sales and provide flexible payment solutions.', color: '#FF9900', bg: '#FF990012' },
+  { icon: CalendarRange, title: 'Subscription Billing', desc: 'Automated recurring payments for SaaS, memberships, and subscription-based models.', color: '#6C63FF', bg: '#6C63FF12' },
+  { icon: RefreshCw, title: 'Auto Payment System', desc: 'Auto-debit setup for wallets, cards, and UPI mandates ensuring uninterrupted services.', color: '#2496ED', bg: '#2496ED12' },
+  { icon: Truck, title: 'Order Tracking', desc: 'Real-time order and payment tracking integration right inside the customer dashboard.', color: '#F24E1E', bg: '#F24E1E12' },
+  { icon: Receipt, title: 'Invoice Generation', desc: 'Automatic PDF invoice generation, emailing, and tax compliance (GST) billing setup.', color: '#9B59B6', bg: '#9B59B612' },
+  { icon: Shield, title: 'SSL Security', desc: 'Military-grade 256-bit SSL encryption to secure all sensitive customer payment data.', color: '#2ECC71', bg: '#2ECC7112' },
+  { icon: ShoppingCart, title: 'Secure Checkout', desc: 'Customizable, fast, and secure checkout pages optimized for maximum conversion rates.', color: '#FF4A00', bg: '#FF4A0012' },
+  { icon: ShieldAlert, title: 'Fraud Protection', desc: 'Advanced AI-driven fraud detection and risk scoring to prevent unauthorized transactions.', color: '#C0392B', bg: '#C0392B12' },
+  { icon: BadgeCheck, title: 'Payment Verification', desc: 'Instant webhook validation, double verification, and real-time transaction status updates.', color: '#0055FF', bg: '#0055FF12' },
 ];
 
 function ServiceCard({ service, index, onClick }) {
@@ -260,8 +275,8 @@ export default function ServicesSection() {
         </div>
 
         <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 40, marginTop: 10 }}>
-          <div style={{ display: 'inline-flex', background: 'white', padding: 6, borderRadius: 100, border: '1px solid rgba(108,99,255,0.1)', boxShadow: '0 8px 24px rgba(0,0,0,0.03)', position: 'relative', flexWrap: 'wrap', justifyContent: 'center', gap: 4 }}>
-            {['software', 'design', 'maintenance'].map((tab) => (
+          <div style={{ display: 'inline-flex', background: 'white', padding: 6, borderRadius: 24, border: '1px solid rgba(108,99,255,0.1)', boxShadow: '0 8px 24px rgba(0,0,0,0.03)', position: 'relative', flexWrap: 'wrap', justifyContent: 'center', gap: 4 }}>
+            {['software', 'design', 'maintenance', 'payment'].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
@@ -275,7 +290,7 @@ export default function ServicesSection() {
                   />
                 )}
                 <span style={{ position: 'relative', zIndex: 1 }}>
-                  {tab === 'software' ? 'Software & Cloud' : tab === 'design' ? 'Branding & Printing' : 'Website Maintenance'}
+                  {tab === 'software' ? 'Software & Cloud' : tab === 'design' ? 'Branding & Printing' : tab === 'maintenance' ? 'Website Maintenance' : 'Payment Gateways'}
                 </span>
               </button>
             ))}
@@ -327,7 +342,7 @@ export default function ServicesSection() {
         `}</style>
         <div className="services-grid-wrapper">
           <AnimatePresence mode="wait">
-            {(activeTab === 'software' ? softwareServices : activeTab === 'design' ? designServices : maintenanceServices).map((s, i) => (
+            {(activeTab === 'software' ? softwareServices : activeTab === 'design' ? designServices : activeTab === 'maintenance' ? maintenanceServices : paymentServices).map((s, i) => (
               <ServiceCard key={s.title} service={s} index={i} onClick={() => setActiveService(s)} />
             ))}
           </AnimatePresence>
