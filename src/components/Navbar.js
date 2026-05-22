@@ -26,6 +26,87 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
 
+  const MobileNavItem = ({ item, isActive }) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    if (item.hasMegaMenu) {
+      return (
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <div 
+            onClick={() => setIsOpen(!isOpen)}
+            style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+              padding: '13px 16px', borderRadius: 12,
+              background: isActive ? 'rgba(108,99,255,0.08)' : 'transparent',
+              color: isActive ? '#6C63FF' : '#374151',
+              fontWeight: isActive ? 700 : 500, fontSize: 15,
+              transition: 'all 0.2s', cursor: 'pointer'
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+              <div style={{
+                width: 34, height: 34, borderRadius: 10,
+                background: isActive ? 'rgba(108,99,255,0.12)' : '#f8f7ff',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}>
+                <item.icon size={16} strokeWidth={2} color={isActive ? '#6C63FF' : '#64748b'} />
+              </div>
+              {item.label}
+            </div>
+            <motion.div animate={{ rotate: isOpen ? 180 : 0 }}><ChevronDown size={16} /></motion.div>
+          </div>
+          
+          <AnimatePresence>
+            {isOpen && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                style={{ overflow: 'hidden' }}
+              >
+                <div style={{ padding: '8px 16px 8px 46px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  {graphicDesignCategories.map((cat, idx) => (
+                    <div key={idx} style={{ marginBottom: '8px' }}>
+                      <div style={{ fontSize: '13px', fontWeight: '700', color: '#475569', marginBottom: '4px' }}>{cat.title}</div>
+                      {cat.items.map((svc, i) => (
+                        <div key={i} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', color: '#64748b', padding: '4px 0' }}>
+                          <span>{svc.name}</span>
+                          <span style={{ color: '#00C2FF', fontWeight: 600 }}>{svc.price}</span>
+                        </div>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      );
+    }
+
+    return (
+      <Link href={item.href} style={{ textDecoration: 'none' }} onClick={() => setMobileOpen(false)}>
+        <div style={{
+          display: 'flex', alignItems: 'center', gap: 12,
+          padding: '13px 16px', borderRadius: 12,
+          background: isActive ? 'rgba(108,99,255,0.08)' : 'transparent',
+          color: isActive ? '#6C63FF' : '#374151',
+          fontWeight: isActive ? 700 : 500, fontSize: 15,
+          transition: 'all 0.2s',
+        }}>
+          <div style={{
+            width: 34, height: 34, borderRadius: 10,
+            background: isActive ? 'rgba(108,99,255,0.12)' : '#f8f7ff',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}>
+            <item.icon size={16} strokeWidth={2} color={isActive ? '#6C63FF' : '#64748b'} />
+          </div>
+          {item.label}
+        </div>
+      </Link>
+    );
+  };
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', onScroll);
@@ -182,25 +263,7 @@ export default function Navbar() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.06 }}
                   >
-                    <Link href={item.href} style={{ textDecoration: 'none' }}>
-                      <div style={{
-                        display: 'flex', alignItems: 'center', gap: 12,
-                        padding: '13px 16px', borderRadius: 12,
-                        background: isActive ? 'rgba(108,99,255,0.08)' : 'transparent',
-                        color: isActive ? '#6C63FF' : '#374151',
-                        fontWeight: isActive ? 700 : 500, fontSize: 15,
-                        transition: 'all 0.2s',
-                      }}>
-                        <div style={{
-                          width: 34, height: 34, borderRadius: 10,
-                          background: isActive ? 'rgba(108,99,255,0.12)' : '#f8f7ff',
-                          display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        }}>
-                          <item.icon size={16} strokeWidth={2} color={isActive ? '#6C63FF' : '#64748b'} />
-                        </div>
-                        {item.label}
-                      </div>
-                    </Link>
+                    <MobileNavItem item={item} isActive={isActive} />
                   </motion.div>
                 );
               })}
