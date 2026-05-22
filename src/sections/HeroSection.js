@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { ArrowRight, Play, Zap, Code2, Bot, Cloud } from 'lucide-react';
+import { SiSpringboot, SiApachekafka, SiRedis, SiDocker, SiKubernetes, SiNodedotjs } from 'react-icons/si';
 
 
 
@@ -20,6 +21,15 @@ const techBadges = [
   { icon: Cloud, label: 'DevOps & Cloud', color: '#00C2FF' },
   { icon: Bot, label: 'AI / ML', color: '#6C63FF' },
   { icon: Zap, label: 'Spring Boot', color: '#6DB33F' },
+];
+
+const floatingLogos = [
+  { icon: SiSpringboot, name: 'Spring Boot', color: '#6DB33F', top: '5%', right: '-5%', delay: 0.6 },
+  { icon: SiApachekafka, name: 'Kafka', color: '#231F20', top: '45%', right: '-12%', delay: 0.8 },
+  { icon: SiRedis, name: 'Redis', color: '#DC382D', bottom: '10%', right: '8%', delay: 1.0 },
+  { icon: SiDocker, name: 'Docker', color: '#2496ED', bottom: '20%', left: '-8%', delay: 1.2 },
+  { icon: SiKubernetes, name: 'Kubernetes', color: '#326CE5', top: '35%', left: '-10%', delay: 0.9 },
+  { icon: SiNodedotjs, name: 'Node.js', color: '#339933', top: '8%', left: '5%', delay: 0.7 },
 ];
 
 export default function HeroSection() {
@@ -210,67 +220,35 @@ export default function HeroSection() {
               />
             </div>
 
-            {/* Floating code cards */}
-            <motion.div className="hero-float-card"
-              initial={{ opacity: 0, y: -150, rotate: -10 }}
-              animate={{ opacity: 1, y: 0, rotate: 0 }}
-              transition={{ type: 'spring', stiffness: 50, damping: 15, delay: 0.6 }}
-              style={{ position: 'absolute', top: '5%', right: '-5%', zIndex: 10 }}
-            >
-              <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                style={{
-                  padding: '12px 18px', borderRadius: 14, background: 'rgba(15,23,42,0.85)',
-                  border: '1px solid rgba(108,99,255,0.3)', backdropFilter: 'blur(20px)',
-                  fontFamily: 'monospace', fontSize: 13, color: '#00C2FF',
-                  boxShadow: '0 12px 40px rgba(0,0,0,0.2)',
-                }}
-              >
-                <span style={{ color: '#6C63FF' }}>const </span>
-                <span style={{ color: '#f8fafc' }}>ai</span>
-                <span style={{ color: '#94a3b8' }}> = new </span>
-                <span style={{ color: '#00C2FF' }}>WebNex()</span>
-              </motion.div>
-            </motion.div>
-
-            <motion.div className="hero-float-card"
-              initial={{ opacity: 0, y: -200, x: -50, rotate: 15 }}
-              animate={{ opacity: 1, y: 0, x: 0, rotate: 0 }}
-              transition={{ type: 'spring', stiffness: 45, damping: 14, delay: 0.8 }}
-              style={{ position: 'absolute', bottom: '20%', left: '-8%', zIndex: 10 }}
-            >
-              <motion.div animate={{ y: [0, -12, 0] }} transition={{ duration: 5, repeat: Infinity, delay: 1, ease: 'easeInOut' }}
-                style={{
-                  padding: '12px 18px', borderRadius: 14, background: 'rgba(15,23,42,0.85)',
-                  border: '1px solid rgba(0,194,255,0.3)', backdropFilter: 'blur(20px)',
-                  fontFamily: 'monospace', fontSize: 13, color: '#6C63FF',
-                  boxShadow: '0 12px 40px rgba(0,0,0,0.2)', display: 'flex', alignItems: 'center', gap: 8
-                }}
-              >
-                <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#00C2FF', boxShadow: '0 0 10px #00C2FF' }} />
-                <span style={{ color: '#00C2FF' }}>System.</span><span style={{ color: '#f8fafc' }}>optimize()</span>
-              </motion.div>
-            </motion.div>
-
-            <motion.div className="hero-float-card"
-              initial={{ opacity: 0, y: -250, rotate: -5 }}
-              animate={{ opacity: 1, y: 0, rotate: 0 }}
-              transition={{ type: 'spring', stiffness: 55, damping: 16, delay: 1.0 }}
-              style={{ position: 'absolute', top: '45%', right: '-12%', zIndex: 10 }}
-            >
-              <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 4.5, repeat: Infinity, delay: 0.5, ease: 'easeInOut' }}
-                style={{
-                  padding: '10px 16px', borderRadius: 12, background: 'rgba(255,255,255,0.9)',
-                  border: '1px solid rgba(108,99,255,0.2)', backdropFilter: 'blur(20px)',
-                  fontFamily: 'Poppins, sans-serif', fontSize: 12, fontWeight: 700, color: '#0F172A',
-                  boxShadow: '0 12px 40px rgba(108,99,255,0.15)', display: 'flex', alignItems: 'center', gap: 8
-                }}
-              >
-                <div style={{ width: 24, height: 24, borderRadius: 6, background: '#6DB33F', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <Zap size={14} color="white" />
-                </div>
-                99.9% Uptime
-              </motion.div>
-            </motion.div>
+            {/* Floating tech logos */}
+            {floatingLogos.map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <motion.div key={item.name} className="hero-float-card"
+                  initial={{ opacity: 0, y: -200, scale: 0.5, rotate: i % 2 === 0 ? -15 : 15 }}
+                  animate={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
+                  transition={{ type: 'spring', stiffness: 50, damping: 12, delay: item.delay }}
+                  style={{ 
+                    position: 'absolute', 
+                    top: item.top, bottom: item.bottom, left: item.left, right: item.right, 
+                    zIndex: 10 
+                  }}
+                >
+                  <motion.div animate={{ y: [0, -12, 0] }} transition={{ duration: 4 + (i % 3), repeat: Infinity, delay: item.delay, ease: 'easeInOut' }}
+                    style={{
+                      padding: '10px 16px', borderRadius: 14, background: 'rgba(255,255,255,0.95)',
+                      border: `1px solid ${item.color}30`, backdropFilter: 'blur(20px)',
+                      boxShadow: `0 14px 40px ${item.color}25`, display: 'flex', alignItems: 'center', gap: 10
+                    }}
+                  >
+                    <div style={{ width: 32, height: 32, borderRadius: 10, background: `${item.color}15`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <Icon size={18} color={item.color} />
+                    </div>
+                    <span style={{ fontFamily: 'Poppins, sans-serif', fontSize: 13, fontWeight: 700, color: '#0F172A' }}>{item.name}</span>
+                  </motion.div>
+                </motion.div>
+              );
+            })}
           </motion.div>
         </div>
       </div>
