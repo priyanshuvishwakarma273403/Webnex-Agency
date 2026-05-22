@@ -1,16 +1,24 @@
 'use client';
 import { useEffect, useRef } from 'react';
+import { usePathname } from 'next/navigation';
 import Lenis from 'lenis';
 
 export default function SmoothScroll({ children }) {
   const lenisRef = useRef(null);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    if (lenisRef.current) {
+      lenisRef.current.scrollTo(0, { immediate: true });
+    }
+  }, [pathname]);
 
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smooth: true,
-      smoothTouch: false,
+      lerp: 0.06, // Physics-based ultra-smooth scrolling
+      wheelMultiplier: 0.9, // Slightly softer mouse wheel impact
+      smoothWheel: true,
+      smoothTouch: false, // Keep native touch scrolling on mobile
     });
     lenisRef.current = lenis;
 

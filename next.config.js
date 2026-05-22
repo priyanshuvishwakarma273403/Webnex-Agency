@@ -4,6 +4,9 @@ const nextConfig = {
   images: {
     domains: ['images.unsplash.com', 'api.dicebear.com'],
   },
+  generateBuildId: async () => {
+    return 'v-' + Date.now();
+  },
 };
 
 module.exports = nextConfig;

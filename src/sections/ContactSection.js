@@ -6,9 +6,9 @@ import emailjs from '@emailjs/browser';
 
 const contactInfo = [
   { icon: Mail, label: 'Email Us', value: 'hello@webnex.in', href: 'mailto:hello@webnex.in', color: '#6C63FF' },
-  { icon: MessageSquare, label: 'WhatsApp', value: '+91 98765 43210', href: 'https://wa.me/919876543210', color: '#25D366' },
-  { icon: Clock, label: 'Working Hours', value: 'Mon–Sat: 9AM – 7PM IST', href: null, color: '#F89820' },
-  { icon: MapPin, label: 'Location', value: 'Remote-first, India', href: null, color: '#FF6B9D' },
+  { icon: MessageSquare, label: 'WhatsApp', value: '+91 89577 51874', href: 'https://wa.me/918957751874', color: '#25D366' },
+  { icon: Clock, label: 'Working Hours', value: '24/7', href: null, color: '#F89820' },
+  { icon: MapPin, label: 'Location', value: 'Delhi, India', href: null, color: '#FF6B9D' },
 ];
 
 export default function ContactSection() {
@@ -121,7 +121,7 @@ export default function ContactSection() {
 
             {/* WhatsApp CTA */}
             <motion.a
-              href="https://wa.me/919876543210?text=Hi, I'm interested in WebNex services!"
+              href="https://wa.me/918957751874?text=Hi, I'm interested in WebNex services!"
               target="_blank" rel="noopener noreferrer"
               whileHover={{ scale: 1.03, boxShadow: '0 14px 36px rgba(37,211,102,0.28)' }}
               whileTap={{ scale: 0.97 }}
