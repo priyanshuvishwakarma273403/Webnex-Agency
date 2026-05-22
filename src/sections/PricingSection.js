@@ -57,7 +57,8 @@ export default function PricingSection() {
       document.body.style.overflow = 'hidden';
       document.documentElement.style.overflow = 'hidden';
       setSubmitted(false);
-      setFormData({ firstName: '', lastName: '', email: '', requirements: '', agree: false });
+      setFormData({ firstName: '', lastName: '', email: '', requirements: '' });
+      setAgreed(false);
     } else {
       document.body.style.overflow = '';
       document.documentElement.style.overflow = '';
