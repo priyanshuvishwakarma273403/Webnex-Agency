@@ -148,7 +148,7 @@ export default function WhyChooseUs() {
           </motion.p>
         </div>
 
-        <style>{`
+        <style dangerouslySetInnerHTML={{ __html: `
           .wcu-stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 64px; }
           .marquee-container {
             display: flex; flex-direction: column; gap: 24px;
@@ -202,7 +202,7 @@ export default function WhyChooseUs() {
             .wcu-stat-label { font-size: 11px !important; line-height: 1.2 !important; }
             .feature-card { width: 280px; padding: 16px; }
           }
-        `}</style>
+        ` }} />
 
         {/* Stats */}
         <div className="wcu-stats-grid">
