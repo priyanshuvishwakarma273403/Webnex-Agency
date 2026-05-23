@@ -2,7 +2,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { ArrowLeft, Calendar, User, Clock, CheckCircle2, ChevronRight, Share2, Sparkles, Zap, Shield, TrendingUp, Cpu, MessageSquare } from 'lucide-react';
+import { ArrowLeft, Calendar, User, Clock, CheckCircle2, ChevronRight, Share2, Sparkles, Zap, Shield, TrendingUp, Cpu, MessageSquare, ShoppingCart } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function BlogArticlePage() {
