@@ -78,7 +78,9 @@ export default function HeroSection() {
             .hero-btns { justify-content: center; width: 100%; }
             .hero-btns > a { width: 100%; justify-content: center; }
             .hero-badges { justify-content: center; }
-            .hero-img-container { min-height: unset !important; aspect-ratio: 1/1 !important; border-radius: 50% !important; max-width: 340px !important; margin: 0 auto; }
+            .hero-right-container { margin-top: 0 !important; }
+            .hero-right-wrapper { max-width: 260px !important; margin: 0 auto; }
+            .hero-img-container { min-height: unset !important; aspect-ratio: 1/1 !important; border-radius: 50% !important; max-width: 260px !important; margin: 0 auto; }
             
             /* Make floating cards perfectly responsive for phones */
             .hero-float-card > div { 
@@ -227,8 +229,8 @@ export default function HeroSection() {
               borderRadius: '50%', filter: 'blur(40px)',
             }} />
 
-            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '-60px' }}>
-              <div style={{ position: 'relative', width: '100%', maxWidth: 420, display: 'flex', justifyContent: 'center' }}>
+            <div className="hero-right-container" style={{ display: 'flex', justifyContent: 'center', marginTop: '-60px' }}>
+              <div className="hero-right-wrapper" style={{ position: 'relative', width: '100%', maxWidth: 420, display: 'flex', justifyContent: 'center' }}>
                 <div className="hero-img-container" style={{
                   position: 'relative', width: '100%', aspectRatio: '1/1',
                   borderRadius: '50%', overflow: 'hidden',
