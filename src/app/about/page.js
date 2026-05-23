@@ -1,4 +1,5 @@
 import PageHeader from '@/components/PageHeader';
+import FounderSection from '@/sections/FounderSection';
 import WhyChooseUs from '@/sections/WhyChooseUs';
 import ProcessTimeline from '@/sections/ProcessTimeline';
 import TestimonialsSection from '@/sections/TestimonialsSection';
@@ -19,6 +20,7 @@ export default function AboutPage() {
         image="/images/about_header.png"
         breadcrumb={['Home', 'About']}
       />
+      <FounderSection />
       <WhyChooseUs />
       <ProcessTimeline />
       <TestimonialsSection />
