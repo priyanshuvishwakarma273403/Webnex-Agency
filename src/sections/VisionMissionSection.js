@@ -10,24 +10,23 @@ const ScrollRevealText = ({ text }) => {
     offset: ["start 85%", "end 50%"]
   });
 
+  const isArray = Array.isArray(text);
+  const totalWords = isArray ? text.reduce((acc, p) => acc + p.split(" ").length, 0) : text.split(" ").length;
+  let wordCounter = 0;
+
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
-      {Array.isArray(text) ? text.map((paragraph, pIdx) => {
+    <div ref={ref} style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+      {isArray ? text.map((paragraph, pIdx) => {
         const words = paragraph.split(" ");
         return (
           <p key={pIdx} style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', fontSize: 'clamp(1.2rem, 4vw, 2.5rem)', fontWeight: 800, lineHeight: 1.5, color: 'white', margin: 0, fontFamily: 'Poppins, sans-serif' }}>
             {words.map((word, i) => {
-              // Total words across all paragraphs could be used, but since they're visually separate blocks,
-              // it's fine if they animate together or we can base it on global index.
-              // To make it simple and elegant, we just animate based on scroll progress of the entire container.
-              const globalIndex = pIdx * 100 + i; 
-              // A pseudo-randomized or linearly scaled index based on words length could work,
-              // but we can just let framer motion handle it smoothly.
-              const start = i / words.length;
-              const end = start + (1 / words.length);
-              const opacity = useTransform(scrollYProgress, [start * 0.8, end], [0.15, 1]);
+              const start = wordCounter / totalWords;
+              const end = start + (1 / totalWords);
+              wordCounter++;
+              const opacity = useTransform(scrollYProgress, [start, end], [0.15, 1]);
               return (
-                <motion.span key={globalIndex} style={{ opacity, display: 'inline-block' }}>
+                <motion.span key={i} style={{ opacity, display: 'inline-block' }}>
                   {word}
                 </motion.span>
               );
@@ -37,10 +36,9 @@ const ScrollRevealText = ({ text }) => {
       }) : (
         <p style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', fontSize: 'clamp(1.2rem, 4vw, 2.5rem)', fontWeight: 800, lineHeight: 1.5, color: 'white', margin: 0, fontFamily: 'Poppins, sans-serif' }}>
           {text.split(" ").map((word, i) => {
-            const words = text.split(" ");
-            const start = i / words.length;
-            const end = start + (1 / words.length);
-            const opacity = useTransform(scrollYProgress, [start * 0.8, end], [0.15, 1]);
+            const start = i / totalWords;
+            const end = start + (1 / totalWords);
+            const opacity = useTransform(scrollYProgress, [start, end], [0.15, 1]);
             return (
               <motion.span key={i} style={{ opacity, display: 'inline-block' }}>
                 {word}
