@@ -8,7 +8,7 @@ import { SiSpringboot, SiApachekafka, SiRedis, SiDocker, SiKubernetes, SiNodedot
 import { FaAws } from 'react-icons/fa';
 
 
-const rotatingWords = ['AI Powered', 'Scalable', 'Futuristic', 'Premium'];
+const rotatingWords = ['AI-Powered', 'Scalable', 'Futuristic', 'Premium'];
 
 const stats = [
   { value: '50+', label: 'Projects' },
@@ -136,8 +136,8 @@ export default function HeroSection() {
 
             {/* Headline */}
             <h1 style={{
-              fontSize: 'clamp(2.5rem, 6.5vw, 4.2rem)',
-              fontWeight: 900, lineHeight: 1.1,
+              fontSize: 'clamp(2.1rem, 7.5vw, 4.2rem)',
+              fontWeight: 900, lineHeight: 1.2,
               fontFamily: 'Poppins, sans-serif',
               color: '#0F172A',
               letterSpacing: '-0.025em',
@@ -226,17 +226,19 @@ export default function HeroSection() {
               borderRadius: '50%', filter: 'blur(40px)',
             }} />
 
-            <div className="hero-img-container" style={{
-              position: 'relative', width: '100%', height: '100%', minHeight: 480,
-              borderRadius: 30, overflow: 'hidden',
-              boxShadow: '0 24px 60px rgba(108,99,255,0.15)',
-              border: '1px solid rgba(108,99,255,0.2)',
-            }}>
-              <img
-                src="/images/hero_illustration.png"
-                alt="AI Technology Illustration"
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              />
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <div className="hero-img-container" style={{
+                position: 'relative', width: '100%', maxWidth: 400, aspectRatio: '1/1',
+                borderRadius: '50%', overflow: 'hidden',
+                boxShadow: '0 24px 60px rgba(108,99,255,0.2)',
+                border: '4px solid rgba(108,99,255,0.2)',
+              }}>
+                <img
+                  src="/images/hero_illustration.png"
+                  alt="AI Technology Illustration"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', transform: 'scale(1.05)' }}
+                />
+              </div>
             </div>
 
             {/* Floating tech logos */}
