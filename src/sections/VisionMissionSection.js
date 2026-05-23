@@ -69,7 +69,7 @@ export default function VisionMissionSection() {
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(0,194,255,0.1)', color: '#00C2FF', padding: '8px 16px', borderRadius: 100, fontSize: 14, fontWeight: 700, letterSpacing: '0.05em', marginBottom: 40 }}>
             <Eye size={18} /> OUR VISION
           </div>
-          <div ref={ref}>
+          <div>
             <ScrollRevealText text={[
               "Our vision is to become a trusted global digital agency known for creativity, innovation, quality, and client success.",
               "We aspire to help businesses transform their ideas into powerful digital brands through technology, strategy, and creative excellence.",
