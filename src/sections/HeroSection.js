@@ -78,7 +78,7 @@ export default function HeroSection() {
             .hero-btns { justify-content: center; width: 100%; }
             .hero-btns > a { width: 100%; justify-content: center; }
             .hero-badges { justify-content: center; }
-            .hero-img-container { min-height: 280px !important; border-radius: 20px !important; }
+            .hero-img-container { min-height: unset !important; aspect-ratio: 1/1 !important; border-radius: 50% !important; max-width: 340px !important; margin: 0 auto; }
             
             /* Make floating cards perfectly responsive for phones */
             .hero-float-card > div { 
@@ -112,6 +112,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99] }}
+            style={{ paddingLeft: 'clamp(0px, 4vw, 60px)' }}
           >
             {/* Badge */}
             <motion.div
@@ -226,7 +227,7 @@ export default function HeroSection() {
               borderRadius: '50%', filter: 'blur(40px)',
             }} />
 
-            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '-20px' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '-60px' }}>
               <div style={{ position: 'relative', width: '100%', maxWidth: 420, display: 'flex', justifyContent: 'center' }}>
                 <div className="hero-img-container" style={{
                   position: 'relative', width: '100%', aspectRatio: '1/1',
