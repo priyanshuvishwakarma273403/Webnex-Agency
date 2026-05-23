@@ -226,38 +226,39 @@ export default function HeroSection() {
               borderRadius: '50%', filter: 'blur(40px)',
             }} />
 
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <div className="hero-img-container" style={{
-                position: 'relative', width: '100%', maxWidth: 400, aspectRatio: '1/1',
-                borderRadius: '50%', overflow: 'hidden',
-                boxShadow: '0 24px 60px rgba(108,99,255,0.2)',
-                border: '4px solid rgba(108,99,255,0.2)',
-              }}>
-                <img
-                  src="/images/hero_illustration.png"
-                  alt="AI Technology Illustration"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', transform: 'scale(1.05)' }}
-                />
-              </div>
-            </div>
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '-20px' }}>
+              <div style={{ position: 'relative', width: '100%', maxWidth: 420, display: 'flex', justifyContent: 'center' }}>
+                <div className="hero-img-container" style={{
+                  position: 'relative', width: '100%', aspectRatio: '1/1',
+                  borderRadius: '50%', overflow: 'hidden',
+                  boxShadow: '0 24px 60px rgba(108,99,255,0.2)',
+                  border: '4px solid rgba(108,99,255,0.2)',
+                  zIndex: 2,
+                }}>
+                  <img
+                    src="/images/hero_illustration.png"
+                    alt="AI Technology Illustration"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', transform: 'scale(1.05)' }}
+                  />
+                </div>
 
-            {/* Floating tech logos */}
-            {floatingLogos.map((item, i) => {
-              const Icon = item.icon;
-              return (
-                <motion.div key={item.name} className="hero-float-card"
-                  initial={{ opacity: 0, y: -200, scale: 0.5, rotate: i % 2 === 0 ? -15 : 15 }}
-                  animate={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
-                  transition={{ type: 'spring', stiffness: 50, damping: 12, delay: item.delay }}
-                  style={{
-                    position: 'absolute',
-                    top: item.top, bottom: item.bottom, left: item.left, right: item.right,
-                    zIndex: 10
-                  }}
-                >
-                  <motion.div animate={{ y: [0, -12, 0] }} transition={{ duration: 4 + (i % 3), repeat: Infinity, delay: item.delay, ease: 'easeInOut' }}
-                    style={{
-                      padding: '10px 16px', borderRadius: 14, background: 'rgba(255,255,255,0.95)',
+                {/* Floating tech logos */}
+                {floatingLogos.map((item, i) => {
+                  const Icon = item.icon;
+                  return (
+                    <motion.div key={item.name} className="hero-float-card"
+                      initial={{ opacity: 0, y: -200, scale: 0.5, rotate: i % 2 === 0 ? -15 : 15 }}
+                      animate={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
+                      transition={{ type: 'spring', stiffness: 50, damping: 12, delay: item.delay }}
+                      style={{
+                        position: 'absolute',
+                        top: item.top, bottom: item.bottom, left: item.left, right: item.right,
+                        zIndex: 10
+                      }}
+                    >
+                      <motion.div animate={{ y: [0, -12, 0] }} transition={{ duration: 4 + (i % 3), repeat: Infinity, delay: item.delay, ease: 'easeInOut' }}
+                        style={{
+                          padding: '10px 16px', borderRadius: 14, background: 'rgba(255,255,255,0.95)',
                       border: `1px solid ${item.color}30`, backdropFilter: 'blur(20px)',
                       boxShadow: `0 14px 40px ${item.color}25`, display: 'flex', alignItems: 'center', gap: 10
                     }}
@@ -270,6 +271,8 @@ export default function HeroSection() {
                 </motion.div>
               );
             })}
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>
