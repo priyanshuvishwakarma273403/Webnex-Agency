@@ -2,7 +2,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { ArrowLeft, Calendar, User, Clock, CheckCircle2, Share2 } from 'lucide-react';
+import { ArrowLeft, Calendar, User, Clock, CheckCircle2, Share2, Shield } from 'lucide-react';
 
 export default function SecurityBlogPage() {
   return (

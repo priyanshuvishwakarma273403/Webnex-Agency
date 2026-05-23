@@ -15,9 +15,14 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: { default: 'WebNex | AI-Powered Digital Agency & Software Development', template: '%s | WebNex' },
-  description: 'WebNex is a premium digital innovation agency specializing in AI integration, React & Next.js development, SaaS platforms, and enterprise cloud DevOps.',
-  keywords: ['WebNex', 'AI development agency', 'React development', 'Next.js', 'DevOps', 'SaaS platform development', 'Spring Boot APIs', 'Web Design', 'Digital Transformation'],
+  title: { default: 'WebNex | Best Web Development, Software & Graphic Design Agency', template: '%s | WebNex' },
+  description: 'WebNex India is a top-rated digital agency offering Software & App Development, Graphic Design, Website Maintenance, E-commerce, SEO, CNC Jali Design, and AI Automation services to skyrocket your business growth.',
+  keywords: [
+    'WebNex', 'WebNex India', 'Software Development Company', 'Top Web Development Agency', 'Best Graphic Design Services', 
+    'React & Next.js Development', 'Mobile App Development', 'E-commerce Store Development', 'Website Maintenance Services',
+    'Logo & Brand Identity Design', 'Visiting Card & Flex Printing', 'CNC Jali Design', 'Payment Gateway Integration',
+    'SEO & Digital Marketing', 'SaaS Platform Development', 'Spring Boot APIs', 'Cloud & DevOps Solutions', 'AI Automation Agency'
+  ],
   authors: [{ name: 'WebNex Team' }],
   creator: 'WebNex',
   publisher: 'WebNex',
@@ -36,8 +41,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'WebNex | Premium Digital & AI Innovation Agency',
-    description: 'Transforming ideas into scalable digital products with cutting-edge tech and AI automation.',
+    title: 'WebNex | Best Web Development, Software & Graphic Design Agency',
+    description: 'WebNex India is a top-rated digital agency offering Software Development, Graphic Design, Website Maintenance, and AI services.',
     images: ['/og-image.png'],
   },
   robots: {
