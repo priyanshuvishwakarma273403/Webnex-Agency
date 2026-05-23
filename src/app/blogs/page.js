@@ -6,13 +6,14 @@ import { Calendar, User, ArrowRight } from 'lucide-react';
 
 const blogs = [
   {
-    title: 'The Future of AI in SaaS Development',
-    excerpt: 'Discover how artificial intelligence is reshaping the Software as a Service industry, from intelligent chatbots to predictive analytics.',
+    title: 'How AI Automation is Transforming Modern Businesses in 2026',
+    excerpt: 'Discover how artificial intelligence and AI agents are reshaping industries, from drastic cost reduction to infinite scalability.',
     category: 'Technology',
-    author: 'Admin',
-    date: 'May 18, 2026',
-    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800',
-    color: '#6C63FF'
+    author: 'WebNex Team',
+    date: 'May 23, 2026',
+    image: '/images/blogs/ai_automation_2026.png',
+    color: '#6C63FF',
+    slug: 'ai-automation-transforming-business-2026'
   },
   {
     title: 'Why Next.js is the Ultimate Framework for 2026',
@@ -21,7 +22,8 @@ const blogs = [
     author: 'Tech Lead',
     date: 'May 12, 2026',
     image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800',
-    color: '#00C2FF'
+    color: '#00C2FF',
+    slug: '#'
   },
   {
     title: 'Mastering Microservices Architecture',
@@ -30,7 +32,8 @@ const blogs = [
     author: 'Cloud Architect',
     date: 'May 05, 2026',
     image: 'https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?auto=format&fit=crop&q=80&w=800',
-    color: '#2ECC71'
+    color: '#2ECC71',
+    slug: '#'
   },
   {
     title: '10 UI/UX Trends to Watch in Web Design',
@@ -39,7 +42,8 @@ const blogs = [
     author: 'Design Team',
     date: 'April 28, 2026',
     image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=800',
-    color: '#FF6B9D'
+    color: '#FF6B9D',
+    slug: '#'
   }
 ];
 
@@ -87,7 +91,7 @@ export default function BlogsPage() {
                   {blog.excerpt}
                 </p>
                 
-                <Link href="#" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: blog.color, fontWeight: 700, fontSize: 15, textDecoration: 'none', marginTop: 'auto' }}>
+                <Link href={`/blogs/${blog.slug}`} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: blog.color, fontWeight: 700, fontSize: 15, textDecoration: 'none', marginTop: 'auto' }}>
                   Read Article <ArrowRight size={16} />
                 </Link>
               </div>
