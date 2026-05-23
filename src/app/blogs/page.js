@@ -21,9 +21,9 @@ const blogs = [
     category: 'Development',
     author: 'Tech Lead',
     date: 'May 12, 2026',
-    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800',
+    image: '/images/blogs/nextjs_2026_blog.png',
     color: '#00C2FF',
-    slug: '#'
+    slug: 'why-nextjs-ultimate-framework-2026'
   },
   {
     title: 'Mastering Microservices Architecture',
@@ -31,9 +31,9 @@ const blogs = [
     category: 'DevOps',
     author: 'Cloud Architect',
     date: 'May 05, 2026',
-    image: 'https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?auto=format&fit=crop&q=80&w=800',
+    image: '/images/blogs/microservices_blog.png',
     color: '#2ECC71',
-    slug: '#'
+    slug: 'mastering-microservices-architecture'
   },
   {
     title: '10 UI/UX Trends to Watch in Web Design',
@@ -41,9 +41,29 @@ const blogs = [
     category: 'Design',
     author: 'Design Team',
     date: 'April 28, 2026',
-    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=800',
+    image: '/images/blogs/uiux_trends_blog.png',
     color: '#FF6B9D',
-    slug: '#'
+    slug: 'ui-ux-trends-web-design-2026'
+  },
+  {
+    title: 'Building a Scalable E-commerce Store',
+    excerpt: 'Scaling past 1,000 orders a day requires more than basic hosting—it requires a robust headless architecture.',
+    category: 'E-Commerce',
+    author: 'Retail Strategist',
+    date: 'March 14, 2026',
+    image: '/images/blogs/ecommerce_blog.png',
+    color: '#F1C40F',
+    slug: 'building-scalable-ecommerce-store'
+  },
+  {
+    title: 'The Importance of Website Security & SSL',
+    excerpt: 'In an era of sophisticated AI-driven cyber attacks, a basic firewall is no longer sufficient. Secure your digital business.',
+    category: 'Security',
+    author: 'Security Analyst',
+    date: 'Feb 02, 2026',
+    image: '/images/blogs/security_blog.png',
+    color: '#E74C3C',
+    slug: 'website-security-ssl-importance'
   }
 ];
 
