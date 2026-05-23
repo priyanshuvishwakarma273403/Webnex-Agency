@@ -1,6 +1,6 @@
 'use client';
 import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import {
   Lightbulb, Palette, Code2, Bot, TestTube, Rocket,
@@ -19,7 +19,15 @@ const steps = [
 
 export default function ProcessTimeline() {
   const headingRef = useRef(null);
-  const isInView = useInView(headingRef, { once: true });
+  const timelineRef = useRef(null);
+  const isInView = useInView(headingRef, { once: false });
+  
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start 70%", "end 50%"]
+  });
+
+  const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
     <section className="section-padding" style={{ background: '#fff', position: 'relative', overflow: 'hidden' }}>
@@ -41,7 +49,7 @@ export default function ProcessTimeline() {
         </div>
 
         {/* Main Timeline */}
-        <div style={{ position: 'relative' }} className="timeline-main">
+        <div ref={timelineRef} style={{ position: 'relative' }} className="timeline-main">
           <style>{`
             .timeline-grid { display: grid; grid-template-columns: 1fr 80px 1fr; gap: 24px; alignItems: center; margin-bottom: 44px; }
             .timeline-card { background: rgba(255,255,255,0.85); backdrop-filter: blur(20px); padding: 20px 24px; border-radius: 18px; max-width: 340px; box-shadow: 0 4px 16px rgba(0,0,0,0.04); }
@@ -63,9 +71,7 @@ export default function ProcessTimeline() {
           {/* Center line */}
           <div style={{ position: 'absolute', left: '50%', top: 0, bottom: 0, width: 2, transform: 'translateX(-50%)', background: 'linear-gradient(180deg,rgba(108,99,255,0.15),rgba(0,194,255,0.15))', pointerEvents: 'none' }} />
           <motion.div
-            initial={{ scaleY: 0 }} whileInView={{ scaleY: 1 }} viewport={{ once: true }}
-            transition={{ duration: 2.5, ease: 'easeInOut' }}
-            style={{ position: 'absolute', left: '50%', top: 0, bottom: 0, width: 2, transform: 'translateX(-50%)', background: 'linear-gradient(180deg,#6C63FF,#00C2FF)', transformOrigin: 'top' }}
+            style={{ position: 'absolute', left: '50%', top: 0, bottom: 0, width: 2, transform: 'translateX(-50%)', background: 'linear-gradient(180deg,#6C63FF,#00C2FF)', transformOrigin: 'top', scaleY }}
           />
 
           {steps.map((step, i) => {
@@ -75,7 +81,7 @@ export default function ProcessTimeline() {
               <motion.div key={step.num}
                 initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: '-70px' }}
+                viewport={{ once: false, margin: '-10% 0px -10% 0px' }}
                 transition={{ duration: 0.65, delay: 0.1 }}
                 className="timeline-grid"
               >
