@@ -23,7 +23,7 @@ export default function FounderSection() {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}
           >
-            <div style={{ position: 'relative', borderRadius: '32px', overflow: 'hidden', boxShadow: '0 30px 60px rgba(0,0,0,0.08)', background: '#0F172A', maxWidth: 420, width: '100%' }}>
+            <div style={{ position: 'relative', borderRadius: '32px', overflow: 'hidden', boxShadow: '0 30px 60px rgba(0,0,0,0.08)', background: '#0F172A', maxWidth: 340, width: '100%' }}>
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(108,99,255,0.2) 0%, rgba(0,194,255,0.2) 100%)', zIndex: 1, pointerEvents: 'none' }} />
               <img 
                 src="/himanshu.jpeg" 

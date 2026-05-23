@@ -1,6 +1,5 @@
 import PageHeader from '@/components/PageHeader';
 import FounderSection from '@/sections/FounderSection';
-import VisionMissionSection from '@/sections/VisionMissionSection';
 import WhyChooseUs from '@/sections/WhyChooseUs';
 import ProcessTimeline from '@/sections/ProcessTimeline';
 import TestimonialsSection from '@/sections/TestimonialsSection';
@@ -22,7 +21,6 @@ export default function AboutPage() {
         breadcrumb={['Home', 'About']}
       />
       <FounderSection />
-      <VisionMissionSection />
       <WhyChooseUs />
       <ProcessTimeline />
       <TestimonialsSection />
