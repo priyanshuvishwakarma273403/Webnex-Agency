@@ -7,7 +7,7 @@ import emailjs from '@emailjs/browser';
 
 const stats = [
   { value: 50, suffix: '+', label: 'Projects Delivered', icon: Rocket, color: '#6C63FF' },
-  { value: 100, suffix: '%', label: 'Client Satisfaction', icon: Star, color: '#F89820' },
+  { value: 97, suffix: '%', label: 'Client Satisfaction', icon: Star, color: '#F89820' },
   { value: 12, suffix: '+', label: 'AI Services Offered', icon: Bot, color: '#00C2FF' },
   { value: 3, suffix: 'x', label: 'Faster Deployment', icon: Zap, color: '#FF6B9D' },
 ];

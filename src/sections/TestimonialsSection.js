@@ -5,10 +5,10 @@ import { Star, Quote, ChevronLeft, ChevronRight, Zap } from 'lucide-react';
 
 const testimonials = [
   { name: 'Arjun Sharma', role: 'CEO, TechStartup India', initials: 'AS', rating: 5, text: 'WebNex transformed our startup from a basic idea to a fully functional AI-powered SaaS in 3 months. The quality is absolutely world-class. Their team is exceptional.', color: '#6C63FF' },
-  { name: 'Priya Patel', role: 'Founder, EduTech Solutions', initials: 'PP', rating: 5, text: 'The AI chatbot they built reduced our customer support workload by 70%. Their team is incredibly talented and always goes above and beyond what you expect.', color: '#00C2FF' },
+  { name: 'Priya Patel', role: 'Founder, EduTech Solutions', initials: 'PP', rating: 4, text: 'The AI chatbot they built reduced our customer support workload by 70%. Their team is incredibly talented and always goes above and beyond what you expect.', color: '#00C2FF' },
   { name: 'Rahul Verma', role: 'CTO, E-Commerce Giant', initials: 'RV', rating: 5, text: 'Exceptional DevOps and cloud infrastructure. Our deployment time went from hours to minutes. WebNex is our go-to partner for all technical needs going forward.', color: '#FF6B9D' },
   { name: 'Sneha Gupta', role: 'Director, Restaurant Chain', initials: 'SG', rating: 5, text: 'They built us a stunning restaurant website that doubled revenue in the first month. Professional, fast, creative team — I cannot recommend them enough.', color: '#2ECC71' },
-  { name: 'Mohammed Khan', role: 'Engineer, CNC Manufacturing', initials: 'MK', rating: 5, text: 'The CNC control system they developed for our factory is incredible. Precision automation saved us 40% in operational costs. Highly recommended to any manufacturer.', color: '#F89820' },
+  { name: 'Mohammed Khan', role: 'Engineer, CNC Manufacturing', initials: 'MK', rating: 4, text: 'The CNC control system they developed for our factory is incredible. Precision automation saved us 40% in operational costs. Highly recommended to any manufacturer.', color: '#F89820' },
 ];
 
 export default function TestimonialsSection() {
@@ -66,7 +66,7 @@ export default function TestimonialsSection() {
               <div style={{ display: 'flex', justifyContent: 'center', gap: 4, marginBottom: 20 }}>
                 {[...Array(5)].map((_, i) => (
                   <motion.div key={i} initial={{ opacity: 0, scale: 0 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: i * 0.06 }}>
-                    <Star size={18} fill="#F89820" color="#F89820" />
+                    <Star size={18} fill={i < t.rating ? "#F89820" : "transparent"} color={i < t.rating ? "#F89820" : "#d1d5db"} />
                   </motion.div>
                 ))}
               </div>
