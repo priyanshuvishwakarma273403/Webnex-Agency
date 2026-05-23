@@ -10,8 +10,6 @@ const ScrollRevealText = ({ text }) => {
     offset: ["start 85%", "end 50%"]
   });
 
-  const words = text.split(" ");
-
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
       {Array.isArray(text) ? text.map((paragraph, pIdx) => {
