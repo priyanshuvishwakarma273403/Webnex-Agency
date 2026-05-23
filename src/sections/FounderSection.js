@@ -21,14 +21,14 @@ export default function FounderSection() {
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            style={{ position: 'relative' }}
+            style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}
           >
-            <div style={{ position: 'relative', borderRadius: '32px', overflow: 'hidden', boxShadow: '0 30px 60px rgba(0,0,0,0.08)', background: '#0F172A' }}>
+            <div style={{ position: 'relative', borderRadius: '32px', overflow: 'hidden', boxShadow: '0 30px 60px rgba(0,0,0,0.08)', background: '#0F172A', maxWidth: 420, width: '100%' }}>
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(108,99,255,0.2) 0%, rgba(0,194,255,0.2) 100%)', zIndex: 1, pointerEvents: 'none' }} />
               <img 
                 src="/himanshu.jpeg" 
                 alt="Himanshu Vishwakarma - Founder of Webnex" 
-                style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'cover', minHeight: 450, position: 'relative', zIndex: 0 }} 
+                style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'cover', aspectRatio: '4/5', position: 'relative', zIndex: 0 }} 
               />
               <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '40px 30px 30px', background: 'linear-gradient(to top, rgba(15,23,42,0.95) 0%, transparent 100%)', zIndex: 2 }}>
                 <h3 style={{ color: 'white', fontSize: 24, fontWeight: 800, margin: '0 0 4px', fontFamily: 'Poppins, sans-serif' }}>Himanshu Vishwakarma</h3>
@@ -49,7 +49,7 @@ export default function FounderSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              style={{ position: 'absolute', top: -20, right: -20, background: 'white', padding: '16px 24px', borderRadius: 20, boxShadow: '0 20px 40px rgba(0,0,0,0.1)', display: 'flex', alignItems: 'center', gap: 16, zIndex: 3 }}
+              style={{ position: 'absolute', bottom: 30, right: -20, background: 'white', padding: '16px 24px', borderRadius: 20, boxShadow: '0 20px 40px rgba(0,0,0,0.1)', display: 'flex', alignItems: 'center', gap: 16, zIndex: 3 }}
             >
               <div style={{ background: 'rgba(108,99,255,0.1)', color: '#6C63FF', width: 48, height: 48, borderRadius: 14, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Users size={24} />
