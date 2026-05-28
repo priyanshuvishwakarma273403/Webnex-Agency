@@ -64,6 +64,66 @@ const blogs = [
     image: '/images/blogs/security_blog.png',
     color: '#E74C3C',
     slug: 'website-security-ssl-importance'
+  },
+  {
+    title: 'Building a Multi-Tenant SaaS Platform with Next.js App Router',
+    excerpt: 'Learn the core architecture to design, build, and deploy multi-tenant SaaS structures with Stripe subscriptions, secure middleware, and database isolation.',
+    category: 'Development',
+    author: 'SaaS Specialist',
+    date: 'April 20, 2026',
+    image: '/images/blogs/saas_platform_blog.png',
+    color: '#635BFF',
+    slug: 'building-scalable-saas-platform-nextjs'
+  },
+  {
+    title: 'Securing Spring Boot REST APIs with JWT & OAuth2',
+    excerpt: 'Complete implementation guide to hardening enterprise Java backends with stateless JWT authentication, CORS protocols, and role-based permissions.',
+    category: 'Security',
+    author: 'Security Architect',
+    date: 'April 10, 2026',
+    image: '/images/blogs/spring_security_blog.png',
+    color: '#F89820',
+    slug: 'securing-spring-boot-rest-api-jwt'
+  },
+  {
+    title: 'Building Stateful Autonomous AI Agents with LangGraph & LlamaIndex',
+    excerpt: 'A comprehensive developer guide to structuring cyclic agent state graphs, integrating tools, and deploying autonomous AI assistants in enterprise environments.',
+    category: 'AI Agents',
+    author: 'AI Lead',
+    date: 'April 02, 2026',
+    image: '/images/blogs/ai_agents_graph_blog.png',
+    color: '#10A37F',
+    slug: 'build-autonomous-agents-langgraph'
+  },
+  {
+    title: 'Tailwind CSS Performance Tuning for Production Next.js Builds',
+    excerpt: 'How to eliminate CSS bloat, optimize layout rendering, configure customized HSL design tokens, and build stunning user interfaces loading in milliseconds.',
+    category: 'Design',
+    author: 'Frontend Lead',
+    date: 'March 28, 2026',
+    image: '/images/blogs/tailwind_perf_blog.png',
+    color: '#38BDF8',
+    slug: 'tailwind-css-performance-tuning-nextjs'
+  },
+  {
+    title: 'Spring Boot & PostgreSQL Query Optimization: Tuning JPA & Hibernate',
+    excerpt: 'Eliminate N+1 queries, configure connection pools, set database indexes, and cache results using Redis to maintain sub-50ms endpoint executions.',
+    category: 'Database',
+    author: 'Backend Lead',
+    date: 'March 20, 2026',
+    image: '/images/blogs/db_tuning_blog.png',
+    color: '#2ECC71',
+    slug: 'spring-boot-postgresql-performance-tuning'
+  },
+  {
+    title: 'Implementing a Programmatic SEO Strategy in Next.js App Router',
+    excerpt: 'How to design database-driven dynamic routes in Next.js to deploy hundreds of high-quality localized service pages without duplicate content penalties.',
+    category: 'Marketing',
+    author: 'SEO Engineer',
+    date: 'March 05, 2026',
+    image: '/images/blogs/programmatic_seo_blog.png',
+    color: '#00C2FF',
+    slug: 'programmatic-seo-strategy-nextjs'
   }
 ];
 

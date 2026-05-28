@@ -28,6 +28,12 @@ export default function sitemap() {
     { url: `${baseUrl}/blogs/ui-ux-trends-web-design-2026/`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.85 },
     { url: `${baseUrl}/blogs/building-scalable-ecommerce-store/`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.85 },
     { url: `${baseUrl}/blogs/website-security-ssl-importance/`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.85 },
+    { url: `${baseUrl}/blogs/building-scalable-saas-platform-nextjs/`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.85 },
+    { url: `${baseUrl}/blogs/securing-spring-boot-rest-api-jwt/`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.85 },
+    { url: `${baseUrl}/blogs/build-autonomous-agents-langgraph/`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.85 },
+    { url: `${baseUrl}/blogs/tailwind-css-performance-tuning-nextjs/`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.85 },
+    { url: `${baseUrl}/blogs/spring-boot-postgresql-performance-tuning/`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.85 },
+    { url: `${baseUrl}/blogs/programmatic-seo-strategy-nextjs/`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.85 },
     
     // Policies
     { url: `${baseUrl}/privacy-policy/`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.5 },
