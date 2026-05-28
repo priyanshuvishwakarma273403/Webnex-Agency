@@ -12,15 +12,15 @@ import { FaJava, FaCogs, FaLightbulb, FaAws } from 'react-icons/fa';
 
 const softwareServices = [
   { icon: SiFigma, title: 'UI/UX Design', desc: 'Premium user interfaces and experiences that stand out in the market with stunning visuals.', color: '#F24E1E', bg: '#F24E1E12' },
-  { icon: SiReact, title: 'React Development', desc: 'Lightning-fast React & Next.js applications with pixel-perfect UX and best-in-class performance.', color: '#61DAFB', bg: '#61DAFB12' },
-  { icon: FaJava, title: 'Java Full Stack', desc: 'Enterprise-grade full-stack solutions with Spring Boot, microservices, and robust architecture.', color: '#F89820', bg: '#F8982012' },
-  { icon: SiSpringboot, title: 'Spring Boot APIs', desc: 'Scalable REST APIs built with Spring Boot, best practices, and production-ready security.', color: '#6DB33F', bg: '#6DB33F12' },
+  { icon: SiReact, title: 'React Development', desc: 'Lightning-fast React & Next.js applications with pixel-perfect UX and best-in-class performance.', color: '#61DAFB', bg: '#61DAFB12', link: '/services/nextjs-development' },
+  { icon: FaJava, title: 'Java Full Stack', desc: 'Enterprise-grade full-stack solutions with Spring Boot, microservices, and robust architecture.', color: '#F89820', bg: '#F8982012', link: '/services/full-stack-development' },
+  { icon: SiSpringboot, title: 'Spring Boot APIs', desc: 'Scalable REST APIs built with Spring Boot, best practices, and production-ready security.', color: '#6DB33F', bg: '#6DB33F12', link: '/services/spring-boot-development' },
   { icon: FaAws, title: 'DevOps & Cloud', desc: 'CI/CD pipelines, cloud infrastructure on AWS/GCP/Azure, and automated deployments at scale.', color: '#FF9900', bg: '#FF990012' },
   { icon: SiDocker, title: 'Docker & Kubernetes', desc: 'Container orchestration, microservices management, and scalable K8s clusters for modern apps.', color: '#2496ED', bg: '#2496ED12' },
-  { icon: SiOpenai, title: 'AI Chatbot Dev', desc: 'Intelligent AI-powered chatbots and virtual assistants that engage, convert, and support 24/7.', color: '#10A37F', bg: '#10A37F12' },
+  { icon: SiOpenai, title: 'AI Development', desc: 'Intelligent AI-powered chatbots, custom LLMs, and neural integrations that automate operations.', color: '#10A37F', bg: '#10A37F12', link: '/services/ai-development' },
   { icon: SiStripe, title: 'SaaS Development', desc: 'End-to-end SaaS platform development from MVP to enterprise scale with multi-tenancy support.', color: '#635BFF', bg: '#635BFF12' },
-  { icon: FaLightbulb, title: 'Startup Consulting', desc: 'Strategic guidance to help startups launch, grow, and scale rapidly with expert mentorship.', color: '#F1C40F', bg: '#F1C40F12' },
-  { icon: SiZapier, title: 'Automation Systems', desc: 'Business process automation to eliminate repetitive tasks, boost efficiency, and save costs.', color: '#FF4A00', bg: '#FF4A0012' },
+  { icon: FaLightbulb, title: 'SEO Optimized Builds', desc: 'Technical SEO coding, dynamic metadata systems, and Core Web Vitals speed tuning to rank #1.', color: '#F1C40F', bg: '#F1C40F12', link: '/services/seo-optimized-development' },
+  { icon: SiZapier, title: 'AI Agent Development', desc: 'Stateful cognitive agents built on LangGraph to automate customer service and backend workflows.', color: '#FF4A00', bg: '#FF4A0012', link: '/services/ai-agent-development' },
   { icon: Smartphone, title: 'Mobile App Development', desc: 'Cross-platform iOS and Android applications built with React Native for maximum performance.', color: '#9B59B6', bg: '#9B59B612' },
   { icon: ShoppingCart, title: 'E-Commerce Solutions', desc: 'High-converting online stores built on Shopify, WooCommerce, and custom Next.js frontends.', color: '#E74C3C', bg: '#E74C3C12' },
 ];
@@ -91,38 +91,34 @@ function ServiceCard({ service, index, onClick }) {
     }
   };
 
-  return (
-    <>
-      <style dangerouslySetInnerHTML={{ __html: `
-        .prem-card-${index}:hover {
-          box-shadow: 0 30px 60px rgba(0,0,0,0.06), 0 10px 25px ${service.color}25 !important;
-          border-color: ${service.color}35 !important;
-        }
-        .prem-card-${index}:hover .card-spotlight { opacity: 1 !important; }
-        .prem-card-${index}:hover .corner-bg { transform: scale(1.5) !important; opacity: 0.8 !important; }
-      ` }} />
-      <motion.div
-        ref={cardRef}
-        onMouseMove={onMouseMove}
-        onMouseLeave={onMouseLeave}
-        className={`prem-card-${index} service-card-resp`}
-        onClick={onClick}
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-40px' }}
-        transition={{ duration: 0.55, delay: index * 0.06, ease: [0.6,-0.05,0.01,0.99] }}
-        style={{
-          background: 'rgba(255,255,255,0.9)',
-          backdropFilter: 'blur(20px)',
-          border: '1px solid rgba(108,99,255,0.1)',
-          borderRadius: 24,
-          padding: '32px 28px',
-          cursor: 'pointer',
-          transition: 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, border-color 0.3s ease',
-          position: 'relative', overflow: 'hidden',
-          zIndex: 1,
-        }}
-      >
+  const CardBody = (
+    <motion.div
+      ref={cardRef}
+      onMouseMove={onMouseMove}
+      onMouseLeave={onMouseLeave}
+      className={`prem-card-${index} service-card-resp`}
+      onClick={service.link ? undefined : onClick}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.55, delay: index * 0.06, ease: [0.6,-0.05,0.01,0.99] }}
+      style={{
+        background: 'rgba(255,255,255,0.9)',
+        backdropFilter: 'blur(20px)',
+        border: '1px solid rgba(108,99,255,0.1)',
+        borderRadius: 24,
+        padding: '32px 28px',
+        cursor: 'pointer',
+        transition: 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, border-color 0.3s ease',
+        position: 'relative', overflow: 'hidden',
+        zIndex: 1,
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between'
+      }}
+    >
+      <div>
         {/* Spotlight */}
         <div 
           className="card-spotlight"
@@ -156,14 +152,34 @@ function ServiceCard({ service, index, onClick }) {
         <p className="card-desc" style={{ fontSize: 14, color: '#64748b', lineHeight: 1.7, marginBottom: 20 }}>
           {service.desc}
         </p>
+      </div>
 
-        <div className="explore-text" style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13.5, fontWeight: 700, color: service.color }}>
-          Explore service
-          <motion.span animate={{ x: [0, 4, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
-            <ArrowRight size={14} strokeWidth={2.5} />
-          </motion.span>
-        </div>
-      </motion.div>
+      <div className="explore-text" style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13.5, fontWeight: 700, color: service.color, marginTop: 'auto' }}>
+        {service.link ? 'Learn more' : 'Explore service'}
+        <motion.span animate={{ x: [0, 4, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
+          <ArrowRight size={14} strokeWidth={2.5} />
+        </motion.span>
+      </div>
+    </motion.div>
+  );
+
+  return (
+    <>
+      <style dangerouslySetInnerHTML={{ __html: `
+        .prem-card-${index}:hover {
+          box-shadow: 0 30px 60px rgba(0,0,0,0.06), 0 10px 25px ${service.color}25 !important;
+          border-color: ${service.color}35 !important;
+        }
+        .prem-card-${index}:hover .card-spotlight { opacity: 1 !important; }
+        .prem-card-${index}:hover .corner-bg { transform: scale(1.5) !important; opacity: 0.8 !important; }
+      ` }} />
+      {service.link ? (
+        <Link href={service.link} style={{ display: 'block', textDecoration: 'none', height: '100%' }}>
+          {CardBody}
+        </Link>
+      ) : (
+        CardBody
+      )}
     </>
   );
 }

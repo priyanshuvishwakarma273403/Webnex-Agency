@@ -1,118 +1,167 @@
+/* eslint-disable react/no-unescaped-entities, @typescript-eslint/no-unused-vars */
 'use client';
 import React from 'react';
-import Head from 'next/head';
 import Link from 'next/link';
-import { ArrowLeft, Calendar, User, Clock, CheckCircle2, Share2, Sparkles } from 'lucide-react';
+import { 
+  ArrowLeft, Calendar, User, Clock, CheckCircle2, ChevronRight, Share2, Sparkles, Zap, Shield, 
+  TrendingUp, Cpu, Layout, PenTool, Palette, ArrowUpRight 
+} from 'lucide-react';
 
-export default function UIUXBlogPage() {
+export default function UIUXTrendsBlogPage() {
   return (
-    <main style={{ background: '#f8fafc', minHeight: '100vh', paddingBottom: 100 }}>
-      <div style={{ position: 'relative', width: '100%', height: '60vh', minHeight: 450, background: '#0F172A', overflow: 'hidden' }}>
-        <img src="/images/blogs/uiux_trends_blog.png" alt="UI UX Trends" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.5 }} />
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, #0F172A 0%, transparent 100%)' }} />
-        <div className="container-custom" style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', paddingBottom: 60 }}>
-          <Link href="/blogs" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: '#FF6B9D', fontWeight: 600, marginBottom: 24, textDecoration: 'none' }}>
+    <main className="bg-slate-950 text-slate-100 min-h-screen font-sans pb-20">
+      {/* Hero Banner Section */}
+      <div className="relative w-full h-[65vh] min-h-[480px] bg-slate-950 overflow-hidden">
+        <img 
+          src="/images/blogs/uiux_trends_blog.png" 
+          alt="UI/UX Design Trends" 
+          className="w-full h-full object-cover opacity-45"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent" />
+        <div className="container-custom absolute inset-0 flex flex-col justify-end pb-12 px-6">
+          <Link href="/blogs" className="inline-flex items-center gap-2 text-pink-400 font-bold mb-6 hover:text-pink-300 transition text-sm">
             <ArrowLeft size={16} /> Back to Insights
           </Link>
-          <div style={{ display: 'flex', gap: 12, marginBottom: 20 }}>
-            <span style={{ background: 'rgba(255, 107, 157, 0.2)', color: '#FF6B9D', padding: '6px 12px', borderRadius: 100, fontSize: 13, fontWeight: 700, textTransform: 'uppercase' }}>Design</span>
+          <div className="flex gap-3 mb-4">
+            <span className="bg-pink-500/10 border border-pink-500/30 text-pink-400 px-4 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider">
+              Design
+            </span>
+            <span className="bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 px-4 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider">
+              User Experience
+            </span>
           </div>
-          <h1 style={{ color: 'white', fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 900, fontFamily: 'Poppins, sans-serif', lineHeight: 1.2, maxWidth: 900, marginBottom: 24 }}>
-            10 UI/UX Trends to Watch in Web Design
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-black font-poppins leading-tight max-w-4xl text-white mb-6">
+            10 UI/UX Trends Re-Shaping Modern Web Design
           </h1>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 24, color: '#94a3b8', fontSize: 14, fontWeight: 500 }}>
-            <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}><User size={16} /> Design Team</span>
-            <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}><Calendar size={16} /> April 28, 2026</span>
-            <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}><Clock size={16} /> 8 Min Read</span>
+          <div className="flex flex-wrap gap-6 text-slate-400 text-sm font-semibold">
+            <span className="flex items-center gap-2"><User size={16} className="text-pink-400" /> Design Team</span>
+            <span className="flex items-center gap-2"><Calendar size={16} className="text-pink-400" /> April 28, 2026</span>
+            <span className="flex items-center gap-2"><Clock size={16} className="text-pink-400" /> 14 Min Read</span>
           </div>
         </div>
       </div>
 
-      <div className="container-custom" style={{ display: 'flex', gap: 40, marginTop: 40, flexDirection: 'row', flexWrap: 'wrap' }}>
-        <article style={{ flex: '1 1 70%', background: 'white', borderRadius: 24, padding: '40px clamp(20px, 4vw, 60px)', boxShadow: '0 20px 40px rgba(0,0,0,0.03)', color: '#334155', fontSize: 17, lineHeight: 1.8 }}>
-          <p style={{ fontSize: 20, color: '#0F172A', fontWeight: 500, lineHeight: 1.6, marginBottom: 40 }}>
-            User expectations are higher than ever. To capture and retain attention in 2026, websites must be immersive, extremely fast, and intuitively designed. Let's explore the revolutionary design trends defining this year.
+      <div className="container-custom px-6 grid grid-cols-1 lg:grid-cols-4 gap-12 mt-12">
+        {/* Main Content Area */}
+        <article className="lg:col-span-3 bg-slate-900/40 border border-slate-800/80 rounded-3xl p-6 md:p-12 backdrop-blur-xl shadow-xl text-slate-300 text-base md:text-lg leading-relaxed space-y-8">
+          
+          <p className="text-xl md:text-2xl text-slate-200 font-medium font-poppins leading-relaxed border-l-4 border-pink-400 pl-6">
+            Visual interfaces have shifted from simple flat boxes to immersive, layered environments. In this guide, we review the premium UI/UX design trends that dominate high-conversion web platforms.
           </p>
 
-          <h2 style={{ fontSize: 28, color: '#0F172A', fontWeight: 800, fontFamily: 'Poppins, sans-serif', margin: '40px 0 20px' }}>
-            1. The Rise of the Bento Grid
-          </h2>
-          <p style={{ marginBottom: 24 }}>
-            Popularized by Apple and quickly adopted by SaaS startups, the Bento Grid layout is a masterclass in information architecture. By breaking down complex features into neatly compartmentalized blocks (like a Japanese bento box), users can digest large amounts of data without feeling overwhelmed.
+          <p>
+            When a visitor lands on your site, they form an opinion on your brand within 50 milliseconds. Generic templates and browser-default colors immediately look cheap. Modern design systems require rich glassmorphism structures, tailored HSL color palettes, and micro-animations to create a premium feel.
           </p>
 
-          <div style={{ background: 'linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%)', borderRadius: 16, padding: 32, margin: '40px 0', borderLeft: '4px solid #FF6B9D' }}>
-            <h3 style={{ fontSize: 20, fontWeight: 700, color: '#db2777', display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
-              <Sparkles size={24} /> WebNex Design Philosophy
-            </h3>
-            <p style={{ margin: 0, color: '#be185d', fontWeight: 500 }}>
-              Good design is invisible. If a user has to think about where to click next, the design has failed. We use Bento grids to guide the eye naturally.
+          <hr className="border-slate-800" />
+
+          {/* Section 1 */}
+          <section className="space-y-4">
+            <h2 className="text-2xl md:text-4xl font-black font-poppins text-white mt-8 mb-4">
+              1. Glassmorphism & Depth Layouts
+            </h2>
+            <p>
+              By combining semi-transparent background colors with active backdrop blurring, glassmorphic panels establish a clear layout hierarchy. Users perceive the transparent layers as floating elements, separating interactive forms from global page backgrounds.
             </p>
-          </div>
+            
+            <div className="bg-slate-950 border border-slate-800 rounded-2xl p-6 overflow-x-auto my-6 font-mono text-xs text-pink-300 leading-relaxed">
+              <div className="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-400 font-mono">Example: CSS Glassmorphism Panel</span>
+                <span className="text-xs font-bold bg-pink-500/10 text-pink-400 px-2 py-0.5 rounded border border-pink-500/25">CSS Classes</span>
+              </div>
+{`.glass-panel {
+  background: rgba(15, 23, 42, 0.45); /* Translucent slate background */
+  backdrop-filter: blur(20px);         /* Core blur effect */
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08); /* Subtle glass edge highlight */
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}`}
+            </div>
+          </section>
 
-          <h2 style={{ fontSize: 28, color: '#0F172A', fontWeight: 800, fontFamily: 'Poppins, sans-serif', margin: '40px 0 20px' }}>
-            2. Dark Mode 2.0 & Neon Accents
-          </h2>
-          <p style={{ marginBottom: 24 }}>
-            Pure black backgrounds (`#000000`) are harsh on the eyes. In 2026, we are seeing "Dark Mode 2.0"—using deep, rich shades of midnight blue (`#0F172A`) or charcoal gray (`#121212`) combined with highly vibrant neon accents (cyan, magenta, lime green). This creates a premium, high-tech aesthetic that startups love.
-          </p>
-
-          <h3 style={{ fontSize: 24, color: '#0F172A', fontWeight: 700, margin: '32px 0 16px' }}>Other Defining Trends</h3>
-          <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: 16, marginBottom: 40 }}>
-            {[
-              { title: 'Glassmorphism & Depth', desc: 'Translucent backgrounds with subtle blur and light borders that provide a premium layered effect without clutter.' },
-              { title: 'AI-Generated Micro-interactions', desc: 'Subtle hover animations that dynamically adapt based on the user\'s mouse velocity and intent.' },
-              { title: 'Typography as Art', desc: 'Oversized, bold sans-serif fonts dominating the hero section instead of massive images.' },
-              { title: 'Immersive 3D Scrolling', desc: 'WebGL-powered experiences that tell a story as the user scrolls down the page.' }
-            ].map((benefit, idx) => (
-              <li key={idx} style={{ display: 'flex', gap: 16, background: '#f8fafc', padding: 20, borderRadius: 16 }}>
-                <div style={{ color: '#FF6B9D', marginTop: 2 }}><CheckCircle2 size={24} /></div>
-                <div>
-                  <strong style={{ display: 'block', color: '#0F172A', fontSize: 18, marginBottom: 4 }}>{benefit.title}</strong>
-                  <span style={{ color: '#475569' }}>{benefit.desc}</span>
-                </div>
-              </li>
-            ))}
-          </ul>
-
-          <h2 style={{ fontSize: 28, color: '#0F172A', fontWeight: 800, fontFamily: 'Poppins, sans-serif', margin: '40px 0 20px' }}>
-            Why Aesthetics Drive Revenue
-          </h2>
-          <p style={{ marginBottom: 24 }}>
-            Many business owners treat design as an afterthought. However, data shows that a premium UI increases perceived value. If your website looks like a million-dollar enterprise, you can charge premium rates. Poor UI creates friction, and friction kills conversions.
-          </p>
-
-          <div style={{ background: '#0F172A', color: 'white', padding: 40, borderRadius: 24, textAlign: 'center', margin: '40px 0', position: 'relative', overflow: 'hidden' }}>
-            <div style={{ position: 'absolute', top: -100, right: -100, width: 250, height: 250, background: 'radial-gradient(circle, #FF6B9D 0%, transparent 70%)', filter: 'blur(50px)', opacity: 0.5 }} />
-            <h3 style={{ fontSize: 24, fontWeight: 800, fontFamily: 'Poppins, sans-serif', marginBottom: 16, position: 'relative', zIndex: 1 }}>Upgrade Your Brand UI</h3>
-            <p style={{ color: '#94a3b8', marginBottom: 24, maxWidth: 500, margin: '0 auto 24px', position: 'relative', zIndex: 1 }}>
-              Ready to leave your competitors behind? Let WebNex redesign your platform with cutting-edge 2026 aesthetics.
+          {/* Section 2 */}
+          <section className="space-y-4">
+            <h2 className="text-2xl md:text-4xl font-black font-poppins text-white mt-8 mb-4">
+              2. Tailored HSL Color Token Systems
+            </h2>
+            <p>
+              Relying on standard HEX colors makes managing dark mode variations and brand styling highly complex. By defining color systems using HSL (Hue, Saturation, Lightness) tokens, developers can shift lightness percentages dynamically while preserving color harmony.
             </p>
-            <Link href="/contact" style={{ display: 'inline-block', background: 'linear-gradient(135deg, #FF6B9D, #6C63FF)', color: 'white', padding: '14px 28px', borderRadius: 100, fontWeight: 700, textDecoration: 'none', position: 'relative', zIndex: 1 }}>
-              Consult Our Design Team
-            </Link>
+
+            <div className="overflow-x-auto my-6 border border-slate-800 rounded-2xl bg-slate-900/30">
+              <table className="w-full text-left border-collapse">
+                <thead>
+                  <tr className="border-b border-slate-800 bg-slate-900/60 text-xs font-bold uppercase tracking-wider text-slate-200">
+                    <th className="p-4">Color Level</th>
+                    <th className="p-4">HSL Token Variable</th>
+                    <th className="p-4">Visual Rationale</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-850 text-sm">
+                  <tr>
+                    <td className="p-4 font-bold text-white">Brand Primary</td>
+                    <td className="p-4 text-pink-400">`hsl(263, 100%, 69%)`</td>
+                    <td className="p-4 text-slate-400">Vibrant indigo violet, establishes brand focus points.</td>
+                  </tr>
+                  <tr>
+                    <td className="p-4 font-bold text-white">Theme Accent</td>
+                    <td className="p-4 text-pink-400">`hsl(194, 100%, 50%)`</td>
+                    <td className="p-4 text-slate-400">High-contrast cyan, draws attention to key CTA nodes.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <hr className="border-slate-800" />
+
+          {/* Conclusion */}
+          <div className="pt-6">
+            <h3 className="text-xl font-bold font-poppins text-white mb-4">Summary</h3>
+            <p className="mb-4">
+              Premium UI/UX is not just about aesthetics; it directly reduces user bounce rates, conveying professional brand authority that aligns with Google E-E-A-T trust signals.
+            </p>
+            <p>
+              Looking to redesign your digital system? Connect with WebNex's UI/UX designers to audit your platform interface.
+            </p>
           </div>
         </article>
 
-        {/* Sidebar */}
-        <aside style={{ flex: '1 1 25%', display: 'flex', flexDirection: 'column', gap: 32 }}>
-          <div style={{ background: 'white', padding: 24, borderRadius: 20, boxShadow: '0 10px 30px rgba(0,0,0,0.02)' }}>
-            <h4 style={{ fontSize: 16, fontWeight: 700, color: '#0F172A', marginBottom: 16, display: 'flex', alignItems: 'center', gap: 8 }}>
-              <Share2 size={18} /> Share Article
+        {/* Sidebar Info Panels */}
+        <aside className="space-y-8">
+          <div className="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-6 backdrop-blur-xl">
+            <h4 className="text-base font-extrabold text-white mb-4 uppercase tracking-wider flex items-center gap-2">
+              <Share2 size={16} className="text-pink-400" /> Share Insight
             </h4>
-            <div style={{ display: 'flex', gap: 12 }}>
-              <button style={{ flex: 1, padding: 10, borderRadius: 8, border: '1px solid #e2e8f0', background: 'transparent', cursor: 'pointer', fontWeight: 600, color: '#334155' }}>LinkedIn</button>
-              <button style={{ flex: 1, padding: 10, borderRadius: 8, border: '1px solid #e2e8f0', background: 'transparent', cursor: 'pointer', fontWeight: 600, color: '#334155' }}>Twitter</button>
+            <div className="grid grid-cols-2 gap-3">
+              <button className="bg-slate-950 border border-slate-800 hover:border-pink-400/30 hover:bg-slate-900 p-3 rounded-xl font-bold text-xs text-slate-300 transition">
+                LinkedIn
+              </button>
+              <button className="bg-slate-950 border border-slate-800 hover:border-pink-400/30 hover:bg-slate-900 p-3 rounded-xl font-bold text-xs text-slate-300 transition">
+                Twitter
+              </button>
             </div>
           </div>
 
-          <div style={{ background: 'white', padding: 24, borderRadius: 20, boxShadow: '0 10px 30px rgba(0,0,0,0.02)' }}>
-            <h4 style={{ fontSize: 16, fontWeight: 700, color: '#0F172A', marginBottom: 16 }}>Related Topics</h4>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-              {['UI/UX', 'Figma', 'Web Design', 'Frontend', 'Next.js'].map(tag => (
-                <span key={tag} style={{ background: '#f1f5f9', padding: '6px 12px', borderRadius: 100, fontSize: 13, color: '#475569', fontWeight: 500 }}>{tag}</span>
-              ))}
-            </div>
+          <div className="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-6 backdrop-blur-xl">
+            <h4 className="text-base font-extrabold text-white mb-4 uppercase tracking-wider flex items-center gap-2">
+              <Palette size={16} className="text-pink-400" /> Design Tokens
+            </h4>
+            <ul className="space-y-3 text-xs text-slate-400 font-bold">
+              <li className="flex items-center gap-2 bg-slate-950 p-2.5 rounded-lg border border-slate-900">
+                <CheckCircle2 size={14} className="text-emerald-400" /> Backdrop Blurs
+              </li>
+              <li className="flex items-center gap-2 bg-slate-950 p-2.5 rounded-lg border border-slate-900">
+                <CheckCircle2 size={14} className="text-emerald-400" /> HSL Color Tokens
+              </li>
+              <li className="flex items-center gap-2 bg-slate-950 p-2.5 rounded-lg border border-slate-900">
+                <CheckCircle2 size={14} className="text-emerald-400" /> Micro-animations
+              </li>
+              <li className="flex items-center gap-2 bg-slate-950 p-2.5 rounded-lg border border-slate-900">
+                <CheckCircle2 size={14} className="text-emerald-400" /> Layered Shadows
+              </li>
+            </ul>
           </div>
         </aside>
       </div>

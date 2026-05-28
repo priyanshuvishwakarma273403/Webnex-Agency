@@ -1,18 +1,17 @@
 'use client';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { Code2, Cloud, Bot, Rocket, ArrowRight, Zap } from 'lucide-react';
 
 const preview = [
-  { icon: Code2, title: 'React & Next.js', desc: 'Ultra-fast web apps', color: '#61DAFB' },
-  { icon: Cloud, title: 'DevOps & Cloud', desc: 'Scalable infrastructure', color: '#00C2FF' },
-  { icon: Bot, title: 'AI Development', desc: 'Intelligent automation', color: '#6C63FF' },
-  { icon: Rocket, title: 'SaaS Platforms', desc: 'End-to-end products', color: '#E74C3C' },
+  { icon: Code2, title: 'React & Next.js', desc: 'Ultra-fast web apps', color: '#61DAFB', link: '/services/nextjs-development' },
+  { icon: Cloud, title: 'DevOps & Cloud', desc: 'Scalable infrastructure', color: '#00C2FF', link: '/services' },
+  { icon: Bot, title: 'AI Development', desc: 'Intelligent automation', color: '#6C63FF', link: '/services/ai-development' },
+  { icon: Rocket, title: 'SaaS Platforms', desc: 'End-to-end products', color: '#E74C3C', link: '/services/full-stack-development' },
 ];
 
 export default function ServicesPreview() {
-  const router = useRouter();
+
 
   return (
     <section className="section-padding" style={{ background: '#fff' }}>
@@ -41,11 +40,10 @@ export default function ServicesPreview() {
 
         <div className="sp-grid">
           {preview.map((item, i) => (
-            <motion.div
-              onClick={() => router.push('/services')}
-              key={item.title}
-              className="sp-card group"
-              initial={{ opacity: 0, y: 50, scale: 0.95 }}
+            <Link href={item.link} key={item.title} style={{ display: 'block', textDecoration: 'none' }}>
+              <motion.div
+                className="sp-card group"
+                initial={{ opacity: 0, y: 50, scale: 0.95 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ delay: i * 0.15, duration: 0.6, type: 'spring', bounce: 0.4 }}
@@ -101,7 +99,8 @@ export default function ServicesPreview() {
                 Explore Solution <ArrowRight size={16} />
               </div>
             </motion.div>
-          ))}
+          </Link>
+        ))}
         </div>
 
         <div style={{ textAlign: 'center' }}>

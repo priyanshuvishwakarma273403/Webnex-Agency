@@ -2,12 +2,12 @@ import PageHeader from '@/components/PageHeader';
 import ServicesSection from '@/sections/ServicesSection';
 
 export const metadata = {
-  title: '12 Premium Digital Services',
-  description: 'Explore our full range of AI-powered digital services including React development, DevOps, SaaS, AI chatbots, branding and more.',
+  title: 'Premium Web Development, AI Solutions & Branding Services | WebNex',
+  description: 'Explore our full suite of digital engineering services. From custom Next.js frontends and Spring Boot microservices to cognitive AI Agents, SaaS setups, and brand identity design.',
   alternates: { canonical: '/services' },
   openGraph: {
-    title: 'WebNex Services | AI & Cloud Development',
-    description: 'Explore our full range of AI-powered digital services including React development, DevOps, SaaS, and AI chatbots.',
+    title: 'Enterprise Digital Services & AI Engineering | WebNex',
+    description: 'Explore our full suite of digital engineering services. From custom Next.js frontends and Spring Boot microservices to cognitive AI Agents and brand design.',
     url: '/services',
   }
 };

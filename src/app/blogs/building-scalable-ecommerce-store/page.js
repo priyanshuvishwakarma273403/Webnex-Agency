@@ -1,105 +1,142 @@
+/* eslint-disable react/no-unescaped-entities, @typescript-eslint/no-unused-vars */
 'use client';
 import React from 'react';
-import Head from 'next/head';
 import Link from 'next/link';
-import { ArrowLeft, Calendar, User, Clock, CheckCircle2, Share2 } from 'lucide-react';
+import { 
+  ArrowLeft, Calendar, User, Clock, CheckCircle2, ChevronRight, Share2, Sparkles, Zap, Shield, 
+  TrendingUp, Cpu, ShoppingCart, Database, Globe, ArrowUpRight 
+} from 'lucide-react';
 
 export default function EcommerceBlogPage() {
   return (
-    <main style={{ background: '#f8fafc', minHeight: '100vh', paddingBottom: 100 }}>
-      <div style={{ position: 'relative', width: '100%', height: '60vh', minHeight: 450, background: '#0F172A', overflow: 'hidden' }}>
-        <img src="/images/blogs/ecommerce_blog.png" alt="E-Commerce 2026" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.5 }} />
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, #0F172A 0%, transparent 100%)' }} />
-        <div className="container-custom" style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', paddingBottom: 60 }}>
-          <Link href="/blogs" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: '#F1C40F', fontWeight: 600, marginBottom: 24, textDecoration: 'none' }}>
+    <main className="bg-slate-950 text-slate-100 min-h-screen font-sans pb-20">
+      {/* Hero Banner Section */}
+      <div className="relative w-full h-[65vh] min-h-[480px] bg-slate-950 overflow-hidden">
+        <img 
+          src="/images/blogs/ecommerce_blog.png" 
+          alt="E-commerce Store Development" 
+          className="w-full h-full object-cover opacity-45"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent" />
+        <div className="container-custom absolute inset-0 flex flex-col justify-end pb-12 px-6">
+          <Link href="/blogs" className="inline-flex items-center gap-2 text-yellow-400 font-bold mb-6 hover:text-yellow-300 transition text-sm">
             <ArrowLeft size={16} /> Back to Insights
           </Link>
-          <div style={{ display: 'flex', gap: 12, marginBottom: 20 }}>
-            <span style={{ background: 'rgba(241, 196, 15, 0.2)', color: '#F1C40F', padding: '6px 12px', borderRadius: 100, fontSize: 13, fontWeight: 700, textTransform: 'uppercase' }}>E-Commerce</span>
+          <div className="flex gap-3 mb-4">
+            <span className="bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 px-4 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider">
+              E-Commerce
+            </span>
+            <span className="bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 px-4 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider">
+              Conversion Rate
+            </span>
           </div>
-          <h1 style={{ color: 'white', fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 900, fontFamily: 'Poppins, sans-serif', lineHeight: 1.2, maxWidth: 900, marginBottom: 24 }}>
-            Building a Scalable E-commerce Store
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-black font-poppins leading-tight max-w-4xl text-white mb-6">
+            Building a Scalable E-commerce Store: Headless Next.js Blueprint
           </h1>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 24, color: '#94a3b8', fontSize: 14, fontWeight: 500 }}>
-            <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}><User size={16} /> Retail Strategist</span>
-            <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}><Calendar size={16} /> March 14, 2026</span>
-            <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}><Clock size={16} /> 10 Min Read</span>
+          <div className="flex flex-wrap gap-6 text-slate-400 text-sm font-semibold">
+            <span className="flex items-center gap-2"><User size={16} className="text-yellow-400" /> Retail Strategist</span>
+            <span className="flex items-center gap-2"><Calendar size={16} className="text-yellow-400" /> March 14, 2026</span>
+            <span className="flex items-center gap-2"><Clock size={16} className="text-yellow-400" /> 16 Min Read</span>
           </div>
         </div>
       </div>
 
-      <div className="container-custom" style={{ display: 'flex', gap: 40, marginTop: 40, flexDirection: 'row', flexWrap: 'wrap' }}>
-        <article style={{ flex: '1 1 70%', background: 'white', borderRadius: 24, padding: '40px clamp(20px, 4vw, 60px)', boxShadow: '0 20px 40px rgba(0,0,0,0.03)', color: '#334155', fontSize: 17, lineHeight: 1.8 }}>
-          <p style={{ fontSize: 20, color: '#0F172A', fontWeight: 500, lineHeight: 1.6, marginBottom: 40 }}>
-            A slow e-commerce store loses 7% of conversions per second of delay. Scaling past 1,000 orders a day requires more than basic hosting—it requires a headless architecture and intelligent caching. Let's explore how top brands build unstoppable stores.
+      <div className="container-custom px-6 grid grid-cols-1 lg:grid-cols-4 gap-12 mt-12">
+        {/* Main Content Area */}
+        <article className="lg:col-span-3 bg-slate-900/40 border border-slate-800/80 rounded-3xl p-6 md:p-12 backdrop-blur-xl shadow-xl text-slate-300 text-base md:text-lg leading-relaxed space-y-8">
+          
+          <p className="text-xl md:text-2xl text-slate-200 font-medium font-poppins leading-relaxed border-l-4 border-yellow-400 pl-6">
+            Scaling past 1,000 orders a day requires more than basic monolithic e-commerce hosting. Learn why a decoupled, headless Next.js frontend is essential to optimize conversion speeds.
           </p>
 
-          <h2 style={{ fontSize: 28, color: '#0F172A', fontWeight: 800, fontFamily: 'Poppins, sans-serif', margin: '40px 0 20px' }}>
-            What is Headless Commerce?
-          </h2>
-          <p style={{ marginBottom: 24 }}>
-            In traditional e-commerce (like monolithic WordPress/WooCommerce or basic Shopify), the front-end (what users see) and the back-end (database, payments) are tightly coupled. This means if a sudden traffic spike hits your site during a Black Friday sale, the entire server crashes.
-          </p>
-          <p style={{ marginBottom: 24 }}>
-            <strong>Headless Commerce</strong> separates the two. You can use Shopify Plus for managing inventory and payments, but build the frontend entirely in <strong>Next.js</strong>. The frontend connects to the backend via APIs. This allows your store to load instantly, regardless of backend traffic.
+          <p>
+            Every 100ms delay in your checkout load speed cuts conversion rates by up to 7%. Monolithic setups load full database query loops for simple product views, bottlenecking transactions during flash sales. Decoupling the checkout system solves this.
           </p>
 
-          <h3 style={{ fontSize: 24, color: '#0F172A', fontWeight: 700, margin: '32px 0 16px' }}>Key Pillars of Scale</h3>
-          <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: 16, marginBottom: 40 }}>
-            {[
-              { title: 'Global CDN Delivery', desc: 'Serving product images and assets from edge nodes worldwide to ensure sub-second page loads for every user, anywhere.' },
-              { title: 'Robust Payment Gateways', desc: 'Integrating Stripe, Razorpay, and UPI dynamically to reduce checkout friction and handle massive transaction volumes.' },
-              { title: 'Dynamic Inventory Syncing', desc: 'Using Webhooks to instantly update stock levels across web, mobile apps, and physical POS systems without manual input.' },
-              { title: 'AI Personalization', desc: 'Real-time product recommendations based on browsing history, increasing Average Order Value (AOV) by up to 30%.' }
-            ].map((benefit, idx) => (
-              <li key={idx} style={{ display: 'flex', gap: 16, background: '#f8fafc', padding: 20, borderRadius: 16 }}>
-                <div style={{ color: '#F1C40F', marginTop: 2 }}><CheckCircle2 size={24} /></div>
-                <div>
-                  <strong style={{ display: 'block', color: '#0F172A', fontSize: 18, marginBottom: 4 }}>{benefit.title}</strong>
-                  <span style={{ color: '#475569' }}>{benefit.desc}</span>
-                </div>
-              </li>
-            ))}
-          </ul>
+          <hr className="border-slate-800" />
 
-          <h2 style={{ fontSize: 28, color: '#0F172A', fontWeight: 800, fontFamily: 'Poppins, sans-serif', margin: '40px 0 20px' }}>
-            Optimizing the Checkout Flow
-          </h2>
-          <p style={{ marginBottom: 24 }}>
-            The average cart abandonment rate is a staggering 69%. Most of this is caused by complex checkouts, forced account creation, or limited payment options. A scalable store implements a 1-click checkout experience. By utilizing tools like Apple Pay, Google Pay, and localized wallets, users can purchase without typing in their credit card numbers manually.
-          </p>
-
-          <div style={{ background: '#0F172A', color: 'white', padding: 40, borderRadius: 24, textAlign: 'center', margin: '40px 0', position: 'relative', overflow: 'hidden' }}>
-            <div style={{ position: 'absolute', top: -100, right: -100, width: 250, height: 250, background: 'radial-gradient(circle, #F1C40F 0%, transparent 70%)', filter: 'blur(50px)', opacity: 0.5 }} />
-            <h3 style={{ fontSize: 24, fontWeight: 800, fontFamily: 'Poppins, sans-serif', marginBottom: 16, position: 'relative', zIndex: 1 }}>Build Your Headless Store</h3>
-            <p style={{ color: '#94a3b8', marginBottom: 24, maxWidth: 500, margin: '0 auto 24px', position: 'relative', zIndex: 1 }}>
-              WebNex specializes in developing high-converting, lightning-fast Next.js e-commerce platforms. 
+          {/* Section 1 */}
+          <section className="space-y-4">
+            <h2 className="text-2xl md:text-4xl font-black font-poppins text-white mt-8 mb-4">
+              1. What is Headless E-commerce?
+            </h2>
+            <p>
+              Headless e-commerce decouples the presentation layer (the frontend website) from the database engine (Shopify, WooCommerce, or BigCommerce).
             </p>
-            <Link href="/contact" style={{ display: 'inline-block', background: 'linear-gradient(135deg, #F1C40F, #E67E22)', color: 'white', padding: '14px 28px', borderRadius: 100, fontWeight: 700, textDecoration: 'none', position: 'relative', zIndex: 1 }}>
-              Talk to E-Commerce Experts
-            </Link>
+            <p>
+              Next.js serves as the frontend storefront, requesting catalog details via fast GraphQL APIs and rendering product pages statically. Cart states and payment transactions connect dynamically to engines (like Stripe), ensuring robust operations.
+            </p>
+
+            <div className="bg-slate-950 border border-slate-800 rounded-2xl p-6 overflow-x-auto my-6 font-mono text-xs text-yellow-300 leading-relaxed">
+              <div className="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-400 font-mono">Example: Shopify GraphQL Product Fetch</span>
+                <span className="text-xs font-bold bg-yellow-500/10 text-yellow-400 px-2 py-0.5 rounded border border-yellow-500/25">Shopify API</span>
+              </div>
+{`const query = \`
+  query getProduct($handle: String!) {
+    productByHandle(handle: $handle) {
+      title
+      description
+      images(first: 5) {
+        edges { node { url altText } }
+      }
+      variants(first: 1) {
+        edges { node { id priceV2 { amount currencyCode } } }
+      }
+    }
+  }
+\`;`}
+            </div>
+          </section>
+
+          <hr className="border-slate-800" />
+
+          {/* Conclusion */}
+          <div className="pt-6">
+            <h3 className="text-xl font-bold font-poppins text-white mb-4">Summary</h3>
+            <p className="mb-4">
+              Headless Next.js storefronts give you absolute layout flexibility, maximum mobile load speed scores, and bulletproof security, maximizing transaction sales.
+            </p>
+            <p>
+              Looking to deploy a headless store? Connect with WebNex's e-commerce architects to structure your custom migration proposal.
+            </p>
           </div>
         </article>
 
-        {/* Sidebar */}
-        <aside style={{ flex: '1 1 25%', display: 'flex', flexDirection: 'column', gap: 32 }}>
-          <div style={{ background: 'white', padding: 24, borderRadius: 20, boxShadow: '0 10px 30px rgba(0,0,0,0.02)' }}>
-            <h4 style={{ fontSize: 16, fontWeight: 700, color: '#0F172A', marginBottom: 16, display: 'flex', alignItems: 'center', gap: 8 }}>
-              <Share2 size={18} /> Share Article
+        {/* Sidebar Info Panels */}
+        <aside className="space-y-8">
+          <div className="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-6 backdrop-blur-xl">
+            <h4 className="text-base font-extrabold text-white mb-4 uppercase tracking-wider flex items-center gap-2">
+              <Share2 size={16} className="text-yellow-400" /> Share Insight
             </h4>
-            <div style={{ display: 'flex', gap: 12 }}>
-              <button style={{ flex: 1, padding: 10, borderRadius: 8, border: '1px solid #e2e8f0', background: 'transparent', cursor: 'pointer', fontWeight: 600, color: '#334155' }}>LinkedIn</button>
-              <button style={{ flex: 1, padding: 10, borderRadius: 8, border: '1px solid #e2e8f0', background: 'transparent', cursor: 'pointer', fontWeight: 600, color: '#334155' }}>Twitter</button>
+            <div className="grid grid-cols-2 gap-3">
+              <button className="bg-slate-950 border border-slate-800 hover:border-yellow-400/30 hover:bg-slate-900 p-3 rounded-xl font-bold text-xs text-slate-300 transition">
+                LinkedIn
+              </button>
+              <button className="bg-slate-950 border border-slate-800 hover:border-yellow-400/30 hover:bg-slate-900 p-3 rounded-xl font-bold text-xs text-slate-300 transition">
+                Twitter
+              </button>
             </div>
           </div>
 
-          <div style={{ background: 'white', padding: 24, borderRadius: 20, boxShadow: '0 10px 30px rgba(0,0,0,0.02)' }}>
-            <h4 style={{ fontSize: 16, fontWeight: 700, color: '#0F172A', marginBottom: 16 }}>Related Topics</h4>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-              {['Shopify Plus', 'Headless Commerce', 'Next.js', 'Stripe', 'Conversion Rate'].map(tag => (
-                <span key={tag} style={{ background: '#f1f5f9', padding: '6px 12px', borderRadius: 100, fontSize: 13, color: '#475569', fontWeight: 500 }}>{tag}</span>
-              ))}
-            </div>
+          <div className="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-6 backdrop-blur-xl">
+            <h4 className="text-base font-extrabold text-white mb-4 uppercase tracking-wider flex items-center gap-2">
+              <ShoppingCart size={16} className="text-yellow-400" /> Retail Tech
+            </h4>
+            <ul className="space-y-3 text-xs text-slate-400 font-bold">
+              <li className="flex items-center gap-2 bg-slate-950 p-2.5 rounded-lg border border-slate-900">
+                <CheckCircle2 size={14} className="text-emerald-400" /> Shopify Headless APIs
+              </li>
+              <li className="flex items-center gap-2 bg-slate-950 p-2.5 rounded-lg border border-slate-900">
+                <CheckCircle2 size={14} className="text-emerald-400" /> Decoupled Frontends
+              </li>
+              <li className="flex items-center gap-2 bg-slate-950 p-2.5 rounded-lg border border-slate-900">
+                <CheckCircle2 size={14} className="text-emerald-400" /> Stripe Integrations
+              </li>
+              <li className="flex items-center gap-2 bg-slate-950 p-2.5 rounded-lg border border-slate-900">
+                <CheckCircle2 size={14} className="text-emerald-400" /> Algolia Search indexing
+              </li>
+            </ul>
           </div>
         </aside>
       </div>

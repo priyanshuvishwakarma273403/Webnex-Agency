@@ -1,5 +1,5 @@
 export default function robots() {
-  const baseUrl = 'https://www.webnex.co.in';
+  const baseUrl = 'https://webnex.co.in';
 
   return {
     rules: {
