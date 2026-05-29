@@ -1,6 +1,13 @@
 /* eslint-disable react/no-unescaped-entities, @typescript-eslint/no-unused-vars */
-'use client';
 import React from 'react';
+import { generateMetadata } from '@/lib/seo';
+
+export const metadata = generateMetadata({
+  title: 'Spring Boot & PostgreSQL Query Optimization: Tuning JPA & Hibernate',
+  description: 'Eliminate N+1 queries, configure connection pools, set database indexes, and cache results using Redis to maintain sub-50ms endpoint executions.',
+  path: '/blogs/spring-boot-postgresql-performance-tuning',
+  ogImage: '/images/blogs/db_tuning_blog.png'
+});
 import Link from 'next/link';
 import { 
   ArrowLeft, Calendar, User, Clock, CheckCircle2, ChevronRight, Share2, Sparkles, Zap, Shield, 

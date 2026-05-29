@@ -1,6 +1,13 @@
 /* eslint-disable react/no-unescaped-entities, @typescript-eslint/no-unused-vars */
-'use client';
 import React from 'react';
+import { generateMetadata } from '@/lib/seo';
+
+export const metadata = generateMetadata({
+  title: 'Implementing a Programmatic SEO Strategy in Next.js App Router',
+  description: 'How to design database-driven dynamic routes in Next.js to deploy hundreds of high-quality localized service pages without duplicate content penalties.',
+  path: '/blogs/programmatic-seo-strategy-nextjs',
+  ogImage: '/images/blogs/programmatic_seo_blog.png'
+});
 import Link from 'next/link';
 import { 
   ArrowLeft, Calendar, User, Clock, CheckCircle2, ChevronRight, Share2, Sparkles, Zap, Shield, 
