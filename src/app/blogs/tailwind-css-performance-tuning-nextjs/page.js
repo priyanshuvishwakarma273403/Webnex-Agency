@@ -64,7 +64,7 @@ export default function TailwindPerfBlogPage() {
               Tailwind's Just-In-Time (JIT) compiler reads files matching specified glob patterns to generate utility styles dynamically. While this prevents shipping unused styles, it introduces risks when dynamic class construction is utilized.
             </p>
             <p>
-              In **Next.js Development**, constructing classes using string interpolation (e.g., <code>className={`bg-${color}-500`}</code>) prevents Tailwind from identifying the complete class name statically. As a result, developers are forced to add safelisted classes, which leads to large CSS bundles that cannot be purged automatically.
+              In **Next.js Development**, constructing classes using string interpolation (e.g., <code>className=&#123;&#96;bg-$&#123;color&#125;-500&#96;&#125;</code>) prevents Tailwind from identifying the complete class name statically. As a result, developers are forced to add safelisted classes, which leads to large CSS bundles that cannot be purged automatically.
             </p>
 
             <div className="bg-slate-950 border border-slate-800 rounded-2xl p-6 overflow-x-auto my-6 font-mono text-xs text-sky-300 leading-relaxed">
