@@ -1,10 +1,13 @@
 import PageHeader from '@/components/PageHeader';
 import PricingSection from '@/sections/PricingSection';
 
-export const metadata = {
-  title: 'Pricing — WebNex',
+import { generateMetadata } from '@/lib/seo';
+
+export const metadata = generateMetadata({
+  title: 'Pricing',
   description: 'Transparent, flexible pricing for every stage of your business. No hidden fees, no surprises.',
-};
+  path: '/pricing'
+});
 
 export default function PricingPage() {
   return (

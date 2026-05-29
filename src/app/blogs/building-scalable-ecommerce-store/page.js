@@ -1,6 +1,13 @@
 /* eslint-disable react/no-unescaped-entities, @typescript-eslint/no-unused-vars */
-'use client';
 import React from 'react';
+import { generateMetadata } from '@/lib/seo';
+
+export const metadata = generateMetadata({
+  title: 'Building a Scalable E-commerce Store: Headless Next.js Blueprint',
+  description: 'Scaling past 1,000 orders a day requires more than basic hosting—it requires a robust headless architecture.',
+  path: '/blogs/building-scalable-ecommerce-store',
+  ogImage: '/images/blogs/ecommerce_blog.png'
+});
 import Link from 'next/link';
 import { 
   ArrowLeft, Calendar, User, Clock, CheckCircle2, ChevronRight, Share2, Sparkles, Zap, Shield, 

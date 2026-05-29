@@ -1,16 +1,13 @@
 import PageHeader from '@/components/PageHeader';
 import ServicesSection from '@/sections/ServicesSection';
 
-export const metadata = {
-  title: 'Premium Web Development, AI Solutions & Branding Services | WebNex',
+import { generateMetadata } from '@/lib/seo';
+
+export const metadata = generateMetadata({
+  title: 'Premium Web Development, AI Solutions & Branding Services',
   description: 'Explore our full suite of digital engineering services. From custom Next.js frontends and Spring Boot microservices to cognitive AI Agents, SaaS setups, and brand identity design.',
-  alternates: { canonical: '/services' },
-  openGraph: {
-    title: 'Enterprise Digital Services & AI Engineering | WebNex',
-    description: 'Explore our full suite of digital engineering services. From custom Next.js frontends and Spring Boot microservices to cognitive AI Agents and brand design.',
-    url: '/services',
-  }
-};
+  path: '/services'
+});
 
 export default function ServicesPage() {
   return (

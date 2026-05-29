@@ -4,10 +4,13 @@ import WhyChooseUs from '@/sections/WhyChooseUs';
 import ProcessTimeline from '@/sections/ProcessTimeline';
 import TestimonialsSection from '@/sections/TestimonialsSection';
 
-export const metadata = {
-  title: 'About — WebNex',
+import { generateMetadata } from '@/lib/seo';
+
+export const metadata = generateMetadata({
+  title: 'About',
   description: 'Learn about WebNex — our mission, values, process, and why 50+ clients trust us to build their digital future.',
-};
+  path: '/about'
+});
 
 export default function AboutPage() {
   return (

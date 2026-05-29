@@ -1,6 +1,13 @@
 /* eslint-disable react/no-unescaped-entities, @typescript-eslint/no-unused-vars */
-'use client';
 import React from 'react';
+import { generateMetadata } from '@/lib/seo';
+
+export const metadata = generateMetadata({
+  title: 'Building a Multi-Tenant SaaS Platform with Next.js App Router',
+  description: 'Learn the core architecture to design, build, and deploy multi-tenant SaaS structures with Stripe subscriptions, secure middleware, and database isolation.',
+  path: '/blogs/building-scalable-saas-platform-nextjs',
+  ogImage: '/images/blogs/saas_platform_blog.png'
+});
 import Link from 'next/link';
 import { 
   ArrowLeft, Calendar, User, Clock, CheckCircle2, ChevronRight, Share2, Sparkles, Zap, Shield, 

@@ -1,6 +1,13 @@
 /* eslint-disable react/no-unescaped-entities, @typescript-eslint/no-unused-vars */
-'use client';
 import React from 'react';
+import { generateMetadata } from '@/lib/seo';
+
+export const metadata = generateMetadata({
+  title: '10 UI/UX Trends Re-Shaping Modern Web Design',
+  description: 'From glassmorphism to 3D interactive scrolls, here are the top design trends that are capturing user attention this year.',
+  path: '/blogs/ui-ux-trends-web-design-2026',
+  ogImage: '/images/blogs/uiux_trends_blog.png'
+});
 import Link from 'next/link';
 import { 
   ArrowLeft, Calendar, User, Clock, CheckCircle2, ChevronRight, Share2, Sparkles, Zap, Shield, 

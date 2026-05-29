@@ -1,6 +1,13 @@
 /* eslint-disable react/no-unescaped-entities, @typescript-eslint/no-unused-vars */
-'use client';
 import React from 'react';
+import { generateMetadata } from '@/lib/seo';
+
+export const metadata = generateMetadata({
+  title: 'Tailwind CSS Performance Tuning for Production Next.js Builds',
+  description: 'How to eliminate CSS bloat, optimize layout rendering, configure customized HSL design tokens, and build stunning user interfaces loading in milliseconds.',
+  path: '/blogs/tailwind-css-performance-tuning-nextjs',
+  ogImage: '/images/blogs/tailwind_perf_blog.png'
+});
 import Link from 'next/link';
 import { 
   ArrowLeft, Calendar, User, Clock, CheckCircle2, ChevronRight, Share2, Sparkles, Zap, Shield, 

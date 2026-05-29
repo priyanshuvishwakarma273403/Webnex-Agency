@@ -1,6 +1,13 @@
 /* eslint-disable react/no-unescaped-entities, @typescript-eslint/no-unused-vars */
-'use client';
 import React from 'react';
+import { generateMetadata } from '@/lib/seo';
+
+export const metadata = generateMetadata({
+  title: 'Building Stateful Autonomous AI Agents with LangGraph & LlamaIndex',
+  description: 'A comprehensive developer guide to structuring cyclic agent state graphs, integrating tools, and deploying autonomous AI assistants in enterprise environments.',
+  path: '/blogs/build-autonomous-agents-langgraph',
+  ogImage: '/images/blogs/ai_agents_graph_blog.png'
+});
 import Link from 'next/link';
 import { 
   ArrowLeft, Calendar, User, Clock, CheckCircle2, ChevronRight, Share2, Sparkles, Zap, Shield, 

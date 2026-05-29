@@ -1,6 +1,13 @@
 /* eslint-disable react/no-unescaped-entities, @typescript-eslint/no-unused-vars */
-'use client';
 import React from 'react';
+import { generateMetadata } from '@/lib/seo';
+
+export const metadata = generateMetadata({
+  title: 'The Importance of Website Security: Hardening Your Digital Assets',
+  description: 'In an era of sophisticated AI-driven cyber attacks, a basic firewall is no longer sufficient. Secure your digital business.',
+  path: '/blogs/website-security-ssl-importance',
+  ogImage: '/images/blogs/security_blog.png'
+});
 import Link from 'next/link';
 import { 
   ArrowLeft, Calendar, User, Clock, CheckCircle2, ChevronRight, Share2, Sparkles, Zap, Shield, 

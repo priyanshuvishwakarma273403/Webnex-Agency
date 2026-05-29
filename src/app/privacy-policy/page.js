@@ -1,9 +1,12 @@
 import React from 'react';
 
-export const metadata = {
-  title: 'Privacy Policy | WebNex',
+import { generateMetadata } from '@/lib/seo';
+
+export const metadata = generateMetadata({
+  title: 'Privacy Policy',
   description: 'Learn how WebNex collects, uses, and protects your data.',
-};
+  path: '/privacy-policy'
+});
 
 export default function PrivacyPolicy() {
   return (

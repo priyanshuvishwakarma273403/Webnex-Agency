@@ -31,9 +31,6 @@ export const metadata = {
   creator: 'WebNex',
   publisher: 'WebNex',
   metadataBase: new URL('https://webnex.co.in'),
-  alternates: {
-    canonical: '/',
-  },
   openGraph: {
     title: 'WebNex | Premium Digital & AI Innovation Agency',
     description: 'Transforming ideas into scalable digital products with cutting-edge tech and AI automation.',

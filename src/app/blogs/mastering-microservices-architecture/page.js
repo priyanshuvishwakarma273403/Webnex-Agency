@@ -1,6 +1,13 @@
 /* eslint-disable react/no-unescaped-entities, @typescript-eslint/no-unused-vars */
-'use client';
 import React from 'react';
+import { generateMetadata } from '@/lib/seo';
+
+export const metadata = generateMetadata({
+  title: 'Mastering Microservices Architecture: The Enterprise Scale Guide',
+  description: 'Learn the core principles of designing, deploying, and maintaining scalable microservices using Kubernetes and Docker.',
+  path: '/blogs/mastering-microservices-architecture',
+  ogImage: '/images/blogs/microservices_blog.png'
+});
 import Link from 'next/link';
 import { 
   ArrowLeft, Calendar, User, Clock, CheckCircle2, ChevronRight, Share2, Sparkles, Zap, Shield, 

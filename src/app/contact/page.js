@@ -1,10 +1,13 @@
 import PageHeader from '@/components/PageHeader';
 import ContactSection from '@/sections/ContactSection';
 
-export const metadata = {
-  title: 'Contact — WebNex',
+import { generateMetadata } from '@/lib/seo';
+
+export const metadata = generateMetadata({
+  title: 'Contact',
   description: 'Get in touch with WebNex. Start your project, book a free consultation, or chat with our AI assistant.',
-};
+  path: '/contact'
+});
 
 export default function ContactPage() {
   return (

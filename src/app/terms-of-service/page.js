@@ -1,9 +1,12 @@
 import React from 'react';
 
-export const metadata = {
-  title: 'Terms of Service | WebNex',
+import { generateMetadata } from '@/lib/seo';
+
+export const metadata = generateMetadata({
+  title: 'Terms of Service',
   description: 'Read the terms and conditions for using WebNex services.',
-};
+  path: '/terms-of-service'
+});
 
 export default function TermsOfService() {
   return (

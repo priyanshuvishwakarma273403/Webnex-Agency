@@ -1,6 +1,13 @@
 /* eslint-disable react/no-unescaped-entities, @typescript-eslint/no-unused-vars */
-'use client';
 import React from 'react';
+import { generateMetadata } from '@/lib/seo';
+
+export const metadata = generateMetadata({
+  title: 'Securing Spring Boot REST APIs with JWT & OAuth2',
+  description: 'Complete implementation guide to hardening enterprise Java backends with stateless JWT authentication, CORS protocols, and role-based permissions.',
+  path: '/blogs/securing-spring-boot-rest-api-jwt',
+  ogImage: '/images/blogs/spring_security_blog.png'
+});
 import Link from 'next/link';
 import { 
   ArrowLeft, Calendar, User, Clock, CheckCircle2, ChevronRight, Share2, Sparkles, Zap, Shield, 

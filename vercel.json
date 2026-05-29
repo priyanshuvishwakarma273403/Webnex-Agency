@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.webnex.co.in"
+        }
+      ],
+      "destination": "https://webnex.co.in/:path*",
+      "statusCode": 301
+    }
+  ]
+}

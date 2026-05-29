@@ -1,6 +1,13 @@
 /* eslint-disable react/no-unescaped-entities, @typescript-eslint/no-unused-vars */
-'use client';
 import React from 'react';
+import { generateMetadata } from '@/lib/seo';
+
+export const metadata = generateMetadata({
+  title: 'How AI Automation is Transforming Modern Businesses in 2026',
+  description: 'Discover how artificial intelligence and AI agents are reshaping industries, from drastic cost reduction to infinite scalability.',
+  path: '/blogs/ai-automation-transforming-business-2026',
+  ogImage: '/images/blogs/ai_automation_2026.png'
+});
 import Link from 'next/link';
 import { 
   ArrowLeft, Calendar, User, Clock, CheckCircle2, ChevronRight, Share2, Sparkles, Zap, Shield, 

@@ -1,6 +1,13 @@
 /* eslint-disable react/no-unescaped-entities, @typescript-eslint/no-unused-vars */
-'use client';
 import React from 'react';
+import { generateMetadata } from '@/lib/seo';
+
+export const metadata = generateMetadata({
+  title: 'Why Next.js is the Ultimate Framework for Enterprise Web Platforms',
+  description: 'A deep dive into Server Components, Edge computing, and why enterprises are migrating their frontends to Next.js.',
+  path: '/blogs/why-nextjs-ultimate-framework-2026',
+  ogImage: '/images/blogs/nextjs_2026_blog.png'
+});
 import Link from 'next/link';
 import { 
   ArrowLeft, Calendar, User, Clock, CheckCircle2, ChevronRight, Share2, Sparkles, Zap, Shield, 
